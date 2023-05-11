@@ -10,6 +10,7 @@ public class Propietario extends Usuario {
 
    private Sesion sesion;
  
+   //TODO() Falta completar con las demás clases que usa propietario.
    //private ArrayList<Vehiculo> misVehiculos;
    //private Cuenta cuenta;
 
