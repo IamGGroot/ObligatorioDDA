@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Servicios;
 
 import java.util.ArrayList;
@@ -10,10 +6,6 @@ import Dominio.Sesion;
 import Dominio.Usuario;
 import Dominio.Propietario;
 
-/**
- *
- * @author imm
- */
 public class ServicioUsuario {
     
     private ArrayList<Propietario> propietarios;
