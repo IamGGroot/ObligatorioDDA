@@ -7,7 +7,7 @@ import java.util.List;
 public class Trabajadores extends TipoBonificacion {
 
     private static int descuento = 80;
-    //2 representa lunes y 6 representa viernes.
+    //2 representa lunes y 6 representa viernes. 1 es domingo y 7 es sábado
     private static List<Integer> diasSemana = Arrays.asList(2, 3, 4, 5, 6);
 
     public static int getDescuento() {

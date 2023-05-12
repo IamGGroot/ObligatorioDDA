@@ -3,12 +3,14 @@ package Dominio;
 import java.util.Date;
 
 public class Bonificacion {
+
     private Date fechaAsignada;
     private Puesto puesto;
     private Propietario propietario;
     private TipoBonificacion tipoBonificacion;
-    
-    public Bonificacion(Puesto p, Propietario pr, TipoBonificacion tb){
+    private Transito transito;
+
+    public Bonificacion(Puesto p, Propietario pr, TipoBonificacion tb) {
         this.fechaAsignada = new Date();
         this.puesto = p;
         this.propietario = pr;
@@ -29,5 +31,17 @@ public class Bonificacion {
 
     public TipoBonificacion getTipoBonificacion() {
         return tipoBonificacion;
+    }
+
+    public Transito getTransito() {
+        return transito;
+    }
+
+    public void setTransito(Transito transito) {
+        this.transito = transito;
+    }
+    
+    public int calcularBonificacion(){
+        return this.tipoBonificacion.calcularDescuento(transito);
     }
 }
