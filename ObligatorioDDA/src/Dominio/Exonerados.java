@@ -11,7 +11,7 @@ public class Exonerados extends TipoBonificacion {
     }
 
     @Override
-    public int calcularDescuento(Object transito) {
+    public int calcularDescuento(Transito transito) {
         return 100;
     }
 
