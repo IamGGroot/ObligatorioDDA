@@ -23,8 +23,9 @@ public class Trabajadores extends TipoBonificacion {
     }
 
     @Override
-    public int calcularDescuento(Object transito) {
-        Calendar calendario = Calendar.getInstance().set(transito.fechaYHora);
+    public int calcularDescuento(Transito transito) {
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(transito.getFechaYHora());
         int diaSemana = calendario.get(Calendar.DAY_OF_WEEK);
         
         if (diasSemana.contains(diaSemana)) {

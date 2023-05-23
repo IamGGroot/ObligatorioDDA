@@ -10,6 +10,10 @@ public class Transito {
     //TODO() Repeensar si deberia conocer la bonificacion o lo conoce a traves de puesto
     private Puesto puesto;
 
+    public Date getFechaYHora() {
+        return fechaYHora;
+    }
+
     public Transito(Date fechaYHora, double montoPagado, Bonificacion bonificacion, Puesto puesto) {
         this.fechaYHora = fechaYHora;
         this.montoPagado = montoPagado;
