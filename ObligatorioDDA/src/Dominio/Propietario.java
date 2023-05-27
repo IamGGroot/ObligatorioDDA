@@ -1,5 +1,6 @@
 package Dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Propietario extends Usuario {
@@ -9,6 +10,18 @@ public class Propietario extends Usuario {
     private Cuenta cuenta;
     private List<Notificacion> notificaciones;
     private List<Bonificacion> bonificaciones;
+
+    public Propietario(double saldoMinimo, Cuenta cuenta, String nombre, String password, int cedula) {
+        super(nombre, password, cedula);
+        this.saldoMinimo = saldoMinimo;
+        this.cuenta = cuenta;
+        this.notificaciones = new ArrayList();;
+        this.bonificaciones = new ArrayList();;
+    }
+
+    public Propietario(String nombre, String password, int cedula) {
+        super(nombre, password, cedula);
+    }
 
     //TODO() Falta completar con las demás clases que usa propietario.
     //private List<Vehiculo> misVehiculos;
@@ -37,23 +50,24 @@ public class Propietario extends Usuario {
         return saldoMinimo;
     }
 
-    public List<Notificacion> getNotificaciones() {
-        return notificaciones;
+    public void agregarNotificacion(Notificacion n) {
+        this.notificaciones.add(n);
+
     }
 
-    public void setNotificaciones(List<Notificacion> notificaciones) {
-        this.notificaciones = notificaciones;
+    public List<Notificacion> getNotificaciones() {
+        return notificaciones;
     }
 
     public List<Bonificacion> getBonificaciones() {
         return bonificaciones;
     }
 
-    public void setBonificaciones(List<Bonificacion> bonificaciones) {
-        this.bonificaciones = bonificaciones;
+    public void agregarBonificacion(Bonificacion b) {
+        this.bonificaciones.add(b);
+
     }
-    
-    
+
     public void borrarNotificaciones() {
         this.getBonificaciones().clear();
     }
@@ -61,5 +75,4 @@ public class Propietario extends Usuario {
     /*public vehiculo getVehiculo(String matricula ){
     
     }*/
-    
 }

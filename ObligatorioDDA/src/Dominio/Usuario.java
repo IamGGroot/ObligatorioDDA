@@ -1,15 +1,19 @@
-
 package Dominio;
 
 public abstract class Usuario {
-    
-    //private String tipoUsuario; //aca va a ser como en agenda? 
 
+    //private String tipoUsuario; //aca va a ser como en agenda? 
     private String nombre;
 
     private String password;
 
     private int cedula;
+
+    public Usuario(String nombre, String password, int cedula) {
+        this.nombre = nombre;
+        this.password = password;
+        this.cedula = cedula;
+    }
 
     public int getCedula() {
         return cedula;
@@ -30,5 +34,5 @@ public abstract class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
 }
