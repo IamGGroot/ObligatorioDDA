@@ -40,5 +40,12 @@ public class Transito {
     public void setPuesto(Puesto puesto) {
         this.puesto = puesto;
     }
+    
+    
+    public double calcularMonto(Vehiculo vehiculo){
+        double tarifa = puesto.tarifaVehiculo(vehiculo);
+        int descuento = bonificacion.calcularBonificacion();
+        return tarifa - descuento;
+    }
 
 }

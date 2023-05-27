@@ -23,9 +23,4 @@ public class Sesion {
         return fechaAcceso;
     }
 
-    @Override
-    public String toString() {
-        //TODO: Pensar este metodo, si va o no y va a haber una lista en algun servicio que se encarga de sacar las sesiones y setear el logout
-        return usuario.getNombre() + ") - " + fechaAcceso + fechaLogout;
-    }
 }
