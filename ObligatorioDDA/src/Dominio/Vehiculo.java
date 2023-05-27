@@ -9,17 +9,27 @@ public class Vehiculo {
     private String color;
     private String modelo;
     private List<Transito> transitos;
+    private Categoria categoria;
 
-    public Vehiculo(String matricula, String color, String modelo) {
+    public Vehiculo(String matricula, String color, String modelo, Categoria categoria) {
 
         this.matricula = matricula;
         this.color = color;
         this.modelo = modelo;
         this.transitos = new ArrayList();
+        this.categoria = categoria;
+    }
+
+    public String getMatricula() {
+        return matricula;
     }
 
     public List<Transito> getTransitos() {
         return transitos;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
     }
 
     public void setTransitos(List<Transito> transitos) {
@@ -27,8 +37,11 @@ public class Vehiculo {
     }
 
     public double montoTotalTransitos() {
-        //TODO() Calcular
-        return 0;
+        double montoTotal = 0;
+        for(Transito t: transitos){
+            montoTotal += t.calcularMonto(this);
+        }
+        return montoTotal;
     }
 
 }

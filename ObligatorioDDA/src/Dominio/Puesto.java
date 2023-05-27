@@ -24,13 +24,22 @@ public class Puesto {
         this.bonificacion = bonificacion;
     }
 
-    public List<Tarifa> getTarifas(Puesto p) {
-        //TODO() Filtrar
+    public List<Tarifa> getTarifas() {
         return tarifas;
     }
 
     public void setTarifas(List<Tarifa> tarifas) {
         this.tarifas = tarifas;
+    }
+    
+    public double tarifaVehiculo(Vehiculo v){
+        double tarifa = 0;
+        for (Tarifa t: tarifas){
+            if(t.getCategoria().equals(v.getCategoria())){
+              tarifa = t.getMonto();
+            }
+        }
+        return tarifa;
     }
 
 

@@ -16,6 +16,10 @@ public class Tarifa {
         this.monto = monto;
     }
 
+    public double getMonto() {
+        return monto;
+    }
+
     public Categoria getCategoria() {
         return Categoria;
     }

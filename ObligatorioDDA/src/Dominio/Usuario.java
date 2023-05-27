@@ -1,10 +1,8 @@
-
 package Dominio;
 
 public abstract class Usuario {
-    
-    //private String tipoUsuario; //aca va a ser como en agenda? 
 
+    //private String tipoUsuario; //aca va a ser como en agenda? 
     private String nombre;
 
     private String password;
@@ -30,5 +28,9 @@ public abstract class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    public boolean validarCredenciales(String usuario, String password) {
+        return this.nombre.equalsIgnoreCase(usuario) && this.password.equals(password);
+    }
+
 }

@@ -5,12 +5,13 @@ import Dominio.Administrador;
 import Dominio.Sesion;
 import Dominio.Usuario;
 import Dominio.Propietario;
+import java.util.List;
 
 public class ServicioUsuario {
     
-    private ArrayList<Propietario> propietarios;
-    private ArrayList<Administrador> administradores;
-    private ArrayList<Sesion> usuariosConectados;
+    private List<Propietario> propietarios;
+    private List<Administrador> administradores;
+    private List<Sesion> usuariosConectados;
     
     public ServicioUsuario() {
         propietarios = new ArrayList();
@@ -34,7 +35,7 @@ public class ServicioUsuario {
         usuariosConectados.remove(sesion);
     }
     
-    public ArrayList<Sesion> getUsuariosConectados() {
+    public List<Sesion> getUsuariosConectados() {
         return usuariosConectados;
     }
 
@@ -45,13 +46,13 @@ public class ServicioUsuario {
     public Administrador loginAdministrador(String usuario, String password) {
         return (Administrador) loginGenerico(usuario, password, (ArrayList) administradores);
     }
-    //PREGUNTAR a los compañeros no entendi lo del string usuario, si lo vamos a usar o no
-    private Usuario loginGenerico(String usuario, String password, ArrayList<Usuario> listaUsuarios) {
-        /*for (Usuario u : listaUsuarios) {
-            if (u.getUsuario().equals(usuario) && u.esPassordValida(password)) {
+    
+    private Usuario loginGenerico(String usuario, String password, List<Usuario> lista) {
+        for (Usuario u : lista) {
+            if (u.validarCredenciales(usuario, password)) {
                 return u;
             }
-        }*/
+        }
         return null;
     }
     

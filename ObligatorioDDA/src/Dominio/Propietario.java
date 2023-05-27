@@ -9,9 +9,9 @@ public class Propietario extends Usuario {
     private Cuenta cuenta;
     private List<Notificacion> notificaciones;
     private List<Bonificacion> bonificaciones;
-
+    private List<Vehiculo> misVehiculos;
     //TODO() Falta completar con las demás clases que usa propietario.
-    //private List<Vehiculo> misVehiculos;
+
     public Sesion getSesion() {
         return sesion;
     }
@@ -20,11 +20,10 @@ public class Propietario extends Usuario {
         this.sesion = sesion;
     }
 
-    /*
-    
     public List<Vehiculo> getMisVehiculos() {
         return misVehiculos;
-    }*/
+    }
+
     public Cuenta getCuenta() {
         return cuenta;
     }
@@ -52,14 +51,17 @@ public class Propietario extends Usuario {
     public void setBonificaciones(List<Bonificacion> bonificaciones) {
         this.bonificaciones = bonificaciones;
     }
-    
-    
+
     public void borrarNotificaciones() {
         this.getBonificaciones().clear();
     }
 
-    /*public vehiculo getVehiculo(String matricula ){
-    
-    }*/
-    
+    public Vehiculo getVehiculo(String matricula ){
+        for (Vehiculo v : misVehiculos) {
+            if (v.getMatricula().equals(matricula)) {
+                return v;
+            }
+        }
+        return null;
+    }
 }
