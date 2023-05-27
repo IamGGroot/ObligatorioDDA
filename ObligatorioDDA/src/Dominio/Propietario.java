@@ -10,7 +10,6 @@ public class Propietario extends Usuario {
     private List<Notificacion> notificaciones;
     private List<Bonificacion> bonificaciones;
     private List<Vehiculo> misVehiculos;
-    //TODO() Falta completar con las demás clases que usa propietario.
 
     public Sesion getSesion() {
         return sesion;
