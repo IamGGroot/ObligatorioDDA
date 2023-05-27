@@ -8,6 +8,13 @@ public class Recarga {
     private Boolean aprobada;
     private Administrador administrador;
 
+    public Recarga(Date fechaYHora, double monto, Boolean aprobada, Administrador administrador) {
+        this.fechaYHora = fechaYHora;
+        this.monto = monto;
+        this.aprobada = aprobada;
+        this.administrador = administrador;
+    }
+
     public Recarga(double monto) {
         this.fechaYHora = new Date();
         this.monto = monto;

@@ -1,5 +1,6 @@
 package Dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Propietario extends Usuario {
@@ -10,6 +11,18 @@ public class Propietario extends Usuario {
     private List<Notificacion> notificaciones;
     private List<Bonificacion> bonificaciones;
     private List<Vehiculo> misVehiculos;
+
+    public Propietario(double saldoMinimo, Cuenta cuenta, String nombre, String password, int cedula) {
+        super(nombre, password, cedula);
+        this.saldoMinimo = saldoMinimo;
+        this.cuenta = cuenta;
+        this.notificaciones = new ArrayList();;
+        this.bonificaciones = new ArrayList();;
+    }
+
+    public Propietario(String nombre, String password, int cedula) {
+        super(nombre, password, cedula);
+    }
 
     public Sesion getSesion() {
         return sesion;
@@ -35,20 +48,22 @@ public class Propietario extends Usuario {
         return saldoMinimo;
     }
 
-    public List<Notificacion> getNotificaciones() {
-        return notificaciones;
+    public void agregarNotificacion(Notificacion n) {
+        this.notificaciones.add(n);
+
     }
 
-    public void setNotificaciones(List<Notificacion> notificaciones) {
-        this.notificaciones = notificaciones;
+    public List<Notificacion> getNotificaciones() {
+        return notificaciones;
     }
 
     public List<Bonificacion> getBonificaciones() {
         return bonificaciones;
     }
 
-    public void setBonificaciones(List<Bonificacion> bonificaciones) {
-        this.bonificaciones = bonificaciones;
+    public void agregarBonificacion(Bonificacion b) {
+        this.bonificaciones.add(b);
+
     }
 
     public void borrarNotificaciones() {

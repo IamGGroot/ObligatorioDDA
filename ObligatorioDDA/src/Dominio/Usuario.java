@@ -9,6 +9,12 @@ public abstract class Usuario {
 
     private int cedula;
 
+    public Usuario(String nombre, String password, int cedula) {
+        this.nombre = nombre;
+        this.password = password;
+        this.cedula = cedula;
+    }
+
     public int getCedula() {
         return cedula;
     }
