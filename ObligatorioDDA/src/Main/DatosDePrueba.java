@@ -4,8 +4,17 @@ import Dominio.Administrador;
 import Dominio.Bonificacion;
 import Dominio.Categoria;
 import Dominio.Cuenta;
+import Dominio.Exonerados;
+import Dominio.Frecuentes;
+import Dominio.Notificacion;
 import Dominio.Propietario;
+import Dominio.Puesto;
 import Dominio.Recarga;
+import Dominio.Tarifa;
+import Dominio.TipoBonificacion;
+import Dominio.Trabajadores;
+import Dominio.Transito;
+import Dominio.Vehiculo;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -32,6 +41,24 @@ public class DatosDePrueba {
         Categoria categoria5 = new Categoria("Autobús");
         Categoria categoria6 = new Categoria("Coupé");
         Categoria categoria7 = new Categoria("Convertible");
+
+        Tarifa tarifa1 = new Tarifa(100, "Sedán", categoria1);
+        Tarifa tarifa2 = new Tarifa(120, "SUV", categoria2);
+        Tarifa tarifa3 = new Tarifa(140, "Camioneta", categoria3);
+        Tarifa tarifa4 = new Tarifa(240, "Camión", categoria4);
+        Tarifa tarifa5 = new Tarifa(200, "Autobús", categoria5);
+        Tarifa tarifa6 = new Tarifa(135, "Coupé", categoria6);
+        Tarifa tarifa7 = new Tarifa(130, "Convertible", categoria7);
+
+        List<Tarifa> tarifas = new ArrayList<Tarifa>();
+
+        tarifas.add(tarifa1);
+        tarifas.add(tarifa2);
+        tarifas.add(tarifa3);
+        tarifas.add(tarifa4);
+        tarifas.add(tarifa5);
+        tarifas.add(tarifa6);
+        tarifas.add(tarifa7);
 
         Date fecha1 = new Date(120, 0, 1);   // 1 de enero de 2020
         Date fecha2 = new Date(120, 3, 15);  // 15 de abril de 2020
@@ -156,63 +183,177 @@ public class DatosDePrueba {
         Propietario propietario9 = new Propietario(1000, cuenta9, "Juan Silva", "juan123", 3541098);
         Propietario propietario10 = new Propietario(1000, cuenta10, "Mariana Morales", "mari123", 4768059);
 
-        //faltan notificaciones 
-//
-//        Bonificacion bonificacion1 = new Bonificacion(fecha29, null, propietario1, null);
-//        Bonificacion bonificacion2 = new Bonificacion(fecha27, null, propietario1, null);
-//
-//        propietario1.agregarBonificacion(bonificacion1);
-//        propietario1.agregarBonificacion(bonificacion2);
-//
-//        Bonificacion bonificacion3 = new Bonificacion(fecha25, null, propietario2, null);
-//        Bonificacion bonificacion4 = new Bonificacion(fecha23, null, propietario2, null);
-//        Bonificacion bonificacion5 = new Bonificacion(fecha22, null, propietario2, null);
-//        Bonificacion bonificacion6 = new Bonificacion(fecha19, null, propietario2, null);
-//
-//        propietario2.agregarBonificacion(bonificacion3);
-//        propietario2.agregarBonificacion(bonificacion4);
-//        propietario2.agregarBonificacion(bonificacion5);
-//        propietario2.agregarBonificacion(bonificacion6);
-//
-//        Bonificacion bonificacion7 = new Bonificacion(fecha28, null, propietario3, null);
-//        Bonificacion bonificacion8 = new Bonificacion(fecha5, null, propietario3, null);
-//        Bonificacion bonificacion9 = new Bonificacion(fecha16, null, propietario3, null);
-//        propietario3.agregarBonificacion(bonificacion7);
-//        propietario3.agregarBonificacion(bonificacion8);
-//        propietario3.agregarBonificacion(bonificacion9);
-//
-//        Bonificacion bonificacion10 = new Bonificacion(fecha14, null, propietario4, null);
-//        Bonificacion bonificacion11 = new Bonificacion(fecha18, null, propietario4, null);
-//
-//        propietario4.agregarBonificacion(bonificacion10);
-//        propietario4.agregarBonificacion(bonificacion11);
-//
-//        Bonificacion bonificacion12 = new Bonificacion(fecha6, null, propietario5, null);
-//        Bonificacion bonificacion13 = new Bonificacion(fecha2, null, propietario5, null);
-//        propietario5.agregarBonificacion(bonificacion12);
-//        propietario5.agregarBonificacion(bonificacion13);
-//
-//        Bonificacion bonificacion14 = new Bonificacion(fecha4, null, propietario6, null);
-//        Bonificacion bonificacion15 = new Bonificacion(fecha19, null, propietario6, null);
-//        propietario6.agregarBonificacion(bonificacion14);
-//        propietario6.agregarBonificacion(bonificacion15);
-//
-//        Bonificacion bonificacion16 = new Bonificacion(fecha11, null, propietario7, null);
-//        propietario7.agregarBonificacion(bonificacion16);
-//
-//        Bonificacion bonificacion17 = new Bonificacion(fecha13, null, propietario8, null);
-//        propietario8.agregarBonificacion(bonificacion17);
-//
-//        Bonificacion bonificacion18 = new Bonificacion(fecha15, null, propietario9, null);
-//        propietario9.agregarBonificacion(bonificacion18);
-//
-//        Bonificacion bonificacion19 = new Bonificacion(fecha30, null, propietario10, null);
-//        Bonificacion bonificacion20 = new Bonificacion(fecha1, null, propietario10, null);
-//
-//        propietario10.agregarBonificacion(bonificacion19);
-//        propietario10.agregarBonificacion(bonificacion20);
+        Puesto puesto1 = new Puesto("Peaje Ciudad de la Costa", "Ruta interbalnearia Km21", tarifas);
+        Puesto puesto2 = new Puesto("Peaje Pando", "Ruta interbalnearia Km25", tarifas);
+        Puesto puesto3 = new Puesto("Peaje Solís", "Ruta interbalnearia Km63", tarifas);
+        Puesto puesto4 = new Puesto("Peaje Santa Lucía", "Ruta 1 Km77", tarifas);
+        Puesto puesto5 = new Puesto("Peaje Santa Rosa", "Ruta 1 Km119", tarifas);
+        Puesto puesto6 = new Puesto("Peaje San José", "Ruta 3 Km75", tarifas);
+        Puesto puesto7 = new Puesto("Peaje Soca", "Ruta 8 Km29", tarifas);
+        Puesto puesto8 = new Puesto("Peaje Sauce", "Ruta 6 Km58", tarifas);
+        Puesto puesto9 = new Puesto("Peaje Colonia Wilson", "Ruta 2 Km173", tarifas);
+        Puesto puesto10 = new Puesto("Peaje Paysandú", "Ruta 3 Km385", tarifas);
+        Puesto puesto11 = new Puesto("Peaje Guichón", "Ruta 90 Km89", tarifas);
+        Puesto puesto12 = new Puesto("Peaje Nueva Palmira", "Ruta 21 Km289", tarifas);
 
-        //falta puesto y tipoBonificacion
+        Frecuentes frecuentes1 = new Frecuentes("Frecuente Tarifa Amiga");
+        Frecuentes frecuentes2 = new Frecuentes("Frecuente Descuento Familiar");
+        Frecuentes frecuentes3 = new Frecuentes("Frecuente Descuento Fidelidad");
+        Trabajadores trabajadores1 = new Trabajadores("Trabajadores Empresa UPM");
+        Trabajadores trabajadores2 = new Trabajadores("Trabajadores Empresa Effice");
+        Trabajadores trabajadores3 = new Trabajadores("Trabajadores Empresa Fanapel");
+        Exonerados exonerados1 = new Exonerados("Exonerados Vecino cercano");
+        Exonerados exonerados2 = new Exonerados("Exonerados Ministerio Vivienda");
+        Exonerados exonerados3 = new Exonerados("Exonerados Presidencia");
+
+        Bonificacion bonificacion1 = new Bonificacion(fecha29, puesto1, propietario1, frecuentes2);
+        Bonificacion bonificacion2 = new Bonificacion(fecha27, puesto2, propietario1, frecuentes2);
+        propietario1.agregarBonificacion(bonificacion1);
+        propietario1.agregarBonificacion(bonificacion2);
+        puesto1.agregarBonificacion(bonificacion1);
+        puesto2.agregarBonificacion(bonificacion2);
+
+        Bonificacion bonificacion3 = new Bonificacion(fecha25, puesto1, propietario2, exonerados2);
+        Bonificacion bonificacion4 = new Bonificacion(fecha23, puesto2, propietario2, exonerados2);
+        Bonificacion bonificacion5 = new Bonificacion(fecha22, puesto3, propietario2, exonerados2);
+        Bonificacion bonificacion6 = new Bonificacion(fecha19, puesto4, propietario2, exonerados2);
+        propietario2.agregarBonificacion(bonificacion3);
+        propietario2.agregarBonificacion(bonificacion4);
+        propietario2.agregarBonificacion(bonificacion5);
+        propietario2.agregarBonificacion(bonificacion6);
+        puesto1.agregarBonificacion(bonificacion3);
+        puesto2.agregarBonificacion(bonificacion4);
+        puesto3.agregarBonificacion(bonificacion5);
+        puesto4.agregarBonificacion(bonificacion6);
+
+        Bonificacion bonificacion7 = new Bonificacion(fecha28, puesto10, propietario3, trabajadores3);
+        Bonificacion bonificacion8 = new Bonificacion(fecha5, puesto11, propietario3, trabajadores3);
+        Bonificacion bonificacion9 = new Bonificacion(fecha16, puesto12, propietario3, trabajadores3);
+        propietario3.agregarBonificacion(bonificacion7);
+        propietario3.agregarBonificacion(bonificacion8);
+        propietario3.agregarBonificacion(bonificacion9);
+        puesto10.agregarBonificacion(bonificacion7);
+        puesto11.agregarBonificacion(bonificacion8);
+        puesto12.agregarBonificacion(bonificacion9);
+
+        Bonificacion bonificacion10 = new Bonificacion(fecha14, puesto8, propietario4, frecuentes1);
+        Bonificacion bonificacion11 = new Bonificacion(fecha18, puesto9, propietario4, frecuentes1);
+        propietario4.agregarBonificacion(bonificacion10);
+        propietario4.agregarBonificacion(bonificacion11);
+        puesto8.agregarBonificacion(bonificacion10);
+        puesto9.agregarBonificacion(bonificacion11);
+
+        Bonificacion bonificacion12 = new Bonificacion(fecha6, puesto5, propietario5, frecuentes3);
+        Bonificacion bonificacion13 = new Bonificacion(fecha2, puesto6, propietario5, frecuentes3);
+        propietario5.agregarBonificacion(bonificacion12);
+        propietario5.agregarBonificacion(bonificacion13);
+        puesto5.agregarBonificacion(bonificacion12);
+        puesto6.agregarBonificacion(bonificacion13);
+
+        Bonificacion bonificacion14 = new Bonificacion(fecha4, puesto7, propietario6, trabajadores1);
+        Bonificacion bonificacion15 = new Bonificacion(fecha19, puesto8, propietario6, trabajadores1);
+        propietario6.agregarBonificacion(bonificacion14);
+        propietario6.agregarBonificacion(bonificacion15);
+        puesto7.agregarBonificacion(bonificacion14);
+        puesto8.agregarBonificacion(bonificacion15);
+
+        Bonificacion bonificacion16 = new Bonificacion(fecha11, puesto9, propietario7, trabajadores2);
+        propietario7.agregarBonificacion(bonificacion16);
+        puesto9.agregarBonificacion(bonificacion16);
+
+        Bonificacion bonificacion17 = new Bonificacion(fecha13, puesto1, propietario8, exonerados1);
+        propietario8.agregarBonificacion(bonificacion17);
+        puesto1.agregarBonificacion(bonificacion17);
+
+        Bonificacion bonificacion18 = new Bonificacion(fecha15, puesto2, propietario9, exonerados1);
+        propietario9.agregarBonificacion(bonificacion18);
+        puesto9.agregarBonificacion(bonificacion18);
+
+        Bonificacion bonificacion19 = new Bonificacion(fecha30, puesto3, propietario10, exonerados3);
+        Bonificacion bonificacion20 = new Bonificacion(fecha1, puesto4, propietario10, exonerados3);
+        propietario10.agregarBonificacion(bonificacion19);
+        propietario10.agregarBonificacion(bonificacion20);
+        puesto3.agregarBonificacion(bonificacion19);
+        puesto4.agregarBonificacion(bonificacion20);
+
+        Vehiculo vehiculo1 = new Vehiculo("AAB2123", "Rojo", "Toyota Corolla", categoria1);
+        Vehiculo vehiculo2 = new Vehiculo("DAF4456", "Azul", "Honda Civic", categoria6);
+        Vehiculo vehiculo3 = new Vehiculo("GAE7779", "Blanco", "Ford Focus", categoria1);
+        Vehiculo vehiculo4 = new Vehiculo("JAC0312", "Negro", "Chevrolet Cruze", categoria1);
+        Vehiculo vehiculo5 = new Vehiculo("MAD3345", "Plateado", "Volkswagen Golf", categoria1);
+        Vehiculo vehiculo6 = new Vehiculo("PAG6748", "Gris", "BMW X5", categoria3);
+        Vehiculo vehiculo7 = new Vehiculo("SAA9701", "Verde", "Jeep Wrangler", categoria3);
+        Vehiculo vehiculo8 = new Vehiculo("SAB2334", "Amarillo", "Fiat 500", categoria1);
+        Vehiculo vehiculo9 = new Vehiculo("SAC3567", "Naranja", "Mini Cooper", categoria2);
+        Vehiculo vehiculo10 = new Vehiculo("SAH3890", "Celeste", "Nissan Sentra", categoria2);
+
+        Notificacion notificacion1 = new Notificacion("¡Pago exitoso! Se ha registrado el pago de peaje para tu vehículo.", fecha5);
+        Notificacion notificacion2 = new Notificacion("Aviso: Tu cuenta de peaje está baja. Por favor, recárgala para continuar usando el servicio.", fecha7);
+        Notificacion notificacion3 = new Notificacion("Se ha detectado un vehículo sin pagar el peaje. Por favor, regulariza tu situación.", fecha10);
+        Notificacion notificacion4 = new Notificacion("Recuerda que el peaje aumentará a partir del próximo mes. Mantente informado.", fecha13);
+        Notificacion notificacion5 = new Notificacion("Notificación: Cambio en el horario de atención en la cabina de peaje principal.", fecha16);
+        Notificacion notificacion6 = new Notificacion("¡Felicidades! Eres uno de nuestros usuarios más frecuentes. Obtén beneficios exclusivos.", fecha19);
+        Notificacion notificacion7 = new Notificacion("Alerta: Se ha registrado un uso inusual de tu cuenta de peaje. Verifica tus transacciones.", fecha22);
+        Notificacion notificacion8 = new Notificacion("Tu vehículo ha sido suspendido temporalmente por infracciones de pago de peaje.", fecha25);
+        Notificacion notificacion9 = new Notificacion("Nueva función disponible: Pago de peaje automático. Activa esta opción en tu cuenta.", fecha28);
+        Notificacion notificacion10 = new Notificacion("Aviso importante: Realizaremos mantenimiento en las cabinas de peaje. Pueden haber demoras.", fecha30);
+        Notificacion notificacion11 = new Notificacion("Se ha vencido el plazo de pago del peaje. Evita multas y regulariza tu situación.", fecha27);
+        Notificacion notificacion12 = new Notificacion("Actualización de términos y condiciones: Por favor, revisa y acepta los nuevos términos.", fecha24);
+        Notificacion notificacion13 = new Notificacion("Recordatorio: El próximo lunes será feriado y se aplicará tarifa especial de peaje.", fecha21);
+        Notificacion notificacion14 = new Notificacion("Información de tráfico: Se reporta congestión en la autopista cerca del peaje. Planifica tu viaje.", fecha18);
+        Notificacion notificacion15 = new Notificacion("Tu cuenta de peaje ha sido bloqueada. Comunícate con nuestro servicio de atención al cliente.", fecha15);
+        Notificacion notificacion16 = new Notificacion("¡Bienvenido al nuevo sistema de peajes electrónicos! Disfruta de un pago rápido y sin efectivo.", fecha12);
+        Notificacion notificacion17 = new Notificacion("Aviso de descuento: Obtén un 20% de descuento en peajes durante este fin de semana.", fecha9);
+        Notificacion notificacion18 = new Notificacion("Se ha registrado un cambio en la ubicación de la cabina de peaje. Sigue las indicaciones.", fecha6);
+        Notificacion notificacion19 = new Notificacion("Actualización de la app: Descarga la última versión para acceder a nuevas funciones y mejoras.", fecha3);
+        Notificacion notificacion20 = new Notificacion("Aviso de mantenimiento: El sistema de peajes estará temporalmente fuera de servicio mañana de 2 AM a 5 AM.", fecha1);
+
+        propietario1.agregarNotificacion(notificacion1);
+        propietario1.agregarNotificacion(notificacion2);
+        propietario2.agregarNotificacion(notificacion3);
+        propietario2.agregarNotificacion(notificacion4);
+        propietario3.agregarNotificacion(notificacion5);
+        propietario3.agregarNotificacion(notificacion6);
+        propietario4.agregarNotificacion(notificacion7);
+        propietario4.agregarNotificacion(notificacion8);
+        propietario5.agregarNotificacion(notificacion9);
+        propietario5.agregarNotificacion(notificacion10);
+        propietario6.agregarNotificacion(notificacion11);
+        propietario6.agregarNotificacion(notificacion12);
+        propietario7.agregarNotificacion(notificacion13);
+        propietario7.agregarNotificacion(notificacion14);
+        propietario8.agregarNotificacion(notificacion15);
+        propietario8.agregarNotificacion(notificacion16);
+        propietario9.agregarNotificacion(notificacion17);
+        propietario9.agregarNotificacion(notificacion18);
+        propietario10.agregarNotificacion(notificacion19);
+        propietario10.agregarNotificacion(notificacion20);
+
+        Transito transito1 = new Transito(fecha29, 0, bonificacion3, puesto1);
+        Transito transito2 = new Transito(fecha27, 0, bonificacion4, puesto2);
+        Transito transito3 = new Transito(fecha25, 0, bonificacion5, puesto3);
+        Transito transito4 = new Transito(fecha23, 0, bonificacion6, puesto4);
+        Transito transito5 = new Transito(fecha21, 0, bonificacion17, puesto1);
+        Transito transito6 = new Transito(fecha19, 0, bonificacion18, puesto2);
+        Transito transito7 = new Transito(fecha17, 0, bonificacion19, puesto3);
+        Transito transito8 = new Transito(fecha15, 0, bonificacion20, puesto4);
+        //estos transitos corresponden a exonerados
+        
+        Transito transito9 = new Transito(fecha13, 100, bonificacion1, puesto1);
+        Transito transito10 = new Transito(fecha11, 200, bonificacion2, puesto2);
+        Transito transito11 = new Transito(fecha9, 200, bonificacion7, puesto10);
+        Transito transito12 = new Transito(fecha7, 100, bonificacion8, puesto11);
+        Transito transito13 = new Transito(fecha5, 150, bonificacion10, puesto8);
+        Transito transito14 = new Transito(fecha3, 120, bonificacion11, puesto9);
+        Transito transito15 = new Transito(fecha1, 120, bonificacion12, puesto5);
+        Transito transito16 = new Transito(fecha28, 100, bonificacion13, puesto6);
+        Transito transito17 = new Transito(fecha26, 200, bonificacion14, puesto7);
+        Transito transito18 = new Transito(fecha24, 120, bonificacion15, puesto8);
+        Transito transito19 = new Transito(fecha22, 130, bonificacion16, puesto9);
+        Transito transito20 = new Transito(fecha20, 130, bonificacion7, puesto10);
+
+        //Falta que tenga sentido lo que pagaron. Las bonificaciones y puestos corresponden. 
+        //No revise que las fechas tengan sentido con las fechas de adjudicacion de las bonificaciones usadas con la de los transitos.
     }
 
 }

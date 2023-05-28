@@ -6,22 +6,21 @@ public class Puesto {
 
     private String nombre;
     private String direccion;
-    private Bonificacion bonificacion;
+    private List<Bonificacion> bonificaciones;
     private List<Tarifa> tarifas;
 
-    public Puesto(String nombre, String direccion, Bonificacion bonificacion, Tarifa tarifa) {
+    public Puesto(String nombre, String direccion, List<Tarifa> tarifas) {
         this.nombre = nombre;
         this.direccion = direccion;
-        this.bonificacion = bonificacion;
         this.tarifas = tarifas;
     }
     
-    public Bonificacion getBonificacion() {
-        return bonificacion;
+    public List<Bonificacion> getBonificacion() {
+        return bonificaciones;
     }
 
-    public void setBonificacion(Bonificacion bonificacion) {
-        this.bonificacion = bonificacion;
+    public void setBonificacion(List<Bonificacion> bonificaciones) {
+        this.bonificaciones = bonificaciones;
     }
 
     public List<Tarifa> getTarifas() {
@@ -40,6 +39,11 @@ public class Puesto {
             }
         }
         return tarifa;
+    }
+    
+    public void agregarBonificacion(Bonificacion bonificacion){
+        this.bonificaciones.add(bonificacion);
+        
     }
 
 

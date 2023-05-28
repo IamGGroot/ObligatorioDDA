@@ -7,7 +7,6 @@ public class Transito {
     private Date fechaYHora;
     private double montoPagado;
     private Bonificacion bonificacion;
-    //TODO() Repeensar si deberia conocer la bonificacion o lo conoce a traves de puesto
     private Puesto puesto;
 
     public Date getFechaYHora() {

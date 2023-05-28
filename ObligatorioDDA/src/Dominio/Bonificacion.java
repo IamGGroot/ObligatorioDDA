@@ -10,12 +10,14 @@ public class Bonificacion {
     private TipoBonificacion tipoBonificacion;
     private Transito transito;
 
-    public Bonificacion(Puesto p, Propietario pr, TipoBonificacion tb) {
-        this.fechaAsignada = new Date();
-        this.puesto = p;
-        this.propietario = pr;
-        this.tipoBonificacion = tb;
+    public Bonificacion(Date fechaAsignada, Puesto puesto, Propietario propietario, TipoBonificacion tipoBonificacion) {
+        this.fechaAsignada = fechaAsignada;
+        this.puesto = puesto;
+        this.propietario = propietario;
+        this.tipoBonificacion = tipoBonificacion;
     }
+    
+    
 
     public Date getFechaAsignada() {
         return fechaAsignada;
