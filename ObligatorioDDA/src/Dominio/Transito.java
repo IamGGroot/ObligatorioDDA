@@ -20,6 +20,10 @@ public class Transito {
         this.puesto = puesto;
     }
 
+    public double getMontoPagado() {
+        return montoPagado;
+    }
+
     public void setMontoPagado(double montoPagado) {
         this.montoPagado = montoPagado;
     }
@@ -39,10 +43,10 @@ public class Transito {
     public void setPuesto(Puesto puesto) {
         this.puesto = puesto;
     }
-    
-    
-    public double calcularMonto(Vehiculo vehiculo){
-        double tarifa = puesto.tarifaVehiculo(vehiculo);
+
+    //TODO() esto debería hacerse al crear el transito y asignar el valor a montoPagado.
+    public double calcularMonto(Vehiculo vehiculo) {
+        double tarifa = puesto.tarifaParaVehiculo(vehiculo);
         int descuento = bonificacion.calcularBonificacion();
         return tarifa - descuento;
     }
