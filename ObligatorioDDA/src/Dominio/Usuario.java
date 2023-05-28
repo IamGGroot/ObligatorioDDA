@@ -35,8 +35,8 @@ public abstract class Usuario {
         this.password = password;
     }
 
-    public boolean validarCredenciales(String usuario, String password) {
-        return this.nombre.equalsIgnoreCase(usuario) && this.password.equals(password);
+    public boolean validarCredenciales(int cedula, String password) {
+        return this.cedula == cedula && this.password.equals(password);
     }
 
 }

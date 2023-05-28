@@ -32,7 +32,7 @@ public class Puesto {
         this.tarifas = tarifas;
     }
     
-    public double tarifaVehiculo(Vehiculo v){
+    public double tarifaParaVehiculo(Vehiculo v){
         double tarifa = 0;
         for (Tarifa t: tarifas){
             if(t.getCategoria().equals(v.getCategoria())){
