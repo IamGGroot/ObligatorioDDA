@@ -36,6 +36,10 @@ public class Propietario extends Usuario {
         return misVehiculos;
     }
 
+    public void setMisVehiculos(List<Vehiculo> misVehiculos) {
+        this.misVehiculos = misVehiculos;
+    }
+
     public Cuenta getCuenta() {
         return cuenta;
     }

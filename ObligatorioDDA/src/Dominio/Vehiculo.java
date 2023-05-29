@@ -20,6 +20,14 @@ public class Vehiculo {
         this.categoria = categoria;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
     public String getMatricula() {
         return matricula;
     }
