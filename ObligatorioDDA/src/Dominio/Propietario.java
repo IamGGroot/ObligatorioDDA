@@ -36,8 +36,8 @@ public class Propietario extends Usuario {
         return misVehiculos;
     }
 
-    public void setMisVehiculos(List<Vehiculo> misVehiculos) {
-        this.misVehiculos = misVehiculos;
+    public void agregarVehiculo(Vehiculo miVehiculo) {
+        this.misVehiculos.add(miVehiculo);
     }
 
     public Cuenta getCuenta() {
