@@ -6,6 +6,7 @@ package Interfaz;
 
 import Dominio.Propietario;
 import Dominio.Usuario;
+import Exceptions.SistemaPeajeException;
 import Servicios.FachadaServicios;
 import java.awt.Frame;
 
@@ -27,7 +28,7 @@ public class DialogoLoginPropietario extends DialogoLoginGenerico {
     }
 
     @Override
-    protected Usuario loginUsuarioGenerico(int cedula, String password) {
+    protected Usuario loginUsuarioGenerico(int cedula, String password) throws SistemaPeajeException {
         return FachadaServicios.getInstancia().loginPropietario(cedula, password);
     }
 

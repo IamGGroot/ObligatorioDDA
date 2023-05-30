@@ -4,6 +4,7 @@ import Dominio.Administrador;
 import Dominio.Propietario;
 import Dominio.Sesion;
 import Dominio.Vehiculo;
+import Exceptions.SistemaPeajeException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,11 +63,11 @@ public class FachadaServicios {
         servicioPeaje.setVehiculos(vehiculos);
     }
 
-    public Propietario loginPropietario(int cedula, String password) {
+    public Propietario loginPropietario(int cedula, String password) throws SistemaPeajeException {
         return servicioUsuario.loginPropietario(cedula, password);
     }
 
-    public Administrador loginAdministrador(int cedula, String password) {
+    public Administrador loginAdministrador(int cedula, String password) throws SistemaPeajeException {
         return servicioUsuario.loginAdministrador(cedula, password);
     }
 }

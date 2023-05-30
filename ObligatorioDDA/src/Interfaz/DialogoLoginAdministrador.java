@@ -8,6 +8,7 @@ package Interfaz;
 import Dominio.Administrador;
 import java.awt.Frame;
 import Dominio.Usuario;
+import Exceptions.SistemaPeajeException;
 import Servicios.FachadaServicios;
 
 /**
@@ -22,7 +23,7 @@ public class DialogoLoginAdministrador extends DialogoLoginGenerico {
     }
 
     @Override
-    protected Usuario loginUsuarioGenerico(int nombreUsuario, String password) {
+    protected Usuario loginUsuarioGenerico(int nombreUsuario, String password) throws SistemaPeajeException {
         return FachadaServicios.getInstancia().loginAdministrador(nombreUsuario, password);
     }
 
