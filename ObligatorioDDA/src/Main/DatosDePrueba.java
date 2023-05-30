@@ -15,6 +15,7 @@ import Dominio.TipoBonificacion;
 import Dominio.Trabajadores;
 import Dominio.Transito;
 import Dominio.Vehiculo;
+import Servicios.FachadaServicios;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -33,7 +34,18 @@ public class DatosDePrueba {
         Administrador admin8 = new Administrador("Juan Morales", "juan123", 4356789);
         Administrador admin9 = new Administrador("Isabella Castro", "isa123", 5324567);
         Administrador admin10 = new Administrador("Camila Silva", "cami123", 4234567);
-
+        
+        FachadaServicios.getInstancia().agregar(admin1);
+        FachadaServicios.getInstancia().agregar(admin2);
+        FachadaServicios.getInstancia().agregar(admin3);
+        FachadaServicios.getInstancia().agregar(admin4);
+        FachadaServicios.getInstancia().agregar(admin5);
+        FachadaServicios.getInstancia().agregar(admin6);
+        FachadaServicios.getInstancia().agregar(admin7);
+        FachadaServicios.getInstancia().agregar(admin8);
+        FachadaServicios.getInstancia().agregar(admin9);
+        FachadaServicios.getInstancia().agregar(admin10);
+        
         Categoria categoria1 = new Categoria("Sedán");
         Categoria categoria2 = new Categoria("SUV");
         Categoria categoria3 = new Categoria("Camioneta");
@@ -183,6 +195,17 @@ public class DatosDePrueba {
         Propietario propietario9 = new Propietario(1000, cuenta9, "Juan Silva", "juan123", 3541098);
         Propietario propietario10 = new Propietario(1000, cuenta10, "Mariana Morales", "mari123", 4768059);
 
+        FachadaServicios.getInstancia().agregar(propietario1);
+        FachadaServicios.getInstancia().agregar(propietario2);
+        FachadaServicios.getInstancia().agregar(propietario3);
+        FachadaServicios.getInstancia().agregar(propietario4);
+        FachadaServicios.getInstancia().agregar(propietario5);
+        FachadaServicios.getInstancia().agregar(propietario6);
+        FachadaServicios.getInstancia().agregar(propietario7);
+        FachadaServicios.getInstancia().agregar(propietario8);
+        FachadaServicios.getInstancia().agregar(propietario9);
+        FachadaServicios.getInstancia().agregar(propietario10);
+        
         Puesto puesto1 = new Puesto("Peaje Ciudad de la Costa", "Ruta interbalnearia Km21", tarifas);
         Puesto puesto2 = new Puesto("Peaje Pando", "Ruta interbalnearia Km25", tarifas);
         Puesto puesto3 = new Puesto("Peaje Solís", "Ruta interbalnearia Km63", tarifas);
@@ -287,6 +310,21 @@ public class DatosDePrueba {
         Vehiculo vehiculo9 = new Vehiculo("SAC3567", "Naranja", "Mini Cooper", categoria2);
         Vehiculo vehiculo10 = new Vehiculo("SAH3890", "Celeste", "Nissan Sentra", categoria2);
 
+        propietario1.agregarVehiculo(vehiculo1);
+        propietario1.agregarVehiculo(vehiculo2);
+        
+        FachadaServicios.getInstancia().agregar(vehiculo1);
+        FachadaServicios.getInstancia().agregar(vehiculo2);
+        FachadaServicios.getInstancia().agregar(vehiculo3);
+        FachadaServicios.getInstancia().agregar(vehiculo4);
+        FachadaServicios.getInstancia().agregar(vehiculo5);
+        FachadaServicios.getInstancia().agregar(vehiculo6);
+        FachadaServicios.getInstancia().agregar(vehiculo7);
+        FachadaServicios.getInstancia().agregar(vehiculo8);
+        FachadaServicios.getInstancia().agregar(vehiculo9);
+        FachadaServicios.getInstancia().agregar(vehiculo10);
+
+        
         Notificacion notificacion1 = new Notificacion("¡Pago exitoso! Se ha registrado el pago de peaje para tu vehículo.", fecha5);
         Notificacion notificacion2 = new Notificacion("Aviso: Tu cuenta de peaje está baja. Por favor, recárgala para continuar usando el servicio.", fecha7);
         Notificacion notificacion3 = new Notificacion("Se ha detectado un vehículo sin pagar el peaje. Por favor, regulariza tu situación.", fecha10);

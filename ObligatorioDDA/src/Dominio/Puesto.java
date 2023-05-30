@@ -1,5 +1,6 @@
 package Dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Puesto {
@@ -13,6 +14,7 @@ public class Puesto {
         this.nombre = nombre;
         this.direccion = direccion;
         this.tarifas = tarifas;
+        this.bonificaciones = new ArrayList();
     }
     
     public List<Bonificacion> getBonificacion() {
@@ -42,8 +44,7 @@ public class Puesto {
     }
     
     public void agregarBonificacion(Bonificacion bonificacion){
-        this.bonificaciones.add(bonificacion);
-        
+        this.bonificaciones.add(bonificacion);        
     }
 
 

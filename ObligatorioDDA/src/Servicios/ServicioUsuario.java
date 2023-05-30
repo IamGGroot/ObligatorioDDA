@@ -5,7 +5,6 @@ import Dominio.Administrador;
 import Dominio.Sesion;
 import Dominio.Usuario;
 import Dominio.Propietario;
-import Exceptions.SistemaPeajeException;
 import java.util.List;
 
 public class ServicioUsuario {
@@ -40,21 +39,21 @@ public class ServicioUsuario {
         return usuariosConectados;
     }
 
-    public Usuario loginUsuario(int cedula, String password) throws SistemaPeajeException {
-        return (Usuario) loginGenerico(cedula, password, (ArrayList) propietarios);
+    public Propietario loginPropietario(int cedula, String password) {
+        return (Propietario) loginGenerico(cedula, password, (ArrayList) propietarios);
     }
     
-    public Administrador loginAdministrador(int cedula, String password) throws SistemaPeajeException {
+    public Administrador loginAdministrador(int cedula, String password) {
         return (Administrador) loginGenerico(cedula, password, (ArrayList) administradores);
     }
     
-    private Usuario loginGenerico(int cedula, String password, List<Usuario> lista) throws SistemaPeajeException{
+    private Usuario loginGenerico(int cedula, String password, List<Usuario> lista) {
         for (Usuario u : lista) {
             if (u.validarCredenciales(cedula, password)) {
                 return u;
             }
         }
-        throw new SistemaPeajeException("Acceso denegado");
+        return null;
     }
     
 }
