@@ -2,19 +2,37 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package InterfazAdministradores;
+package Interfaz;
+
+import Dominio.Administrador;
+import Dominio.Usuario;
+import Dominio.Sesion;
+import java.util.Date;
+import Servicios.FachadaServicios;
 
 /**
  *
  * @author gsilv
  */
-public class EmularTransito extends javax.swing.JFrame {
+public class EmularTransito extends javax.swing.JDialog {
+
+    private Administrador usuario;
+    private Sesion sesion;
 
     /**
      * Creates new form EmularTransito
      */
-    public EmularTransito() {
+    public EmularTransito(java.awt.Frame parent, boolean modal, Administrador usuario) {
+        super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(parent);
+        this.usuario = usuario;
+        sesion = new Sesion(usuario, new Date());
+        inicializar();
+    }
+
+    private void inicializar() {
+        this.setTitle("Emular transitos");
     }
 
     /**
@@ -123,7 +141,6 @@ public class EmularTransito extends javax.swing.JFrame {
     private void tMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tMatriculaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tMatriculaActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

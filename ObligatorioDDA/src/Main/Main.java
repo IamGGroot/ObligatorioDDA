@@ -1,7 +1,7 @@
 package Main;
 
-import InterfazPropietarios.IngresarALaAplicacion;
-import InterfazPropietarios.TableroDeControlDelPropietario;
+import Interfaz.VentanaInicio;
+
 
 public class Main {
 
@@ -9,13 +9,10 @@ public class Main {
         // TODO code application logic here
         
         DatosDePrueba.cargar();
-
-        IngresarALaAplicacion ventana = new IngresarALaAplicacion();
-
-        TableroDeControlDelPropietario ventana2 = new TableroDeControlDelPropietario();
-
+        
+        VentanaInicio ventana = new VentanaInicio();
+        
         ventana.setVisible(true);
-        ventana2.setVisible(true);
     }
 
 }

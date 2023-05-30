@@ -16,8 +16,9 @@ public class Propietario extends Usuario {
         super(nombre, password, cedula);
         this.saldoMinimo = saldoMinimo;
         this.cuenta = cuenta;
-        this.notificaciones = new ArrayList();;
-        this.bonificaciones = new ArrayList();;
+        this.notificaciones = new ArrayList();
+        this.bonificaciones = new ArrayList();
+        this.misVehiculos = new ArrayList();
     }
 
     public Propietario(String nombre, String password, int cedula) {
@@ -34,6 +35,10 @@ public class Propietario extends Usuario {
 
     public List<Vehiculo> getMisVehiculos() {
         return misVehiculos;
+    }
+
+    public void agregarVehiculo(Vehiculo miVehiculo) {
+        this.misVehiculos.add(miVehiculo);
     }
 
     public Cuenta getCuenta() {
