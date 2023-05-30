@@ -310,6 +310,7 @@ public class DatosDePrueba {
         Vehiculo vehiculo9 = new Vehiculo("SAC3567", "Naranja", "Mini Cooper", categoria2);
         Vehiculo vehiculo10 = new Vehiculo("SAH3890", "Celeste", "Nissan Sentra", categoria2);
 
+        
         propietario1.agregarVehiculo(vehiculo1);
         propietario1.agregarVehiculo(vehiculo2);
         
@@ -323,7 +324,6 @@ public class DatosDePrueba {
         FachadaServicios.getInstancia().agregar(vehiculo8);
         FachadaServicios.getInstancia().agregar(vehiculo9);
         FachadaServicios.getInstancia().agregar(vehiculo10);
-
         
         Notificacion notificacion1 = new Notificacion("¡Pago exitoso! Se ha registrado el pago de peaje para tu vehículo.", fecha5);
         Notificacion notificacion2 = new Notificacion("Aviso: Tu cuenta de peaje está baja. Por favor, recárgala para continuar usando el servicio.", fecha7);
@@ -376,6 +376,8 @@ public class DatosDePrueba {
         Transito transito7 = new Transito(fecha17, 0, bonificacion19, puesto3);
         Transito transito8 = new Transito(fecha15, 0, bonificacion20, puesto4);
         //estos transitos corresponden a exonerados
+        vehiculo1.agregarTransito(transito1);
+
         
         Transito transito9 = new Transito(fecha13, 100, bonificacion1, puesto1);
         Transito transito10 = new Transito(fecha11, 200, bonificacion2, puesto2);
@@ -389,6 +391,7 @@ public class DatosDePrueba {
         Transito transito18 = new Transito(fecha24, 120, bonificacion15, puesto8);
         Transito transito19 = new Transito(fecha22, 130, bonificacion16, puesto9);
         Transito transito20 = new Transito(fecha20, 130, bonificacion7, puesto10);
+        vehiculo1.agregarTransito(transito9);
 
         //Falta que tenga sentido lo que pagaron. Las bonificaciones y puestos corresponden. 
         //No revise que las fechas tengan sentido con las fechas de adjudicacion de las bonificaciones usadas con la de los transitos.

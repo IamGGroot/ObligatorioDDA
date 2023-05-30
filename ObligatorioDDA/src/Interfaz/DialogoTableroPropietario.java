@@ -4,7 +4,6 @@
  */
 package Interfaz;
 
-import InterfazPropietarios.*;
 import Dominio.Propietario;
 import Dominio.Vehiculo;
 import java.util.List;

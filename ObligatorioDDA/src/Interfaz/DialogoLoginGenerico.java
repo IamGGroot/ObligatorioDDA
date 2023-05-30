@@ -6,6 +6,7 @@ package Interfaz;
 
 import javax.swing.JOptionPane;
 import Dominio.Usuario;
+import Exceptions.SistemaPeajeException;
 
 /**
  *
@@ -127,18 +128,19 @@ private void ingresar() {
         int cedulaUsuario = Integer.parseInt(tCedula.getText());
         String password = new String(tPassword.getPassword());
 
-        Usuario usu = loginUsuarioGenerico(cedulaUsuario, password);
-        if (usu == null) {
-            JOptionPane.showMessageDialog(this, "Login incorrecto, revise usuario y passoword y reintente.", "Login incorrecto", JOptionPane.ERROR_MESSAGE);
-        } else {
+        try {
+            Usuario usu = loginUsuarioGenerico(cedulaUsuario, password);
             ejecutarCasoLogin(usu);
             this.dispose();
+        } catch (SistemaPeajeException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Login incorrecto", JOptionPane.ERROR_MESSAGE);
+
         }
     }
 
     protected abstract String getSubtitulo();
 
-    protected abstract Usuario loginUsuarioGenerico(int cedula, String password);
+    protected abstract Usuario loginUsuarioGenerico(int cedula, String password) throws SistemaPeajeException;
 
     protected abstract void ejecutarCasoLogin(Usuario usuario);
 }
