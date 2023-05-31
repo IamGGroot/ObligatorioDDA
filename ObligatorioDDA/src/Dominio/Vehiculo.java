@@ -40,8 +40,8 @@ public class Vehiculo {
         return categoria;
     }
 
-    public void setTransitos(List<Transito> transitos) {
-        this.transitos = transitos;
+    public void agregarTransito(Transito nuevoTransito) {
+        this.transitos.add(nuevoTransito);
     }
 
     public double montoTotalTransitos() {
