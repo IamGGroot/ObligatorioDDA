@@ -31,6 +31,7 @@ public class EmularTransito extends javax.swing.JDialog {
         inicializar();
     }
 
+ 
     private void inicializar() {
         this.setTitle("Emular transitos");
     }

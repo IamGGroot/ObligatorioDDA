@@ -36,7 +36,10 @@ public abstract class Usuario {
     }
 
     public boolean validarCredenciales(int cedula, String password) {
+
         return this.cedula == cedula && this.password.equals(password);
+
+
     }
 
 }

@@ -4,15 +4,18 @@
  */
 package Interfaz;
 
+import Controlador.ControladorLogin;
 import javax.swing.JOptionPane;
 import Dominio.Usuario;
+import Exceptions.SistemaPeajeException;
+
 
 /**
  *
  * @author imm
  */
-public abstract class DialogoLoginGenerico extends javax.swing.JDialog {
-
+public abstract class DialogoLoginGenerico extends javax.swing.JDialog implements VistaLogin {
+    private ControladorLogin controlador;
     /**
      * Creates new form DialogoLoginGenerico
      */
@@ -123,22 +126,43 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog {
     private javax.swing.JTextField tCedula;
     private javax.swing.JPasswordField tPassword;
     // End of variables declaration//GEN-END:variables
+
+
 private void ingresar() {
+
         int cedulaUsuario = Integer.parseInt(tCedula.getText());
+
         String password = new String(tPassword.getPassword());
 
-        Usuario usu = loginUsuarioGenerico(cedulaUsuario, password);
-        if (usu == null) {
-            JOptionPane.showMessageDialog(this, "Login incorrecto, revise usuario y passoword y reintente.", "Login incorrecto", JOptionPane.ERROR_MESSAGE);
-        } else {
+ 
+
+        try {
+
+            Usuario usu = loginUsuarioGenerico(cedulaUsuario, password);
+
             ejecutarCasoLogin(usu);
+
             this.dispose();
+
+        } catch (SistemaPeajeException e) {
+
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Login incorrecto", JOptionPane.ERROR_MESSAGE);
+
+ 
+
         }
+
     }
+
+ 
 
     protected abstract String getSubtitulo();
 
-    protected abstract Usuario loginUsuarioGenerico(int cedula, String password);
+ 
+
+    protected abstract Usuario loginUsuarioGenerico(int cedula, String password) throws SistemaPeajeException;
+
+ 
 
     protected abstract void ejecutarCasoLogin(Usuario usuario);
 }
