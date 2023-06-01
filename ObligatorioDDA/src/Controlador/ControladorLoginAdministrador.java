@@ -6,7 +6,7 @@ package Controlador;
 
 import Interfaz.VistaLogin;
 import Dominio.Usuario;
-import Exceptions.UserNotFoundException;
+import Exceptions.SistemaPeajeException;
 import Servicios.FachadaServicios;
 
 /**
@@ -20,8 +20,13 @@ public class ControladorLoginAdministrador extends ControladorLogin {
     }
 
     @Override
-    public Usuario loginUsuario(int cedula, String password) {
-       return FachadaServicios.getInstancia().loginAdministrador(cedula, password);
+    public void loginUsuario(String cedula, String password) {
+        try {
+            int cedulaUsuario = Integer.parseInt(cedula);
+            Usuario usuario = FachadaServicios.getInstancia().loginAdministrador(cedulaUsuario, password);
+            this.vista.ejecutarLogin(usuario);
+        } catch (SistemaPeajeException | NumberFormatException ex) {
+            this.vista.mostrarError(ex.getMessage());
+        }
     }
-    
 }

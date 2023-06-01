@@ -36,7 +36,7 @@ public abstract class Usuario {
     }
 
     public boolean validarCredenciales(int cedula, String password) {
-
+        //TODO acá podemos recibir string y tirar una esxcepción si no es una cedula valida?
         return this.cedula == cedula && this.password.equals(password);
 
 
