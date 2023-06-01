@@ -5,38 +5,24 @@
  */
 package Interfaz;
 
+import Controlador.ControladorLoginAdministrador;
 import Dominio.Administrador;
 
 import java.awt.Frame;
 import Dominio.Usuario;
-import Exceptions.SistemaPeajeException;
-import Servicios.FachadaServicios;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Santiago
  */
 public class DialogoLoginAdministrador extends DialogoLoginGenerico {
-   
+
     public DialogoLoginAdministrador(Frame parent, boolean modal) {
         super(parent, modal);
         this.setTitle("Ingrese sus credenciales de Administrador");
-
+        this.setControlador(new ControladorLoginAdministrador(this));
     }
-
- @Override
-    protected Usuario loginUsuarioGenerico(int nombreUsuario, String password) throws SistemaPeajeException {
-        return FachadaServicios.getInstancia().loginAdministrador(nombreUsuario, password);
-    }
-
- 
-
-    @Override
-    protected void ejecutarCasoLogin(Usuario usuarioAdmin) {
-        new DialogoEmularTransito((java.awt.Frame) this.getParent(), false, (Administrador) usuarioAdmin).setVisible(true);
-    }
-
- 
 
     @Override
     protected String getSubtitulo() {
@@ -45,7 +31,7 @@ public class DialogoLoginAdministrador extends DialogoLoginGenerico {
 
     @Override
     public void mostrarError(String msg) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        JOptionPane.showMessageDialog(this, msg, "Login incorrecto", JOptionPane.ERROR_MESSAGE);
     }
 
     @Override
@@ -54,9 +40,8 @@ public class DialogoLoginAdministrador extends DialogoLoginGenerico {
     }
 
     @Override
-    public void ejecutarLogin(Usuario usu) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-        
+    public void ejecutarLogin(Usuario usuarioAdmin) {
+        new DialogoEmularTransito((java.awt.Frame) this.getParent(), false, (Administrador) usuarioAdmin).setVisible(true);
     }
 
+}

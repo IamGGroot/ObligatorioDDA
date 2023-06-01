@@ -7,29 +7,19 @@ package Controlador;
 import Interfaz.VistaLogin;
 import Dominio.Usuario;
 import Exceptions.SistemaPeajeException;
-
+import Servicios.FachadaServicios;
 
 /**
  *
  * @author Santiago
  */
 public abstract class ControladorLogin {
-    private VistaLogin vista;
+
+    VistaLogin vista;
 
     public ControladorLogin(VistaLogin vista) {
         this.vista = vista;
     }
 
-    public abstract Usuario loginUsuario(int cedula, String password) throws SistemaPeajeException;
-
-    public void login(int cedula, String password) {
-        try {
-            Usuario usuario = loginUsuario(cedula, password);
-            this.vista.ejecutarLogin(usuario);
-            this.vista.cerrarVentana();
-        } catch (SistemaPeajeException exc) {
-            this.vista.mostrarError(exc.getMessage());
-        }
-    }
-
+    public abstract void loginUsuario(String cedula, String password);
 }

@@ -9,13 +9,14 @@ import javax.swing.JOptionPane;
 import Dominio.Usuario;
 import Exceptions.SistemaPeajeException;
 
-
 /**
  *
  * @author imm
  */
 public abstract class DialogoLoginGenerico extends javax.swing.JDialog implements VistaLogin {
+
     private ControladorLogin controlador;
+
     /**
      * Creates new form DialogoLoginGenerico
      */
@@ -127,42 +128,19 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
     private javax.swing.JPasswordField tPassword;
     // End of variables declaration//GEN-END:variables
 
-
-private void ingresar() {
-
-        int cedulaUsuario = Integer.parseInt(tCedula.getText());
-
+    private void ingresar() {
+        String cedulaUsuario = tCedula.getText();
         String password = new String(tPassword.getPassword());
-
- 
-
-        try {
-
-            Usuario usu = loginUsuarioGenerico(cedulaUsuario, password);
-
-            ejecutarCasoLogin(usu);
-
-            this.dispose();
-
-        } catch (SistemaPeajeException e) {
-
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Login incorrecto", JOptionPane.ERROR_MESSAGE);
-
- 
-
-        }
-
+        this.controlador.loginUsuario(cedulaUsuario, password);
     }
 
- 
+    protected void setControlador(ControladorLogin controlador) {
+        this.controlador = controlador;
+    }
+
+    protected ControladorLogin getControlador() {
+        return controlador;
+    }
 
     protected abstract String getSubtitulo();
-
- 
-
-    protected abstract Usuario loginUsuarioGenerico(int cedula, String password) throws SistemaPeajeException;
-
- 
-
-    protected abstract void ejecutarCasoLogin(Usuario usuario);
 }
