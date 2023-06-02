@@ -4,6 +4,8 @@
  */
 package Interfaz;
 
+import Dominio.Administrador;
+
 /**
  *
  * @author gsilv
@@ -13,7 +15,7 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame {
     /**
      * Creates new form EmularAprobaciónDeRecargas
      */
-    public EmularAprobaciónDeRecargas() {
+    public EmularAprobaciónDeRecargas(Administrador usuarioAdmin) {
         initComponents();
     }
 
