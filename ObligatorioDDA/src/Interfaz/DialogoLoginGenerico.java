@@ -129,9 +129,13 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
     // End of variables declaration//GEN-END:variables
 
     private void ingresar() {
-        String cedulaUsuario = tCedula.getText();
-        String password = new String(tPassword.getPassword());
-        this.controlador.loginUsuario(cedulaUsuario, password);
+        try {
+            int cedulaUsuario = Integer.parseInt(tCedula.getText());
+            String password = new String(tPassword.getPassword());
+            this.controlador.loginUsuario(cedulaUsuario, password);
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this,"El campo cedula solo admite caraceters numéricos", "Login incorrecto", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     protected void setControlador(ControladorLogin controlador) {

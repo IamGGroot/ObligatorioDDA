@@ -4,8 +4,8 @@
  */
 package Controlador;
 
+import Dominio.Administrador;
 import Interfaz.VistaLogin;
-import Dominio.Usuario;
 import Exceptions.SistemaPeajeException;
 import Servicios.FachadaServicios;
 
@@ -20,12 +20,11 @@ public class ControladorLoginAdministrador extends ControladorLogin {
     }
 
     @Override
-    public void loginUsuario(String cedula, String password) {
+    public void loginUsuario(int cedula, String password) {
         try {
-            int cedulaUsuario = Integer.parseInt(cedula);
-            Usuario usuario = FachadaServicios.getInstancia().loginAdministrador(cedulaUsuario, password);
+            Administrador usuario = FachadaServicios.getInstancia().loginAdministrador(cedula, password);
             this.vista.ejecutarLogin(usuario);
-        } catch (SistemaPeajeException | NumberFormatException ex) {
+        } catch (SistemaPeajeException ex) {
             this.vista.mostrarError(ex.getMessage());
         }
     }

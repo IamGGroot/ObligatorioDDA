@@ -25,7 +25,7 @@ public class DatosDePrueba {
     public static void cargar() {
 
         Administrador admin1 = new Administrador("Gerardo Silva", "gera123", 5123456);
-        Administrador admin2 = new Administrador("Ana Lopez", "ana123", 5123456);
+        Administrador admin2 = new Administrador("Ana Lopez", "ana123", 5123457);
         Administrador admin3 = new Administrador("Santiago Lacretta", "santi123", 3245678);
         Administrador admin4 = new Administrador("Diego Gregoraz", "diego123", 2456789);
         Administrador admin5 = new Administrador("Alejandro González", "ale123", 2156789);

@@ -5,10 +5,6 @@
 package Controlador;
 
 import Interfaz.VistaLogin;
-import Dominio.Usuario;
-import Exceptions.SistemaPeajeException;
-import Servicios.FachadaServicios;
-
 /**
  *
  * @author Santiago
@@ -21,5 +17,5 @@ public abstract class ControladorLogin {
         this.vista = vista;
     }
 
-    public abstract void loginUsuario(String cedula, String password);
+    public abstract void loginUsuario(int cedula, String password);
 }
