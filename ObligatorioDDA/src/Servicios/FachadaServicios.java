@@ -3,11 +3,9 @@ package Servicios;
 
 import Dominio.Administrador;
 import Dominio.Propietario;
-import Dominio.Sesion;
 import Dominio.Vehiculo;
 import Exceptions.SistemaPeajeException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FachadaServicios {
 
@@ -46,18 +44,6 @@ public class FachadaServicios {
 
     public void agregar(Propietario propietario) {
         servicioUsuario.agregar(propietario);
-    }
-
-    public void iniciar(Sesion sesion) {
-        servicioUsuario.iniciar(sesion);
-    }
-
-    public void cerrar(Sesion sesion) {
-        servicioUsuario.cerrar(sesion);
-    }
-
-    public List<Sesion> getUsuariosConectados() {
-        return servicioUsuario.getUsuariosConectados();
     }
 
     public void setVehiculos(ArrayList<Vehiculo> vehiculos) {

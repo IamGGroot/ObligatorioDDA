@@ -20,13 +20,11 @@ public class ControladorLoginPropietario extends ControladorLogin {
     }
 
     @Override
-    public void loginUsuario(String cedula, String password) {
+    public void loginUsuario(int cedula, String password) {
         try {
-            //TODO consultar donde se agrega la validación de entero porque en la vista el parseo devuelve error al intentar parsear y lo rompe nada más.
-            int cedulaUsuario = Integer.parseInt(cedula);
-            Usuario usuario = FachadaServicios.getInstancia().loginPropietario(cedulaUsuario, password);
+            Usuario usuario = FachadaServicios.getInstancia().loginPropietario(cedula, password);
             this.vista.ejecutarLogin(usuario);
-        } catch (SistemaPeajeException | NumberFormatException ex) {
+        } catch (SistemaPeajeException ex) {
             this.vista.mostrarError(ex.getMessage());
         }
     }

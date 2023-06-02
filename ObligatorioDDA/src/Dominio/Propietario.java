@@ -6,7 +6,6 @@ import java.util.List;
 public class Propietario extends Usuario {
 
     private double saldoMinimo;
-    private Sesion sesion;
     private Cuenta cuenta;
     private List<Notificacion> notificaciones;
     private List<Bonificacion> bonificaciones;
@@ -23,14 +22,6 @@ public class Propietario extends Usuario {
 
     public Propietario(String nombre, String password, int cedula) {
         super(nombre, password, cedula);
-    }
-
-    public Sesion getSesion() {
-        return sesion;
-    }
-
-    public void setSesion(Sesion sesion) {
-        this.sesion = sesion;
     }
 
     public List<Vehiculo> getMisVehiculos() {
