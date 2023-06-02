@@ -4,16 +4,18 @@
  */
 package Interfaz;
 
+import Dominio.Administrador;
+
 /**
  *
  * @author gsilv
  */
-public class AsignarBonificaciones extends javax.swing.JFrame {
+public class VistaAsignarBonificaciones extends javax.swing.JFrame {
 
     /**
      * Creates new form AsignarBonificaciones
      */
-    public AsignarBonificaciones() {
+    public VistaAsignarBonificaciones(Administrador usuarioAdmin) {
         initComponents();
     }
 

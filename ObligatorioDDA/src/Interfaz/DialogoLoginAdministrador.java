@@ -41,7 +41,7 @@ public class DialogoLoginAdministrador extends DialogoLoginGenerico {
 
     @Override
     public void ejecutarLogin(Usuario usuarioAdmin) {
-        new DialogoEmularTransito((java.awt.Frame) this.getParent(), false, (Administrador) usuarioAdmin).setVisible(true);
+        new DialogoPrincipalAdministrador((java.awt.Frame) this.getParent(), false, (Administrador) usuarioAdmin).setVisible(true);
     }
 
 }
