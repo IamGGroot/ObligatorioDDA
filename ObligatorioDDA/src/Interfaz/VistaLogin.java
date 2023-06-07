@@ -9,4 +9,6 @@ public interface VistaLogin {
     public void cerrarVentana();
 
     public void ejecutarLogin(Usuario usu);
+    
+    public void mostrarTitulo(String title);
 }

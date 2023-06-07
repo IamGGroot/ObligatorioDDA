@@ -16,6 +16,10 @@ public class Puesto {
         this.tarifas = tarifas;
         this.bonificaciones = new ArrayList();
     }
+
+    public String getNombre() {
+        return nombre;
+    }
     
     public List<Bonificacion> getBonificacion() {
         return bonificaciones;

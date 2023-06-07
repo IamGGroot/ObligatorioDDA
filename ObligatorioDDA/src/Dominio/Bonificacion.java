@@ -20,7 +20,7 @@ public class Bonificacion {
     
 
     public Date getFechaAsignada() {
-        return fechaAsignada;
+        return this.fechaAsignada;
     }
 
     public Puesto getPuesto() {

@@ -48,6 +48,11 @@ public class RecargarSaldo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Recarga de saldo");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         fSaldoCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Utilidades/dinero.png"))); // NOI18N
 
@@ -129,6 +134,9 @@ public class RecargarSaldo extends javax.swing.JFrame {
     private void tMontoARecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tMontoARecargarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tMontoARecargarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

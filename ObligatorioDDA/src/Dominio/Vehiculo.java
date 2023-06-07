@@ -51,5 +51,4 @@ public class Vehiculo {
         }
         return montoTotal;
     }
-
 }
