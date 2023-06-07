@@ -20,6 +20,12 @@ public class Tarifa {
         return monto;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+    
+    
+
     public Categoria getCategoria() {
         return Categoria;
     }

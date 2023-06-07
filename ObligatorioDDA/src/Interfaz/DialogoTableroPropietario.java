@@ -516,13 +516,14 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
         TableModel modeloDatos = tablaTransitos.getModel();
         for (int i = 0; i < transitos.size(); i++) {
             Transito t = transitos.get(i);
+            Vehiculo v = t.getVehiculo();
             modeloDatos.setValueAt(t.getPuesto().getNombre(), i, 0);
-            modeloDatos.setValueAt("matricula", i, 1);
-            modeloDatos.setValueAt("tarifa", i, 2);
-            modeloDatos.setValueAt("tarifa (monto)", i, 3);
+            modeloDatos.setValueAt(t.getVehiculo().getMatricula(), i, 1);
+            modeloDatos.setValueAt(t.getPuesto().tarifaParaVehiculo(v).getNombre(), i, 2);
+            modeloDatos.setValueAt(t.getPuesto().tarifaParaVehiculo(v).getMonto(), i, 3);
             modeloDatos.setValueAt(t.getBonificacion().getTipoBonificacion().getNombre(), i, 4);
-            modeloDatos.setValueAt("monto bonificacion", i, 5);
-            modeloDatos.setValueAt(t.getMontoPagado(), i, 6);
+            modeloDatos.setValueAt(t.getBonificacion().calcularBonificacion(), i, 5);
+            modeloDatos.setValueAt(t.calcularMonto(v), i, 6);
             modeloDatos.setValueAt(formatDate(t.getFechaYHora()), i, 7);
         }
         nTransitos.setText(transitos.size() + "");
