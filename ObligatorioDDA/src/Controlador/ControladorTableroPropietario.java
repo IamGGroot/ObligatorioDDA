@@ -19,12 +19,15 @@ public class ControladorTableroPropietario implements Observador {
     public ControladorTableroPropietario(VistaTableroPropietario vista, Propietario propietario) {
         this.vista = vista;
         this.propietario = propietario;
+        this.propietario.subscribir(this);
     }
 
     @Override
     public void notificar(Observable origen, Object evento) {
+        if (((Observable.Evento) evento).equals(Observable.Evento.NOTIFICACIONES_BORRADAS)) {
+            vista.mostrarNotificaciones(this.propietario.getNotificaciones());
+        }
         //aca voy a poder actualizar las listas y mostrar básicamente. 
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public void cerrar() {

@@ -3,6 +3,7 @@ package Dominio;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Propietario extends Usuario {
 
     private double saldoMinimo;
@@ -63,7 +64,8 @@ public class Propietario extends Usuario {
     }
 
     public void borrarNotificaciones() {
-        this.getBonificaciones().clear();
+        this.getNotificaciones().clear();
+        notificar(Evento.NOTIFICACIONES_BORRADAS);
     }
 
     public Vehiculo getVehiculo(String matricula ){

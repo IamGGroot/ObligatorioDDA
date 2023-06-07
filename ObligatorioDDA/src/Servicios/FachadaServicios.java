@@ -6,6 +6,7 @@ import Dominio.Propietario;
 import Dominio.Recarga;
 import Dominio.Vehiculo;
 import Exceptions.SistemaPeajeException;
+import Observer.Observable;
 import java.util.ArrayList;
 import java.util.List;
 
