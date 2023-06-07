@@ -5,28 +5,21 @@ import java.util.Date;
 public class Transito {
 
     private Date fechaYHora;
-    private double montoPagado;
     private Bonificacion bonificacion;
     private Puesto puesto;
+    private Vehiculo vehiculo;
+
+    public Transito(Date fechaYHora, Bonificacion bonificacion, Puesto puesto, Vehiculo vehiculo) {
+        this.fechaYHora = fechaYHora;
+        this.bonificacion = bonificacion;
+        this.puesto = puesto;
+        this.vehiculo = vehiculo;
+    }
 
     public Date getFechaYHora() {
         return fechaYHora;
     }
 
-    public Transito(Date fechaYHora, double montoPagado, Bonificacion bonificacion, Puesto puesto) {
-        this.fechaYHora = fechaYHora;
-        this.montoPagado = montoPagado;
-        this.bonificacion = bonificacion;
-        this.puesto = puesto;
-    }
-
-    public double getMontoPagado() {
-        return montoPagado;
-    }
-
-    public void setMontoPagado(double montoPagado) {
-        this.montoPagado = montoPagado;
-    }
 
     public Bonificacion getBonificacion() {
         return bonificacion;
@@ -44,9 +37,12 @@ public class Transito {
         this.puesto = puesto;
     }
 
-    //TODO() esto debería hacerse al crear el transito y asignar el valor a montoPagado.
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
     public double calcularMonto(Vehiculo vehiculo) {
-        double tarifa = puesto.tarifaParaVehiculo(vehiculo);
+        double tarifa = puesto.tarifaParaVehiculo(vehiculo).getMonto();
         int descuento = bonificacion.calcularBonificacion();
         return tarifa - descuento;
     }

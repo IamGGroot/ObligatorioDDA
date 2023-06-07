@@ -37,14 +37,13 @@ public class Puesto {
         this.tarifas = tarifas;
     }
     
-    public double tarifaParaVehiculo(Vehiculo v){
-        double tarifa = 0;
+    public Tarifa tarifaParaVehiculo(Vehiculo v){
         for (Tarifa t: tarifas){
             if(t.getCategoria().equals(v.getCategoria())){
-              tarifa = t.getMonto();
+              return t;
             }
         }
-        return tarifa;
+        return null;
     }
     
     public void agregarBonificacion(Bonificacion bonificacion){
