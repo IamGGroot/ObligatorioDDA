@@ -74,4 +74,9 @@ public class Propietario extends Usuario {
         }
         return null;
     }
+
+    public boolean tieneRecargasPendientes() {
+        return !this.cuenta.getRecargasPendientes().isEmpty();
+    }
+   
 }
