@@ -10,7 +10,6 @@ public class ServicioPeaje {
 
     private List<Vehiculo> vehiculos;
     private List<Recarga> recargas;
-    private List<Propietario> propietarios;
 
     public ServicioPeaje() {
         vehiculos = new ArrayList();
@@ -37,13 +36,4 @@ public class ServicioPeaje {
         return recargas;
     }
 
-    public List<Propietario> getPropietariosConRecargasPendientes() {
-        List<Propietario> ret = new ArrayList<Propietario>();
-        for (Propietario p : propietarios) {
-            if (p.tieneRecargasPendientes()) {
-                ret.add(p);
-            }
-        }
-        return ret;
-    }
 }

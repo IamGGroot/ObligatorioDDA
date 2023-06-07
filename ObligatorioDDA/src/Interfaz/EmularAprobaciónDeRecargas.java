@@ -1,6 +1,7 @@
-
 package Interfaz;
 
+import Controlador.ControladorEmularAprobacionRecarga;
+import Controlador.ControladorTableroPropietario;
 import Dominio.Administrador;
 import Dominio.Propietario;
 import Dominio.Recarga;
@@ -8,11 +9,14 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-
 public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements VistaEmularAprobacionRecarga {
+
+    private ControladorEmularAprobacionRecarga controlador;
 
     public EmularAprobaciónDeRecargas(Administrador usuarioAdmin) {
         initComponents();
+        this.controlador = new ControladorEmularAprobacionRecarga(this, usuarioAdmin);
+        inicializar();
     }
 
     @SuppressWarnings("unchecked")
@@ -91,11 +95,11 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
     }// </editor-fold>//GEN-END:initComponents
 
     private void bAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAprobarActionPerformed
-       this.aprobarRecarga();
+        this.aprobarRecarga();
         // TODO add your handling code here:
     }//GEN-LAST:event_bAprobarActionPerformed
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAprobar;
     private javax.swing.JButton bCerrar;
@@ -104,41 +108,42 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
     private javax.swing.JTable tablaRecargas;
     // End of variables declaration//GEN-END:variables
 
+    private void inicializar() {
+        controlador.listarListarRecargasPendientes();
+    }
+
     @Override
     public void mostrarRecargas(List<Propietario> propietariosConRecargasPendientes) {
-        String[] columnNames = {"Fecha", "Propietario", "Monto"};
-        DefaultTableModel modeloDefault = new DefaultTableModel(columnNames, propietariosConRecargasPendientes.size()) {
+        DefaultTableModel modeloDefault = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        tablaRecargas.setModel(modeloDefault);
+        modeloDefault.addColumn("Fecha");
+        modeloDefault.addColumn("Propietario");
+        modeloDefault.addColumn("Monto");
 
- 
+        tablaRecargas.setModel(modeloDefault);
 
         TableModel modeloDatos = tablaRecargas.getModel();
         for (int i = 0; i < propietariosConRecargasPendientes.size(); i++) {
             Propietario p = propietariosConRecargasPendientes.get(i);
-            for(Recarga r: p.getCuenta().getRecargasPendientes()){
-                //modeloDatos.setValueAt(formatDate(r.getFechaYHora()), i, 0);
-                modeloDatos.setValueAt(r.getFechaYHora(), i, 0);
-                modeloDatos.setValueAt(p.getNombre(), i, 1);
-                modeloDatos.setValueAt(r.getMonto(), i, 2);
+            for (Recarga r : p.getCuenta().getRecargasPendientes()) {
+                modeloDefault.addRow(new Object[]{r.getFechaYHora(), p.getNombre(), r.getMonto()});
             }
-            
         }
     }
 
     @Override
     public void aprobarRecarga() {
-    //TODO terminar   
-    // controlador.aprobar();
+        //TODO terminar   
+        // controlador.aprobar();
     }
 
     @Override
     public void cerrar() {
-        
+
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

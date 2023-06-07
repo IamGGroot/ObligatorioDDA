@@ -106,6 +106,7 @@ public class DatosDePrueba {
         Recarga recarga1 = new Recarga(fecha1, 1000, true, admin1);
         Recarga recarga2 = new Recarga(fecha2, 1200, false, admin1);
         Recarga recarga3 = new Recarga(fecha3, 4500, false, admin1);
+
         Recarga recarga4 = new Recarga(fecha4, 2300, false, admin2);
         Recarga recarga5 = new Recarga(fecha5, 1200, true, admin2);
         Recarga recarga6 = new Recarga(fecha6, 2000, false, admin2);

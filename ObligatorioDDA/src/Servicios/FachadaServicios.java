@@ -65,7 +65,7 @@ public class FachadaServicios {
     }
 
     public List<Propietario> getPropietariosConRecargasPendientes() {
-        return servicioPeaje.getPropietariosConRecargasPendientes();
+        return servicioUsuario.getPropietariosConRecargasPendientes();
     }
     
 

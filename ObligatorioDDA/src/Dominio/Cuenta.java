@@ -7,10 +7,12 @@ import java.util.List;
 public class Cuenta {
     private double saldo;
     private List<Recarga> recargas;
+    private List<Recarga> recargasPendientes;
 
     public Cuenta() {
         this.saldo = 0;
         this.recargas = new ArrayList();
+        this.recargasPendientes = new ArrayList();
     }
 
     public List<Recarga> getRecargas() {
@@ -25,23 +27,17 @@ public class Cuenta {
         this.saldo = saldo;
     }
     
-    //TODO() revisar si el flujo es correcto.
     public boolean recargar(Recarga r){
         if(r.getAprobada()){
             this.saldo += r.getMonto();
             recargas.add(r);
             return true;
         }
+        recargasPendientes.add(r);
         return false;
     }
     
     public List<Recarga> getRecargasPendientes() {
-        List <Recarga> ret= new ArrayList<Recarga>();
-          for (Recarga r : recargas){
-              if(!r.getAprobada()){
-                   ret.add(r);
-              }
-        }
-          return ret; 
+       return recargasPendientes;
     }
 }
