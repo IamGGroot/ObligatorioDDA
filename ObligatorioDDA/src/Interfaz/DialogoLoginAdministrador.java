@@ -10,7 +10,6 @@ import Dominio.Administrador;
 
 import java.awt.Frame;
 import Dominio.Usuario;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,23 +19,13 @@ public class DialogoLoginAdministrador extends DialogoLoginGenerico {
 
     public DialogoLoginAdministrador(Frame parent, boolean modal) {
         super(parent, modal);
+        super.setControlador(new ControladorLoginAdministrador(this));
         this.setTitle("Ingrese sus credenciales de Administrador");
-        this.setControlador(new ControladorLoginAdministrador(this));
     }
 
     @Override
     protected String getSubtitulo() {
         return "Bienvenido usuario Administrador de sistema de peajes";
-    }
-
-    @Override
-    public void mostrarError(String msg) {
-        JOptionPane.showMessageDialog(this, msg, "Login incorrecto", JOptionPane.ERROR_MESSAGE);
-    }
-
-    @Override
-    public void cerrarVentana() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

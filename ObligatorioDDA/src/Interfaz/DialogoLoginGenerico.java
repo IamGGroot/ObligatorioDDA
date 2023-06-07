@@ -6,8 +6,6 @@ package Interfaz;
 
 import Controlador.ControladorLogin;
 import javax.swing.JOptionPane;
-import Dominio.Usuario;
-import Exceptions.SistemaPeajeException;
 
 /**
  *
@@ -24,9 +22,8 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(parent);
-        this.setTitle("Ingreso al sistema " + this.getSubtitulo());
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -133,8 +130,8 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
             int cedulaUsuario = Integer.parseInt(tCedula.getText());
             String password = new String(tPassword.getPassword());
             this.controlador.loginUsuario(cedulaUsuario, password);
-        } catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this,"El campo cedula solo admite caraceters numéricos", "Login incorrecto", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El campo cedula solo admite caraceters numéricos", "Login incorrecto", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -147,4 +144,19 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
     }
 
     protected abstract String getSubtitulo();
+
+    @Override
+    public void mostrarError(String msg) {
+        JOptionPane.showMessageDialog(this, msg, "Login incorrecto", JOptionPane.ERROR_MESSAGE);
+    }
+
+    @Override
+    public void cerrarVentana() {
+        this.dispose();
+    }
+
+    @Override
+    public void mostrarTitulo(String title) {
+        this.setTitle(title);
+    }
 }

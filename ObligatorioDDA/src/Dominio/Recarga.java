@@ -3,6 +3,7 @@ package Dominio;
 import java.util.Date;
 
 public class Recarga {
+
     private Date fechaYHora;
     private double monto;
     private Boolean aprobada;
@@ -20,7 +21,7 @@ public class Recarga {
         this.monto = monto;
         this.aprobada = false;
         this.administrador = null;
-    }   
+    }
 
     public Administrador getAdministrador() {
         return administrador;
@@ -50,8 +51,18 @@ public class Recarga {
         return aprobada;
     }
 
+    
+    
+    public String getEstado() {
+        if (aprobada) {
+            return "Aprobada";
+        }
+        return "Pendiente";
+
+    }
+
     public void setAprobada(Boolean aprobada) {
         this.aprobada = aprobada;
     }
-    
+
 }
