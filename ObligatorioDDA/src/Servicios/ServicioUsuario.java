@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import Dominio.Administrador;
 import Dominio.Usuario;
 import Dominio.Propietario;
+import Dominio.Recarga;
 import Exceptions.SistemaPeajeException;
 import java.util.List;
 
@@ -48,5 +49,6 @@ public class ServicioUsuario {
     private Exception SistemaPeajeException(String ud_Ya_está_logueado) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
     
 }

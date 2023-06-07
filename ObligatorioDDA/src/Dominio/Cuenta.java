@@ -35,6 +35,13 @@ public class Cuenta {
         return false;
     }
     
-    
-    
+    public List<Recarga> getRecargasPendientes() {
+        List <Recarga> ret= new ArrayList<Recarga>();
+          for (Recarga r : recargas){
+              if(!r.getAprobada()){
+                   ret.add(r);
+              }
+        }
+          return ret; 
+    }
 }

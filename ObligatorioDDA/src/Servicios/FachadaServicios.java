@@ -3,9 +3,11 @@ package Servicios;
 
 import Dominio.Administrador;
 import Dominio.Propietario;
+import Dominio.Recarga;
 import Dominio.Vehiculo;
 import Exceptions.SistemaPeajeException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FachadaServicios {
 
@@ -34,7 +36,7 @@ public class FachadaServicios {
         servicioPeaje.agregar(vehiculo);
     }
 
-    public ArrayList<Vehiculo> getVehiculos() {
+    public List<Vehiculo> getVehiculos() {
         return servicioPeaje.getVehiculos();
     }
 
@@ -57,4 +59,14 @@ public class FachadaServicios {
     public Administrador loginAdministrador(int cedula, String password) throws SistemaPeajeException {
         return servicioUsuario.loginAdministrador(cedula, password);
     }
+
+    public void agregar(Recarga recarga) {
+        servicioPeaje.agregar(recarga);
+    }
+
+    public List<Propietario> getPropietariosConRecargasPendientes() {
+        return servicioPeaje.getPropietariosConRecargasPendientes();
+    }
+    
+
 }
