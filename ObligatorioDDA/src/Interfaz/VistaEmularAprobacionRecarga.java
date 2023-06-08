@@ -1,5 +1,6 @@
 package Interfaz;
 
+import Dominio.Bonificacion;
 import Dominio.Propietario;
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface VistaEmularAprobacionRecarga {
     public boolean confirmar(String mensaje, String title);
 
     public void salir();
+
+    public void listarBonificaciones(List<Bonificacion> bonificaciones);
 }

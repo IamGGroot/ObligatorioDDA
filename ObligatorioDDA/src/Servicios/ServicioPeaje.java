@@ -1,7 +1,6 @@
 package Servicios;
 
 import Dominio.Bonificacion;
-import Dominio.Propietario;
 import Dominio.Puesto;
 import Dominio.Recarga;
 import java.util.ArrayList;
@@ -38,6 +37,10 @@ public class ServicioPeaje {
         recargas.add(recarga);
     }
 
+    public void agregar(Bonificacion bonificacion) {
+        bonificaciones.add(bonificacion);
+    }
+
     public List<Recarga> getRecargas() {
         return recargas;
     }
@@ -47,7 +50,7 @@ public class ServicioPeaje {
         return puestos;
     }
 
-    List<Bonificacion> getBonificaciones() {
+    public List<Bonificacion> getBonificaciones() {
         return bonificaciones;
     }
 

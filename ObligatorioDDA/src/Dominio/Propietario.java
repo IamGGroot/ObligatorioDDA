@@ -80,5 +80,9 @@ public class Propietario extends Usuario {
     public boolean tieneRecargasPendientes() {
         return !this.cuenta.getRecargasPendientes().isEmpty();
     }
+
+    public boolean tieneBonificacionAsignada(Puesto puestoSeleccionado) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
    
 }

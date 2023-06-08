@@ -62,18 +62,18 @@ public class DatosDePrueba {
         Tarifa tarifa6 = new Tarifa(135, "Coupé", categoria6);
         Tarifa tarifa7 = new Tarifa(130, "Convertible", categoria7);
 
-        List<Tarifa> tarifas1 = new ArrayList<Tarifa>();
-        List<Tarifa> tarifas2 = new ArrayList<Tarifa>();
-        List<Tarifa> tarifas3 = new ArrayList<Tarifa>();
-        List<Tarifa> tarifas4 = new ArrayList<Tarifa>();
-        List<Tarifa> tarifas5 = new ArrayList<Tarifa>();
-        List<Tarifa> tarifas6 = new ArrayList<Tarifa>();
-        List<Tarifa> tarifas7 = new ArrayList<Tarifa>();
-        List<Tarifa> tarifas8 = new ArrayList<Tarifa>();
-        List<Tarifa> tarifas9 = new ArrayList<Tarifa>();
-        List<Tarifa> tarifas10 = new ArrayList<Tarifa>();
-        List<Tarifa> tarifas11 = new ArrayList<Tarifa>();
-        List<Tarifa> tarifas12 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas1 = new ArrayList();
+        List<Tarifa> tarifas2 = new ArrayList();
+        List<Tarifa> tarifas3 = new ArrayList();
+        List<Tarifa> tarifas4 = new ArrayList();
+        List<Tarifa> tarifas5 = new ArrayList();
+        List<Tarifa> tarifas6 = new ArrayList();
+        List<Tarifa> tarifas7 = new ArrayList();
+        List<Tarifa> tarifas8 = new ArrayList();
+        List<Tarifa> tarifas9 = new ArrayList();
+        List<Tarifa> tarifas10 = new ArrayList();
+        List<Tarifa> tarifas11 = new ArrayList();
+        List<Tarifa> tarifas12 = new ArrayList();
 
         tarifas1.add(tarifa1);
         tarifas1.add(tarifa2);
@@ -288,16 +288,22 @@ public class DatosDePrueba {
         Exonerados exonerados3 = new Exonerados("Exonerados Presidencia");
 
         Bonificacion bonificacion1 = new Bonificacion("boni1", fecha29, puesto1, propietario1, frecuentes2);
-        Bonificacion bonificacion2 = new Bonificacion("boni2",fecha27, puesto2, propietario1, frecuentes2);
+        Bonificacion bonificacion2 = new Bonificacion("boni2", fecha27, puesto2, propietario1, frecuentes2);
+        FachadaServicios.getInstancia().agregar(bonificacion1);
+        FachadaServicios.getInstancia().agregar(bonificacion2);
         propietario1.agregarBonificacion(bonificacion1);
         propietario1.agregarBonificacion(bonificacion2);
         puesto1.agregarBonificacion(bonificacion1);
         puesto2.agregarBonificacion(bonificacion2);
 
-        Bonificacion bonificacion3 = new Bonificacion("boni3",fecha25, puesto1, propietario2, exonerados2);
-        Bonificacion bonificacion4 = new Bonificacion("boni4",fecha23, puesto2, propietario2, exonerados2);
-        Bonificacion bonificacion5 = new Bonificacion("boni5",fecha22, puesto3, propietario2, exonerados2);
-        Bonificacion bonificacion6 = new Bonificacion("boni6",fecha19, puesto4, propietario2, exonerados2);
+        Bonificacion bonificacion3 = new Bonificacion("boni3", fecha25, puesto1, propietario2, exonerados2);
+        Bonificacion bonificacion4 = new Bonificacion("boni4", fecha23, puesto2, propietario2, exonerados2);
+        Bonificacion bonificacion5 = new Bonificacion("boni5", fecha22, puesto3, propietario2, exonerados2);
+        Bonificacion bonificacion6 = new Bonificacion("boni6", fecha19, puesto4, propietario2, exonerados2);
+        FachadaServicios.getInstancia().agregar(bonificacion3);
+        FachadaServicios.getInstancia().agregar(bonificacion4);
+        FachadaServicios.getInstancia().agregar(bonificacion5);
+        FachadaServicios.getInstancia().agregar(bonificacion6);
         propietario2.agregarBonificacion(bonificacion3);
         propietario2.agregarBonificacion(bonificacion4);
         propietario2.agregarBonificacion(bonificacion5);
@@ -307,9 +313,12 @@ public class DatosDePrueba {
         puesto3.agregarBonificacion(bonificacion5);
         puesto4.agregarBonificacion(bonificacion6);
 
-        Bonificacion bonificacion7 = new Bonificacion("boni7",fecha28, puesto10, propietario3, trabajadores3);
-        Bonificacion bonificacion8 = new Bonificacion("boni8",fecha5, puesto11, propietario3, trabajadores3);
-        Bonificacion bonificacion9 = new Bonificacion("boni9",fecha16, puesto12, propietario3, trabajadores3);
+        Bonificacion bonificacion7 = new Bonificacion("boni7", fecha28, puesto10, propietario3, trabajadores3);
+        Bonificacion bonificacion8 = new Bonificacion("boni8", fecha5, puesto11, propietario3, trabajadores3);
+        Bonificacion bonificacion9 = new Bonificacion("boni9", fecha16, puesto12, propietario3, trabajadores3);
+        FachadaServicios.getInstancia().agregar(bonificacion7);
+        FachadaServicios.getInstancia().agregar(bonificacion8);
+        FachadaServicios.getInstancia().agregar(bonificacion9);
         propietario3.agregarBonificacion(bonificacion7);
         propietario3.agregarBonificacion(bonificacion8);
         propietario3.agregarBonificacion(bonificacion9);
@@ -317,41 +326,54 @@ public class DatosDePrueba {
         puesto11.agregarBonificacion(bonificacion8);
         puesto12.agregarBonificacion(bonificacion9);
 
-        Bonificacion bonificacion10 = new Bonificacion("boni10",fecha14, puesto8, propietario4, frecuentes1);
-        Bonificacion bonificacion11 = new Bonificacion("boni11",fecha18, puesto9, propietario4, frecuentes1);
+        Bonificacion bonificacion10 = new Bonificacion("boni10", fecha14, puesto8, propietario4, frecuentes1);
+        Bonificacion bonificacion11 = new Bonificacion("boni11", fecha18, puesto9, propietario4, frecuentes1);
+        FachadaServicios.getInstancia().agregar(bonificacion10);
+        FachadaServicios.getInstancia().agregar(bonificacion11);
+
         propietario4.agregarBonificacion(bonificacion10);
         propietario4.agregarBonificacion(bonificacion11);
         puesto8.agregarBonificacion(bonificacion10);
         puesto9.agregarBonificacion(bonificacion11);
 
-        Bonificacion bonificacion12 = new Bonificacion("boni12",fecha6, puesto5, propietario5, frecuentes3);
-        Bonificacion bonificacion13 = new Bonificacion("boni13",fecha2, puesto6, propietario5, frecuentes3);
+        Bonificacion bonificacion12 = new Bonificacion("boni12", fecha6, puesto5, propietario5, frecuentes3);
+        Bonificacion bonificacion13 = new Bonificacion("boni13", fecha2, puesto6, propietario5, frecuentes3);
+        FachadaServicios.getInstancia().agregar(bonificacion12);
+        FachadaServicios.getInstancia().agregar(bonificacion13);
         propietario5.agregarBonificacion(bonificacion12);
         propietario5.agregarBonificacion(bonificacion13);
         puesto5.agregarBonificacion(bonificacion12);
         puesto6.agregarBonificacion(bonificacion13);
 
-        Bonificacion bonificacion14 = new Bonificacion("boni14",fecha4, puesto7, propietario6, trabajadores1);
-        Bonificacion bonificacion15 = new Bonificacion("boni15",fecha19, puesto8, propietario6, trabajadores1);
+        Bonificacion bonificacion14 = new Bonificacion("boni14", fecha4, puesto7, propietario6, trabajadores1);
+        Bonificacion bonificacion15 = new Bonificacion("boni15", fecha19, puesto8, propietario6, trabajadores1);
+        FachadaServicios.getInstancia().agregar(bonificacion14);
+        FachadaServicios.getInstancia().agregar(bonificacion15);
         propietario6.agregarBonificacion(bonificacion14);
         propietario6.agregarBonificacion(bonificacion15);
         puesto7.agregarBonificacion(bonificacion14);
         puesto8.agregarBonificacion(bonificacion15);
 
-        Bonificacion bonificacion16 = new Bonificacion("boni16",fecha11, puesto9, propietario7, trabajadores2);
+        Bonificacion bonificacion16 = new Bonificacion("boni16", fecha11, puesto9, propietario7, trabajadores2);
+        FachadaServicios.getInstancia().agregar(bonificacion16);
         propietario7.agregarBonificacion(bonificacion16);
         puesto9.agregarBonificacion(bonificacion16);
 
-        Bonificacion bonificacion17 = new Bonificacion("boni17",fecha13, puesto1, propietario8, exonerados1);
+        Bonificacion bonificacion17 = new Bonificacion("boni17", fecha13, puesto1, propietario8, exonerados1);
+        FachadaServicios.getInstancia().agregar(bonificacion17);
         propietario8.agregarBonificacion(bonificacion17);
         puesto1.agregarBonificacion(bonificacion17);
 
-        Bonificacion bonificacion18 = new Bonificacion("boni18",fecha15, puesto2, propietario9, exonerados1);
+        Bonificacion bonificacion18 = new Bonificacion("boni18", fecha15, puesto2, propietario9, exonerados1);
+        FachadaServicios.getInstancia().agregar(bonificacion18);
+
         propietario9.agregarBonificacion(bonificacion18);
         puesto9.agregarBonificacion(bonificacion18);
 
-        Bonificacion bonificacion19 = new Bonificacion("boni19",fecha30, puesto3, propietario10, exonerados3);
-        Bonificacion bonificacion20 = new Bonificacion("boni20",fecha1, puesto4, propietario10, exonerados3);
+        Bonificacion bonificacion19 = new Bonificacion("boni19", fecha30, puesto3, propietario10, exonerados3);
+        Bonificacion bonificacion20 = new Bonificacion("boni20", fecha1, puesto4, propietario10, exonerados3);
+        FachadaServicios.getInstancia().agregar(bonificacion19);
+        FachadaServicios.getInstancia().agregar(bonificacion20);
         propietario10.agregarBonificacion(bonificacion19);
         propietario10.agregarBonificacion(bonificacion20);
         puesto3.agregarBonificacion(bonificacion19);

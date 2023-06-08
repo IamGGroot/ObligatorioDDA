@@ -82,4 +82,8 @@ public class FachadaServicios {
 //        servicioUsuario.agregarNotificacion(notificacion);
     }
 
+    public void agregar(Bonificacion bonificacion) {
+        servicioPeaje.agregar(bonificacion);
+    }
+
 }

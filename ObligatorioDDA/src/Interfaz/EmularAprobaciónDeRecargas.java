@@ -2,6 +2,7 @@ package Interfaz;
 
 import Controlador.ControladorEmularAprobacionRecarga;
 import Dominio.Administrador;
+import Dominio.Bonificacion;
 import Dominio.Propietario;
 import Dominio.Recarga;
 import java.util.List;
@@ -153,6 +154,11 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
 
     @Override
     public void salir() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void listarBonificaciones(List<Bonificacion> bonificaciones) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

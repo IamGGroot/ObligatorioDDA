@@ -294,7 +294,7 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
     }
 
     private void mostrarMensaje(String mensaje) {
-        lResultadoEmularTransito.setText(mensaje);
+         JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void registrarNotificacion(String mensaje, Date fechaYHora, Propietario propietario) {

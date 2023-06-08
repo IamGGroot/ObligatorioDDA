@@ -18,9 +18,7 @@ public class ControladorEmularAprobacionRecarga {
         this.vista.mostrarRecargas(FachadaServicios.getInstancia().getPropietariosConRecargasPendientes());
     }
 
-    public void listarBonificaciones() {
 
-//        this.vista.listarBonificaciones(FachadaServicios.getInstancia().getBonificaciones());
-    }
+
 
 }

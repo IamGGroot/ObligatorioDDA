@@ -17,6 +17,8 @@ public interface VistaAsignarBonificaciones {
 
     public void cerrar();
 
+    public void buscar();
+
     public boolean confirmar(String mensaje, String title);
 
     public void salir();

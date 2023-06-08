@@ -1,7 +1,9 @@
 package Controlador;
 
 import Dominio.Administrador;
+import Dominio.Bonificacion;
 import Dominio.Notificacion;
+import Dominio.Propietario;
 import Dominio.Puesto;
 import Dominio.Vehiculo;
 import Interfaz.VistaEmularTransito;
@@ -59,6 +61,18 @@ public class ControladorEmularTransito implements Observador {
     }
 
     public boolean registrarTransito(Vehiculo vehiculo, Puesto puesto, Date fechaHoraActual) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public double actualizarSaldoPropietario(Vehiculo vehiculo, Puesto puesto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Bonificacion obtenerBonificacion(Propietario propietario) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public double calcularCostoTransito(Vehiculo vehiculo, Puesto puesto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
