@@ -287,17 +287,17 @@ public class DatosDePrueba {
         Exonerados exonerados2 = new Exonerados("Exonerados Ministerio Vivienda");
         Exonerados exonerados3 = new Exonerados("Exonerados Presidencia");
 
-        Bonificacion bonificacion1 = new Bonificacion(fecha29, puesto1, propietario1, frecuentes2);
-        Bonificacion bonificacion2 = new Bonificacion(fecha27, puesto2, propietario1, frecuentes2);
+        Bonificacion bonificacion1 = new Bonificacion("boni1", fecha29, puesto1, propietario1, frecuentes2);
+        Bonificacion bonificacion2 = new Bonificacion("boni2",fecha27, puesto2, propietario1, frecuentes2);
         propietario1.agregarBonificacion(bonificacion1);
         propietario1.agregarBonificacion(bonificacion2);
         puesto1.agregarBonificacion(bonificacion1);
         puesto2.agregarBonificacion(bonificacion2);
 
-        Bonificacion bonificacion3 = new Bonificacion(fecha25, puesto1, propietario2, exonerados2);
-        Bonificacion bonificacion4 = new Bonificacion(fecha23, puesto2, propietario2, exonerados2);
-        Bonificacion bonificacion5 = new Bonificacion(fecha22, puesto3, propietario2, exonerados2);
-        Bonificacion bonificacion6 = new Bonificacion(fecha19, puesto4, propietario2, exonerados2);
+        Bonificacion bonificacion3 = new Bonificacion("boni3",fecha25, puesto1, propietario2, exonerados2);
+        Bonificacion bonificacion4 = new Bonificacion("boni4",fecha23, puesto2, propietario2, exonerados2);
+        Bonificacion bonificacion5 = new Bonificacion("boni5",fecha22, puesto3, propietario2, exonerados2);
+        Bonificacion bonificacion6 = new Bonificacion("boni6",fecha19, puesto4, propietario2, exonerados2);
         propietario2.agregarBonificacion(bonificacion3);
         propietario2.agregarBonificacion(bonificacion4);
         propietario2.agregarBonificacion(bonificacion5);
@@ -307,9 +307,9 @@ public class DatosDePrueba {
         puesto3.agregarBonificacion(bonificacion5);
         puesto4.agregarBonificacion(bonificacion6);
 
-        Bonificacion bonificacion7 = new Bonificacion(fecha28, puesto10, propietario3, trabajadores3);
-        Bonificacion bonificacion8 = new Bonificacion(fecha5, puesto11, propietario3, trabajadores3);
-        Bonificacion bonificacion9 = new Bonificacion(fecha16, puesto12, propietario3, trabajadores3);
+        Bonificacion bonificacion7 = new Bonificacion("boni7",fecha28, puesto10, propietario3, trabajadores3);
+        Bonificacion bonificacion8 = new Bonificacion("boni8",fecha5, puesto11, propietario3, trabajadores3);
+        Bonificacion bonificacion9 = new Bonificacion("boni9",fecha16, puesto12, propietario3, trabajadores3);
         propietario3.agregarBonificacion(bonificacion7);
         propietario3.agregarBonificacion(bonificacion8);
         propietario3.agregarBonificacion(bonificacion9);
@@ -317,59 +317,66 @@ public class DatosDePrueba {
         puesto11.agregarBonificacion(bonificacion8);
         puesto12.agregarBonificacion(bonificacion9);
 
-        Bonificacion bonificacion10 = new Bonificacion(fecha14, puesto8, propietario4, frecuentes1);
-        Bonificacion bonificacion11 = new Bonificacion(fecha18, puesto9, propietario4, frecuentes1);
+        Bonificacion bonificacion10 = new Bonificacion("boni10",fecha14, puesto8, propietario4, frecuentes1);
+        Bonificacion bonificacion11 = new Bonificacion("boni11",fecha18, puesto9, propietario4, frecuentes1);
         propietario4.agregarBonificacion(bonificacion10);
         propietario4.agregarBonificacion(bonificacion11);
         puesto8.agregarBonificacion(bonificacion10);
         puesto9.agregarBonificacion(bonificacion11);
 
-        Bonificacion bonificacion12 = new Bonificacion(fecha6, puesto5, propietario5, frecuentes3);
-        Bonificacion bonificacion13 = new Bonificacion(fecha2, puesto6, propietario5, frecuentes3);
+        Bonificacion bonificacion12 = new Bonificacion("boni12",fecha6, puesto5, propietario5, frecuentes3);
+        Bonificacion bonificacion13 = new Bonificacion("boni13",fecha2, puesto6, propietario5, frecuentes3);
         propietario5.agregarBonificacion(bonificacion12);
         propietario5.agregarBonificacion(bonificacion13);
         puesto5.agregarBonificacion(bonificacion12);
         puesto6.agregarBonificacion(bonificacion13);
 
-        Bonificacion bonificacion14 = new Bonificacion(fecha4, puesto7, propietario6, trabajadores1);
-        Bonificacion bonificacion15 = new Bonificacion(fecha19, puesto8, propietario6, trabajadores1);
+        Bonificacion bonificacion14 = new Bonificacion("boni14",fecha4, puesto7, propietario6, trabajadores1);
+        Bonificacion bonificacion15 = new Bonificacion("boni15",fecha19, puesto8, propietario6, trabajadores1);
         propietario6.agregarBonificacion(bonificacion14);
         propietario6.agregarBonificacion(bonificacion15);
         puesto7.agregarBonificacion(bonificacion14);
         puesto8.agregarBonificacion(bonificacion15);
 
-        Bonificacion bonificacion16 = new Bonificacion(fecha11, puesto9, propietario7, trabajadores2);
+        Bonificacion bonificacion16 = new Bonificacion("boni16",fecha11, puesto9, propietario7, trabajadores2);
         propietario7.agregarBonificacion(bonificacion16);
         puesto9.agregarBonificacion(bonificacion16);
 
-        Bonificacion bonificacion17 = new Bonificacion(fecha13, puesto1, propietario8, exonerados1);
+        Bonificacion bonificacion17 = new Bonificacion("boni17",fecha13, puesto1, propietario8, exonerados1);
         propietario8.agregarBonificacion(bonificacion17);
         puesto1.agregarBonificacion(bonificacion17);
 
-        Bonificacion bonificacion18 = new Bonificacion(fecha15, puesto2, propietario9, exonerados1);
+        Bonificacion bonificacion18 = new Bonificacion("boni18",fecha15, puesto2, propietario9, exonerados1);
         propietario9.agregarBonificacion(bonificacion18);
         puesto9.agregarBonificacion(bonificacion18);
 
-        Bonificacion bonificacion19 = new Bonificacion(fecha30, puesto3, propietario10, exonerados3);
-        Bonificacion bonificacion20 = new Bonificacion(fecha1, puesto4, propietario10, exonerados3);
+        Bonificacion bonificacion19 = new Bonificacion("boni19",fecha30, puesto3, propietario10, exonerados3);
+        Bonificacion bonificacion20 = new Bonificacion("boni20",fecha1, puesto4, propietario10, exonerados3);
         propietario10.agregarBonificacion(bonificacion19);
         propietario10.agregarBonificacion(bonificacion20);
         puesto3.agregarBonificacion(bonificacion19);
         puesto4.agregarBonificacion(bonificacion20);
 
-        Vehiculo vehiculo1 = new Vehiculo("AAB2123", "Rojo", "Toyota Corolla", categoria1);
-        Vehiculo vehiculo2 = new Vehiculo("DAF4456", "Azul", "Honda Civic", categoria6);
-        Vehiculo vehiculo3 = new Vehiculo("GAE7779", "Blanco", "Ford Focus", categoria1);
-        Vehiculo vehiculo4 = new Vehiculo("JAC0312", "Negro", "Chevrolet Cruze", categoria1);
-        Vehiculo vehiculo5 = new Vehiculo("MAD3345", "Plateado", "Volkswagen Golf", categoria1);
-        Vehiculo vehiculo6 = new Vehiculo("PAG6748", "Gris", "BMW X5", categoria3);
-        Vehiculo vehiculo7 = new Vehiculo("SAA9701", "Verde", "Jeep Wrangler", categoria3);
-        Vehiculo vehiculo8 = new Vehiculo("SAB2334", "Amarillo", "Fiat 500", categoria1);
-        Vehiculo vehiculo9 = new Vehiculo("SAC3567", "Naranja", "Mini Cooper", categoria2);
-        Vehiculo vehiculo10 = new Vehiculo("SAH3890", "Celeste", "Nissan Sentra", categoria2);
-
+        Vehiculo vehiculo1 = new Vehiculo("AAB2123", "Rojo", "Toyota Corolla", categoria1, propietario1);
         propietario1.agregarVehiculo(vehiculo1);
-        propietario1.agregarVehiculo(vehiculo2);
+        Vehiculo vehiculo2 = new Vehiculo("DAF4456", "Azul", "Honda Civic", categoria6, propietario2);
+        propietario2.agregarVehiculo(vehiculo2);
+        Vehiculo vehiculo3 = new Vehiculo("GAE7779", "Blanco", "Ford Focus", categoria1, propietario3);
+        propietario3.agregarVehiculo(vehiculo3);
+        Vehiculo vehiculo4 = new Vehiculo("JAC0312", "Negro", "Chevrolet Cruze", categoria1, propietario4);
+        propietario4.agregarVehiculo(vehiculo4);
+        Vehiculo vehiculo5 = new Vehiculo("MAD3345", "Plateado", "Volkswagen Golf", categoria1, propietario5);
+        propietario5.agregarVehiculo(vehiculo5);
+        Vehiculo vehiculo6 = new Vehiculo("PAG6748", "Gris", "BMW X5", categoria3, propietario6);
+        propietario6.agregarVehiculo(vehiculo6);
+        Vehiculo vehiculo7 = new Vehiculo("SAA9701", "Verde", "Jeep Wrangler", categoria3, propietario7);
+        propietario7.agregarVehiculo(vehiculo7);
+        Vehiculo vehiculo8 = new Vehiculo("SAB2334", "Amarillo", "Fiat 500", categoria1, propietario8);
+        propietario8.agregarVehiculo(vehiculo8);
+        Vehiculo vehiculo9 = new Vehiculo("SAC3567", "Naranja", "Mini Cooper", categoria2, propietario9);
+        propietario9.agregarVehiculo(vehiculo9);
+        Vehiculo vehiculo10 = new Vehiculo("SAH3890", "Celeste", "Nissan Sentra", categoria2, propietario10);
+        propietario10.agregarVehiculo(vehiculo10);
 
         FachadaServicios.getInstancia().agregar(vehiculo1);
         FachadaServicios.getInstancia().agregar(vehiculo2);

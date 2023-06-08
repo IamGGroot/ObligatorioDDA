@@ -2,6 +2,7 @@ package Servicios;
 
 import Dominio.Administrador;
 import Dominio.Bonificacion;
+import Dominio.Notificacion;
 import Dominio.Propietario;
 import Dominio.Puesto;
 import Dominio.Recarga;
@@ -75,6 +76,10 @@ public class FachadaServicios {
 
     public List<Bonificacion> getBonificaciones() {
         return servicioPeaje.getBonificaciones();
+    }
+
+    public void agregarNotificacion(Notificacion notificacion) {
+//        servicioUsuario.agregarNotificacion(notificacion);
     }
 
 }

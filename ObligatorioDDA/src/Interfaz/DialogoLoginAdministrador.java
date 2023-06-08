@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interfaz;
 
 import Controlador.ControladorLoginAdministrador;
@@ -11,10 +7,7 @@ import Dominio.Administrador;
 import java.awt.Frame;
 import Dominio.Usuario;
 
-/**
- *
- * @author Santiago
- */
+
 public class DialogoLoginAdministrador extends DialogoLoginGenerico {
 
     public DialogoLoginAdministrador(Frame parent, boolean modal) {
