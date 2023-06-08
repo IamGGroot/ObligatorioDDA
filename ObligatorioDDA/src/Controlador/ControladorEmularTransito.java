@@ -2,8 +2,11 @@ package Controlador;
 
 import Dominio.Administrador;
 import Interfaz.VistaEmularTransito;
+import Observer.Observable;
+import Observer.Observador;
+import Servicios.FachadaServicios;
 
-public class ControladorEmularTransito {
+public class ControladorEmularTransito implements Observador {
 
     VistaEmularTransito vista;
     Administrador usuarioAdmin;
@@ -20,4 +23,15 @@ public class ControladorEmularTransito {
         }
     }
 
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void listarPuestos() {
+     
+        this.vista.listarPuestos(FachadaServicios.getInstancia().getPuestos());
+    }
+
+    
 }

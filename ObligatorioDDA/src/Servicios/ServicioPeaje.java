@@ -1,6 +1,8 @@
 package Servicios;
 
+import Dominio.Bonificacion;
 import Dominio.Propietario;
+import Dominio.Puesto;
 import Dominio.Recarga;
 import java.util.ArrayList;
 import Dominio.Vehiculo;
@@ -10,10 +12,14 @@ public class ServicioPeaje {
 
     private List<Vehiculo> vehiculos;
     private List<Recarga> recargas;
+    private List<Puesto> puestos;
+    private List<Bonificacion> bonificaciones;
 
     public ServicioPeaje() {
         vehiculos = new ArrayList();
         recargas = new ArrayList();
+        puestos = new ArrayList();
+        bonificaciones = new ArrayList();
     }
 
     public void agregar(Vehiculo vehiculo) {
@@ -24,8 +30,8 @@ public class ServicioPeaje {
         return vehiculos;
     }
 
-    public void setVehiculos(ArrayList<Vehiculo> vehiculos) {
-        this.vehiculos = vehiculos;
+    public void agregar(Puesto puesto) {
+        puestos.add(puesto);
     }
 
     public void agregar(Recarga recarga) {
@@ -34,6 +40,15 @@ public class ServicioPeaje {
 
     public List<Recarga> getRecargas() {
         return recargas;
+    }
+
+    public List<Puesto> getPuestos() {
+
+        return puestos;
+    }
+
+    List<Bonificacion> getBonificaciones() {
+        return bonificaciones;
     }
 
 }

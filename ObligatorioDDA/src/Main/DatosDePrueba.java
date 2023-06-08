@@ -62,15 +62,61 @@ public class DatosDePrueba {
         Tarifa tarifa6 = new Tarifa(135, "Coupé", categoria6);
         Tarifa tarifa7 = new Tarifa(130, "Convertible", categoria7);
 
-        List<Tarifa> tarifas = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas1 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas2 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas3 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas4 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas5 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas6 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas7 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas8 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas9 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas10 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas11 = new ArrayList<Tarifa>();
+        List<Tarifa> tarifas12 = new ArrayList<Tarifa>();
 
-        tarifas.add(tarifa1);
-        tarifas.add(tarifa2);
-        tarifas.add(tarifa3);
-        tarifas.add(tarifa4);
-        tarifas.add(tarifa5);
-        tarifas.add(tarifa6);
-        tarifas.add(tarifa7);
+        tarifas1.add(tarifa1);
+        tarifas1.add(tarifa2);
+        tarifas1.add(tarifa3);
+
+        tarifas2.add(tarifa4);
+        tarifas2.add(tarifa5);
+
+        tarifas3.add(tarifa6);
+        tarifas3.add(tarifa7);
+
+        tarifas4.add(tarifa1);
+        tarifas4.add(tarifa2);
+        tarifas4.add(tarifa3);
+
+        tarifas5.add(tarifa1);
+        tarifas5.add(tarifa5);
+
+        tarifas6.add(tarifa2);
+        tarifas6.add(tarifa3);
+        tarifas6.add(tarifa7);
+
+        tarifas7.add(tarifa4);
+        tarifas7.add(tarifa6);
+        tarifas7.add(tarifa7);
+
+        tarifas8.add(tarifa1);
+        tarifas8.add(tarifa5);
+
+        tarifas9.add(tarifa2);
+        tarifas9.add(tarifa4);
+
+        tarifas10.add(tarifa4);
+        tarifas10.add(tarifa5);
+        tarifas10.add(tarifa6);
+
+        tarifas11.add(tarifa4);
+        tarifas11.add(tarifa5);
+        tarifas11.add(tarifa6);
+
+        tarifas12.add(tarifa1);
+        tarifas12.add(tarifa2);
+        tarifas12.add(tarifa3);
 
         Date fecha1 = new Date(120, 0, 1);   // 1 de enero de 2020
         Date fecha2 = new Date(120, 3, 15);  // 15 de abril de 2020
@@ -207,18 +253,29 @@ public class DatosDePrueba {
         FachadaServicios.getInstancia().agregar(propietario9);
         FachadaServicios.getInstancia().agregar(propietario10);
 
-        Puesto puesto1 = new Puesto("Peaje Ciudad de la Costa", "Ruta interbalnearia Km21", tarifas);
-        Puesto puesto2 = new Puesto("Peaje Pando", "Ruta interbalnearia Km25", tarifas);
-        Puesto puesto3 = new Puesto("Peaje Solís", "Ruta interbalnearia Km63", tarifas);
-        Puesto puesto4 = new Puesto("Peaje Santa Lucía", "Ruta 1 Km77", tarifas);
-        Puesto puesto5 = new Puesto("Peaje Santa Rosa", "Ruta 1 Km119", tarifas);
-        Puesto puesto6 = new Puesto("Peaje San José", "Ruta 3 Km75", tarifas);
-        Puesto puesto7 = new Puesto("Peaje Soca", "Ruta 8 Km29", tarifas);
-        Puesto puesto8 = new Puesto("Peaje Sauce", "Ruta 6 Km58", tarifas);
-        Puesto puesto9 = new Puesto("Peaje Colonia Wilson", "Ruta 2 Km173", tarifas);
-        Puesto puesto10 = new Puesto("Peaje Paysandú", "Ruta 3 Km385", tarifas);
-        Puesto puesto11 = new Puesto("Peaje Guichón", "Ruta 90 Km89", tarifas);
-        Puesto puesto12 = new Puesto("Peaje Nueva Palmira", "Ruta 21 Km289", tarifas);
+        Puesto puesto1 = new Puesto("Peaje Ciudad de la Costa", "Ruta interbalnearia Km21", tarifas1);
+        Puesto puesto2 = new Puesto("Peaje Pando", "Ruta interbalnearia Km25", tarifas2);
+        Puesto puesto3 = new Puesto("Peaje Solís", "Ruta interbalnearia Km63", tarifas3);
+        Puesto puesto4 = new Puesto("Peaje Santa Lucía", "Ruta 1 Km77", tarifas4);
+        Puesto puesto5 = new Puesto("Peaje Santa Rosa", "Ruta 1 Km119", tarifas5);
+        Puesto puesto6 = new Puesto("Peaje San José", "Ruta 3 Km75", tarifas6);
+        Puesto puesto7 = new Puesto("Peaje Soca", "Ruta 8 Km29", tarifas7);
+        Puesto puesto8 = new Puesto("Peaje Sauce", "Ruta 6 Km58", tarifas8);
+        Puesto puesto9 = new Puesto("Peaje Colonia Wilson", "Ruta 2 Km173", tarifas9);
+        Puesto puesto10 = new Puesto("Peaje Paysandú", "Ruta 3 Km385", tarifas10);
+        Puesto puesto11 = new Puesto("Peaje Guichón", "Ruta 90 Km89", tarifas11);
+        Puesto puesto12 = new Puesto("Peaje Nueva Palmira", "Ruta 21 Km289", tarifas12);
+
+        FachadaServicios.getInstancia().agregar(puesto1);
+        FachadaServicios.getInstancia().agregar(puesto2);
+        FachadaServicios.getInstancia().agregar(puesto3);
+        FachadaServicios.getInstancia().agregar(puesto4);
+        FachadaServicios.getInstancia().agregar(puesto5);
+        FachadaServicios.getInstancia().agregar(puesto6);
+        FachadaServicios.getInstancia().agregar(puesto7);
+        FachadaServicios.getInstancia().agregar(puesto8);
+        FachadaServicios.getInstancia().agregar(puesto9);
+        FachadaServicios.getInstancia().agregar(puesto10);
 
         Frecuentes frecuentes1 = new Frecuentes("Frecuente Tarifa Amiga");
         Frecuentes frecuentes2 = new Frecuentes("Frecuente Descuento Familiar");

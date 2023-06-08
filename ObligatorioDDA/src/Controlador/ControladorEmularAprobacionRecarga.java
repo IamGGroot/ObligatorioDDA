@@ -1,17 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
 
 import Dominio.Administrador;
 import Interfaz.VistaEmularAprobacionRecarga;
 import Servicios.FachadaServicios;
-/**
- *
- * @author Santiago Lacretta
- */
+
 public class ControladorEmularAprobacionRecarga {
+
     private VistaEmularAprobacionRecarga vista;
     private Administrador usuarioAdmin;
 
@@ -19,10 +13,14 @@ public class ControladorEmularAprobacionRecarga {
         this.vista = vista;
         this.usuarioAdmin = usuarioAdmin;
     }
-     public void listarListarRecargasPendientes() {
+
+    public void listarListarRecargasPendientes() {
         this.vista.mostrarRecargas(FachadaServicios.getInstancia().getPropietariosConRecargasPendientes());
     }
 
-    
-    
+    public void listarBonificaciones() {
+
+//        this.vista.listarBonificaciones(FachadaServicios.getInstancia().getBonificaciones());
+    }
+
 }

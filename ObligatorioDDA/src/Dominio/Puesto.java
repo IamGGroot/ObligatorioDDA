@@ -20,7 +20,7 @@ public class Puesto {
     public String getNombre() {
         return nombre;
     }
-    
+
     public List<Bonificacion> getBonificacion() {
         return bonificaciones;
     }
@@ -36,19 +36,18 @@ public class Puesto {
     public void setTarifas(List<Tarifa> tarifas) {
         this.tarifas = tarifas;
     }
-    
-    public Tarifa tarifaParaVehiculo(Vehiculo v){
-        for (Tarifa t: tarifas){
-            if(t.getCategoria().equals(v.getCategoria())){
-              return t;
+
+    public Tarifa tarifaParaVehiculo(Vehiculo v) {
+        for (Tarifa t : tarifas) {
+            if (t.getCategoria().equals(v.getCategoria())) {
+                return t;
             }
         }
         return null;
     }
-    
-    public void agregarBonificacion(Bonificacion bonificacion){
-        this.bonificaciones.add(bonificacion);        
-    }
 
+    public void agregarBonificacion(Bonificacion bonificacion) {
+        this.bonificaciones.add(bonificacion);
+    }
 
 }

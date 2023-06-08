@@ -7,7 +7,6 @@ import Dominio.Propietario;
 import Dominio.Recarga;
 import Dominio.Transito;
 import Dominio.Vehiculo;
-import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;

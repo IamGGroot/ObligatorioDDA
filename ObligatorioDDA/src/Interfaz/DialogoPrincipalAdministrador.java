@@ -18,6 +18,7 @@ public class DialogoPrincipalAdministrador extends javax.swing.JDialog implement
     private void inicializar() {
         this.setTitle("Bienvenido Administrador!");
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -135,7 +136,7 @@ public class DialogoPrincipalAdministrador extends javax.swing.JDialog implement
 
     @Override
     public boolean confirmar(String mensaje, String title) {
-        return JOptionPane.showConfirmDialog(this, mensaje,title, JOptionPane.YES_NO_OPTION) == 0;
+        return JOptionPane.showConfirmDialog(this, mensaje, title, JOptionPane.YES_NO_OPTION) == 0;
     }
 
     @Override
@@ -167,6 +168,6 @@ public class DialogoPrincipalAdministrador extends javax.swing.JDialog implement
 
     @Override
     public void asignarBonificacion(Administrador usuarioAdmin) {
-        new VistaAsignarBonificaciones(usuarioAdmin).setVisible(true);
+        new DialogoAsignarBonificaciones((java.awt.Frame) this.getParent(), false, usuarioAdmin).setVisible(true);
     }
 }

@@ -4,12 +4,12 @@ public class Tarifa {
 
     private double monto;
     private String nombre;
-    private Categoria Categoria;
+    private Categoria categoria;
 
     public Tarifa(double monto, String nombre, Categoria Categoria) {
         this.monto = monto;
         this.nombre = nombre;
-        this.Categoria = Categoria;
+        this.categoria = Categoria;
     }
 
     public void setMonto(double monto) {
@@ -23,15 +23,13 @@ public class Tarifa {
     public String getNombre() {
         return nombre;
     }
-    
-    
 
     public Categoria getCategoria() {
-        return Categoria;
+        return categoria;
     }
 
     public void setCategoria(Categoria Categoria) {
-        this.Categoria = Categoria;
+        this.categoria = Categoria;
     }
 
 }

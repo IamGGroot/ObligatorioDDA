@@ -1,7 +1,6 @@
 package Interfaz;
 
 import Controlador.ControladorEmularAprobacionRecarga;
-import Controlador.ControladorTableroPropietario;
 import Dominio.Administrador;
 import Dominio.Propietario;
 import Dominio.Recarga;
