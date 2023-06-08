@@ -31,8 +31,8 @@ public class ControladorTableroPropietario implements Observador {
     }
 
     public void cerrar() {
-        //desuscribir del observable.
         if (vista.confirmar("Confirma que desea salir", "Salir del sistema")) {
+            this.propietario.desubscribir(this);
             vista.salir();
         }
 
