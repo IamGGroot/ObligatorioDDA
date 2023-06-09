@@ -1,19 +1,20 @@
 package Dominio;
 
+import Observer.Observable;
 import java.util.Date;
 
-public class Recarga {
+public class Recarga extends Observable {
 
     private Date fechaYHora;
     private double monto;
     private Boolean aprobada;
     private Administrador administrador;
 
-    public Recarga(Date fechaYHora, double monto, Boolean aprobada, Administrador administrador) {
+    public Recarga(Date fechaYHora, double monto) {
         this.fechaYHora = fechaYHora;
         this.monto = monto;
-        this.aprobada = aprobada;
-        this.administrador = administrador;
+        this.aprobada = false;
+        this.administrador = null;
     }
 
     public Recarga(double monto) {

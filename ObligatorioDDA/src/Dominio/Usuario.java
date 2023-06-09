@@ -41,7 +41,6 @@ public abstract class Usuario extends Observable {
         //TODO acá podemos recibir string y tirar una esxcepción si no es una cedula valida?
         return this.cedula == cedula && this.password.equals(password);
 
-
     }
 
 }

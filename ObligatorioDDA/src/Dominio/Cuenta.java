@@ -1,9 +1,11 @@
 package Dominio;
 
+import Exceptions.SistemaPeajeException;
+import Observer.Observable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cuenta {
+public class Cuenta extends Observable {
 
     private double saldo;
     private List<Recarga> recargas;
@@ -25,21 +27,22 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
-    public boolean agregar(Recarga r) {
+    public boolean agregar(Recarga r) throws SistemaPeajeException {
+        if (r.getMonto() < 1) throw new SistemaPeajeException("Monto invalido");
         recargas.add(r);
+        notificar(Evento.RECARGA_AGREGADA);
         return true;
     }
-    
+
     public void recargar(Double monto) {
         this.saldo += monto;
     }
-    
 
     public List<Recarga> getRecargasPendientes() {
         List<Recarga> recargasPendientes = new ArrayList();
-        for(Recarga r: this.recargas){
-            if (!r.getAprobada()){
-               recargasPendientes.add(r); 
+        for (Recarga r : this.recargas) {
+            if (!r.getAprobada()) {
+                recargasPendientes.add(r);
             }
         }
         return recargasPendientes;

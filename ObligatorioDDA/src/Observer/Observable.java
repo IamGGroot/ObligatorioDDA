@@ -7,7 +7,8 @@ public abstract class Observable {
 
     // Listar los eventos que el observable concreto puede emitir
     public enum Evento {
-        NOTIFICACIONES_BORRADAS;
+        NOTIFICACIONES_BORRADAS,
+        RECARGA_AGREGADA;
     }
 
     private List<Observador> observadores;

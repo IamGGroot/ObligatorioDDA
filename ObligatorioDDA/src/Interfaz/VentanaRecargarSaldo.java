@@ -3,19 +3,20 @@ package Interfaz;
 import Controlador.ControladorRecargarSaldo;
 import Dominio.Propietario;
 import java.awt.Frame;
+import javax.swing.JOptionPane;
 
-public class DialogoRecargarSaldo extends javax.swing.JFrame implements VistaRecargarSaldo {
+public class VentanaRecargarSaldo extends javax.swing.JFrame implements VistaRecargarSaldo {
 
     private ControladorRecargarSaldo controlador;
 
-    public DialogoRecargarSaldo(Frame parent, boolean modal, Propietario propietario) {
-        
+    public VentanaRecargarSaldo(Frame parent, boolean modal, Propietario propietario) {
+
         initComponents();
         this.controlador = new ControladorRecargarSaldo(this, propietario);
         inicializar();
     }
 
-    public DialogoRecargarSaldo(Frame frame, boolean b) {
+    public VentanaRecargarSaldo(Frame frame, boolean b) {
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -31,14 +32,14 @@ public class DialogoRecargarSaldo extends javax.swing.JFrame implements VistaRec
         tCedula = new javax.swing.JTextField();
         lCedula = new javax.swing.JLabel();
         fSaldoCuenta = new javax.swing.JLabel();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        nSaldoCuenta = new javax.swing.JTextArea();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        tNombreUsuario = new javax.swing.JTextArea();
         fUsuario = new javax.swing.JLabel();
         tMontoARecargar = new javax.swing.JTextField();
         lMontoARecargar = new javax.swing.JLabel();
         bAceptar = new javax.swing.JButton();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        nSaldoCuenta = new javax.swing.JTextArea();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tNombreUsuario = new javax.swing.JTextArea();
 
         tCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,7 +49,7 @@ public class DialogoRecargarSaldo extends javax.swing.JFrame implements VistaRec
 
         lCedula.setText("Cédula:");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Recarga de saldo");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -57,14 +58,6 @@ public class DialogoRecargarSaldo extends javax.swing.JFrame implements VistaRec
         });
 
         fSaldoCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Utilidades/dinero.png"))); // NOI18N
-
-        nSaldoCuenta.setColumns(20);
-        nSaldoCuenta.setRows(5);
-        jScrollPane11.setViewportView(nSaldoCuenta);
-
-        tNombreUsuario.setColumns(20);
-        tNombreUsuario.setRows(5);
-        jScrollPane10.setViewportView(tNombreUsuario);
 
         fUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Utilidades/usuario.png"))); // NOI18N
 
@@ -77,6 +70,26 @@ public class DialogoRecargarSaldo extends javax.swing.JFrame implements VistaRec
         lMontoARecargar.setText("Monto a recargar:");
 
         bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
+
+        nSaldoCuenta.setEditable(false);
+        nSaldoCuenta.setColumns(1);
+        nSaldoCuenta.setRows(1);
+        nSaldoCuenta.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        nSaldoCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        nSaldoCuenta.setOpaque(false);
+        jScrollPane11.setViewportView(nSaldoCuenta);
+
+        tNombreUsuario.setEditable(false);
+        tNombreUsuario.setColumns(1);
+        tNombreUsuario.setRows(1);
+        tNombreUsuario.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tNombreUsuario.setOpaque(false);
+        jScrollPane10.setViewportView(tNombreUsuario);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,9 +98,9 @@ public class DialogoRecargarSaldo extends javax.swing.JFrame implements VistaRec
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(fSaldoCuenta)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(fUsuario)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,16 +120,18 @@ public class DialogoRecargarSaldo extends javax.swing.JFrame implements VistaRec
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(fSaldoCuenta)
-                    .addComponent(fUsuario)
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fSaldoCuenta)
+                            .addComponent(fUsuario)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(50, 50, 50)
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lMontoARecargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,6 +155,10 @@ public class DialogoRecargarSaldo extends javax.swing.JFrame implements VistaRec
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
     }//GEN-LAST:event_formWindowClosed
 
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        this.solicitarRecarga();
+    }//GEN-LAST:event_bAceptarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
@@ -157,15 +176,35 @@ public class DialogoRecargarSaldo extends javax.swing.JFrame implements VistaRec
 
     @Override
     public void mostrarSaldo(double saldo) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        nSaldoCuenta.setText("$ " + saldo);
     }
 
     @Override
-    public void mostrarNombre() {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void mostrarNombre(String nombre) {
+        tNombreUsuario.setText(nombre);
     }
 
-    private void inicializar() {//aca traigo los datos con la vista cuando inicializa
-        //controlador.mo
+    private void inicializar() {
+        controlador.obtenerNombre();
+        controlador.obtenerSaldo();
+    }
+
+    private void solicitarRecarga() {
+        try {
+            double monto = Double.parseDouble(tMontoARecargar.getText());
+            controlador.enviarRecarga(monto);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El campo monto solo admite caraceters numéricos", "Monto inválido", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    @Override
+    public void mostrarError(String msg) {
+        JOptionPane.showMessageDialog(this, msg, "Login incorrecto", JOptionPane.ERROR_MESSAGE);
+    }
+
+    @Override
+    public void mostrarExito(String msg) {
+        JOptionPane.showMessageDialog(this, msg, "Login incorrecto", JOptionPane.INFORMATION_MESSAGE);
     }
 }

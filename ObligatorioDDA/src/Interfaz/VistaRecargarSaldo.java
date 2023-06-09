@@ -8,7 +8,14 @@ package Interfaz;
  *
  * @Santiago Lacretta
  */
-public interface VistaRecargarSaldo { 
+public interface VistaRecargarSaldo {
+
     public void mostrarSaldo(double saldo);
-    public void mostrarNombre();
+
+    public void mostrarNombre(String nombre);
+
+    public void mostrarError(String msg);
+
+    public void mostrarExito(String msg);
+
 }

@@ -1,7 +1,8 @@
 package Controlador;
 
 import Dominio.Propietario;
-import Interfaz.DialogoRecargarSaldo;
+import Interfaz.DialogoTableroPropietario;
+import Interfaz.VentanaRecargarSaldo;
 import Interfaz.VistaTableroPropietario;
 import Observer.Observable;
 import Observer.Observador;
@@ -17,12 +18,16 @@ public class ControladorTableroPropietario implements Observador {
         this.vista = vista;
         this.propietario = propietario;
         this.propietario.subscribir(this);
+        this.propietario.getCuenta().subscribir(this);
     }
 
     @Override
     public void notificar(Observable origen, Object evento) {
         if (((Observable.Evento) evento).equals(Observable.Evento.NOTIFICACIONES_BORRADAS)) {
-            vista.mostrarNotificaciones(this.propietario.getNotificaciones());
+            obtenerNotificaciones();
+        }
+        if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_AGREGADA)) {
+            obtenerRecargas();
         }
         //aca voy a poder actualizar las listas y mostrar básicamente. 
     }
@@ -68,4 +73,7 @@ public class ControladorTableroPropietario implements Observador {
         vista.mostrarNotificaciones(this.propietario.getNotificaciones());
     }
 
+    public void recargar(DialogoTableroPropietario dialogTableroPropietario) {
+        new VentanaRecargarSaldo((java.awt.Frame) dialogTableroPropietario.getParent(), false, this.propietario).setVisible(true);
+    }
 }

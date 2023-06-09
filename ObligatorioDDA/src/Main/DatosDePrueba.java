@@ -14,6 +14,7 @@ import Dominio.Tarifa;
 import Dominio.Trabajadores;
 import Dominio.Transito;
 import Dominio.Vehiculo;
+import Exceptions.SistemaPeajeException;
 import Servicios.FachadaServicios;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 
 public class DatosDePrueba {
 
-    public static void cargar() {
+    public static void cargar() throws SistemaPeajeException {
 
         Administrador admin1 = new Administrador("Gerardo Silva", "gera123", 5123456);
         Administrador admin2 = new Administrador("Ana Lopez", "ana123", 5123457);
@@ -148,36 +149,36 @@ public class DatosDePrueba {
         Date fecha29 = new Date(122, 11, 5); // 5 de diciembre de 2022
         Date fecha30 = new Date(120, 8, 18); // 18 de septiembre de 2020
 
-        Recarga recarga1 = new Recarga(fecha1, 1000, true, admin1);
-        Recarga recarga2 = new Recarga(fecha2, 1200, false, admin1);
-        Recarga recarga3 = new Recarga(fecha3, 4500, false, admin1);
-        Recarga recarga4 = new Recarga(fecha4, 2300, false, admin2);
-        Recarga recarga5 = new Recarga(fecha5, 1200, true, admin2);
-        Recarga recarga6 = new Recarga(fecha6, 2000, false, admin2);
-        Recarga recarga7 = new Recarga(fecha7, 2500, true, admin3);
-        Recarga recarga8 = new Recarga(fecha8, 4300, true, admin3);
-        Recarga recarga9 = new Recarga(fecha9, 1200, false, admin3);
-        Recarga recarga10 = new Recarga(fecha10, 2100, true, admin4);
-        Recarga recarga11 = new Recarga(fecha11, 900, true, admin4);
-        Recarga recarga12 = new Recarga(fecha12, 800, false, admin4);
-        Recarga recarga13 = new Recarga(fecha13, 1500, true, admin5);
-        Recarga recarga14 = new Recarga(fecha14, 1700, true, admin5);
-        Recarga recarga15 = new Recarga(fecha15, 1900, false, admin5);
-        Recarga recarga16 = new Recarga(fecha16, 3100, true, admin6);
-        Recarga recarga17 = new Recarga(fecha17, 2100, false, admin6);
-        Recarga recarga18 = new Recarga(fecha18, 1400, true, admin6);
-        Recarga recarga19 = new Recarga(fecha19, 3100, false, admin7);
-        Recarga recarga20 = new Recarga(fecha20, 1200, true, admin7);
-        Recarga recarga21 = new Recarga(fecha21, 3200, false, admin7);
-        Recarga recarga22 = new Recarga(fecha22, 1700, true, admin8);
-        Recarga recarga23 = new Recarga(fecha23, 2500, true, admin8);
-        Recarga recarga24 = new Recarga(fecha24, 2300, false, admin8);
-        Recarga recarga25 = new Recarga(fecha25, 2900, true, admin9);
-        Recarga recarga26 = new Recarga(fecha26, 4100, true, admin9);
-        Recarga recarga27 = new Recarga(fecha27, 1000, true, admin9);
-        Recarga recarga28 = new Recarga(fecha28, 600, false, admin10);
-        Recarga recarga29 = new Recarga(fecha29, 800, false, admin10);
-        Recarga recarga30 = new Recarga(fecha30, 300, true, admin10);
+        Recarga recarga1 = new Recarga(fecha1, 1000);
+        Recarga recarga2 = new Recarga(fecha2, 1200 );
+        Recarga recarga3 = new Recarga(fecha3, 4500);
+        Recarga recarga4 = new Recarga(fecha4, 2300);
+        Recarga recarga5 = new Recarga(fecha5, 1200);
+        Recarga recarga6 = new Recarga(fecha6, 2000);
+        Recarga recarga7 = new Recarga(fecha7, 2500);
+        Recarga recarga8 = new Recarga(fecha8, 4300);
+        Recarga recarga9 = new Recarga(fecha9, 1200);
+        Recarga recarga10 = new Recarga(fecha10, 2100);
+        Recarga recarga11 = new Recarga(fecha11, 900);
+        Recarga recarga12 = new Recarga(fecha12, 800);
+        Recarga recarga13 = new Recarga(fecha13, 1500);
+        Recarga recarga14 = new Recarga(fecha14, 1700);
+        Recarga recarga15 = new Recarga(fecha15, 1900);
+        Recarga recarga16 = new Recarga(fecha16, 3100);
+        Recarga recarga17 = new Recarga(fecha17, 2100);
+        Recarga recarga18 = new Recarga(fecha18, 1400);
+        Recarga recarga19 = new Recarga(fecha19, 3100);
+        Recarga recarga20 = new Recarga(fecha20, 1200);
+        Recarga recarga21 = new Recarga(fecha21, 3200);
+        Recarga recarga22 = new Recarga(fecha22, 1700);
+        Recarga recarga23 = new Recarga(fecha23, 2500);
+        Recarga recarga24 = new Recarga(fecha24, 2300);
+        Recarga recarga25 = new Recarga(fecha25, 2900);
+        Recarga recarga26 = new Recarga(fecha26, 4100);
+        Recarga recarga27 = new Recarga(fecha27, 1000);
+        Recarga recarga28 = new Recarga(fecha28, 600);
+        Recarga recarga29 = new Recarga(fecha29, 800);
+        Recarga recarga30 = new Recarga(fecha30, 300);
 
         Cuenta cuenta1 = new Cuenta();
         cuenta1.agregar(recarga1);
