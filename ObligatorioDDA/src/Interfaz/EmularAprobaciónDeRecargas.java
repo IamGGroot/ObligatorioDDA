@@ -5,9 +5,10 @@ import Dominio.Administrador;
 import Dominio.Bonificacion;
 import Dominio.Propietario;
 import Dominio.Recarga;
+import java.util.Date;
 import java.util.List;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements VistaEmularAprobacionRecarga {
 
@@ -114,29 +115,21 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
 
     @Override
     public void mostrarRecargas(List<Propietario> propietariosConRecargasPendientes) {
-        DefaultTableModel modeloDefault = new DefaultTableModel() {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        modeloDefault.addColumn("Fecha");
-        modeloDefault.addColumn("Propietario");
-        modeloDefault.addColumn("Monto");
-
+        DefaultTableModel modeloDefault = crearTabla();
         tablaRecargas.setModel(modeloDefault);
-
-        TableModel modeloDatos = tablaRecargas.getModel();
-        for (int i = 0; i < propietariosConRecargasPendientes.size(); i++) {
-            Propietario p = propietariosConRecargasPendientes.get(i);
-            for (Recarga r : p.getCuenta().getRecargasPendientes()) {
-                modeloDefault.addRow(new Object[]{r.getFechaYHora(), p.getNombre(), r.getMonto()});
-            }
-        }
+        llenarTabla(modeloDefault, propietariosConRecargasPendientes);
+        renderCustomTablaRecargas();
     }
 
     @Override
     public void aprobarRecarga() {
+        int selectedRow = tablaRecargas.getSelectedRow();
+        if (selectedRow != -1) {
+            Propietario propietario = (Propietario) tablaRecargas.getValueAt(selectedRow, 1);
+            Recarga recarga = (Recarga) tablaRecargas.getValueAt(selectedRow, 2);
+            controlador.aprobarRecarga(recarga, propietario);
+        }
+
         //TODO terminar   
         // controlador.aprobar();
     }
@@ -160,5 +153,61 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
     @Override
     public void listarBonificaciones(List<Bonificacion> bonificaciones) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private DefaultTableModel crearTabla() {
+        DefaultTableModel modeloDefault = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                if (columnIndex == 0 || columnIndex == 2) {
+                    return Recarga.class;
+                } else {
+                    return Propietario.class;
+                }
+            }
+        };
+        modeloDefault.addColumn("Fecha");
+        modeloDefault.addColumn("Propietario");
+        modeloDefault.addColumn("Monto");
+
+        return modeloDefault;
+    }
+
+    private void llenarTabla(DefaultTableModel modeloDefault, List<Propietario> propietariosConRecargasPendientes) {
+        for (int i = 0; i < propietariosConRecargasPendientes.size(); i++) {
+            Propietario p = propietariosConRecargasPendientes.get(i);
+            for (Recarga r : p.getCuenta().getRecargasPendientes()) {
+                modeloDefault.addRow(new Object[]{r, p, r});
+            }
+        }
+    }
+
+    private void renderCustomTablaRecargas() {
+        tablaRecargas.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public void setValue(Object value) {
+                Date fecha = ((Recarga) value).getFechaYHora();
+                setText(fecha.toString());
+            }
+        });
+        tablaRecargas.getColumnModel().getColumn(1).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public void setValue(Object value) {
+                setText(((Propietario) value).getNombre());
+            }
+        });
+        tablaRecargas.getColumnModel().getColumn(2).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public void setValue(Object value) {
+                Double monto = ((Recarga) value).getMonto();
+                setText(monto.toString());
+            }
+        });
+
     }
 }

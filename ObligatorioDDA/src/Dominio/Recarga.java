@@ -51,8 +51,6 @@ public class Recarga {
         return aprobada;
     }
 
-    
-    
     public String getEstado() {
         if (aprobada) {
             return "Aprobada";
@@ -61,8 +59,8 @@ public class Recarga {
 
     }
 
-    public void setAprobada(Boolean aprobada) {
-        this.aprobada = aprobada;
+    public void aprobar(Administrador admin) {
+        this.aprobada = true;
+        this.administrador = admin;
     }
-
 }

@@ -55,17 +55,11 @@ public class ControladorTableroPropietario implements Observador {
     }
 
     public void obtenerTransitos() {
-        List<Transito> transitos = new ArrayList();
-        List<Vehiculo> vehiculos = this.propietario.getMisVehiculos();
-        for (Vehiculo v : vehiculos) {
-            transitos.addAll(v.getTransitos());
-        }
-        vista.mostrarTransitos(transitos);
+        vista.mostrarTransitos(this.propietario.getTransitos());
     }
 
     public void obtenerRecargas() {
-        List<Recarga> recargas = this.propietario.getCuenta().getRecargas();
-        vista.mostrarRecargas(recargas);
+        vista.mostrarRecargas(this.propietario.getCuenta().getRecargas());
     }
 
     public void recargar() {

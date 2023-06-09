@@ -182,54 +182,56 @@ public class DatosDePrueba {
         Recarga recarga30 = new Recarga(fecha30, 300, true, admin10);
 
         Cuenta cuenta1 = new Cuenta();
-        cuenta1.recargar(recarga1);
-        cuenta1.recargar(recarga2);
-        cuenta1.recargar(recarga3);
+        cuenta1.agregar(recarga1);
+        cuenta1.recargar(recarga1.getMonto());
+        cuenta1.agregar(recarga2);
+        cuenta1.agregar(recarga3);
 
         Cuenta cuenta2 = new Cuenta();
-        cuenta2.recargar(recarga4);
-        cuenta2.recargar(recarga5);
-        cuenta2.recargar(recarga6);
+        cuenta2.agregar(recarga4);
+        cuenta2.agregar(recarga5);
+        cuenta2.recargar(recarga5.getMonto());
+        cuenta2.agregar(recarga6);
 
         Cuenta cuenta3 = new Cuenta();
-        cuenta3.recargar(recarga7);
-        cuenta3.recargar(recarga8);
-        cuenta3.recargar(recarga9);
+        cuenta3.agregar(recarga7);
+        cuenta3.agregar(recarga8);
+        cuenta3.agregar(recarga9);
 
         Cuenta cuenta4 = new Cuenta();
-        cuenta4.recargar(recarga10);
-        cuenta4.recargar(recarga11);
-        cuenta4.recargar(recarga12);
+        cuenta4.agregar(recarga10);
+        cuenta4.agregar(recarga11);
+        cuenta4.agregar(recarga12);
 
         Cuenta cuenta5 = new Cuenta();
-        cuenta5.recargar(recarga13);
-        cuenta5.recargar(recarga14);
-        cuenta5.recargar(recarga15);
+        cuenta5.agregar(recarga13);
+        cuenta5.agregar(recarga14);
+        cuenta5.agregar(recarga15);
 
         Cuenta cuenta6 = new Cuenta();
-        cuenta6.recargar(recarga16);
-        cuenta6.recargar(recarga17);
-        cuenta6.recargar(recarga18);
+        cuenta6.agregar(recarga16);
+        cuenta6.agregar(recarga17);
+        cuenta6.agregar(recarga18);
 
         Cuenta cuenta7 = new Cuenta();
-        cuenta7.recargar(recarga19);
-        cuenta7.recargar(recarga20);
-        cuenta7.recargar(recarga21);
+        cuenta7.agregar(recarga19);
+        cuenta7.agregar(recarga20);
+        cuenta7.agregar(recarga21);
 
         Cuenta cuenta8 = new Cuenta();
-        cuenta8.recargar(recarga22);
-        cuenta8.recargar(recarga23);
-        cuenta8.recargar(recarga24);
+        cuenta8.agregar(recarga22);
+        cuenta8.agregar(recarga23);
+        cuenta8.agregar(recarga24);
 
         Cuenta cuenta9 = new Cuenta();
-        cuenta9.recargar(recarga25);
-        cuenta9.recargar(recarga26);
-        cuenta9.recargar(recarga27);
+        cuenta9.agregar(recarga25);
+        cuenta9.agregar(recarga26);
+        cuenta9.agregar(recarga27);
 
         Cuenta cuenta10 = new Cuenta();
-        cuenta10.recargar(recarga28);
-        cuenta10.recargar(recarga29);
-        cuenta10.recargar(recarga30);
+        cuenta10.agregar(recarga28);
+        cuenta10.agregar(recarga29);
+        cuenta10.agregar(recarga30);
 
         Propietario propietario1 = new Propietario(1000, cuenta1, "Miguel Sánchez", "miguel123", 4378921);
         Propietario propietario2 = new Propietario(2000, cuenta2, "Ana González", "ana123", 6027534);

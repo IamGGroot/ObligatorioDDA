@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import Dominio.Administrador;
 import Dominio.Usuario;
 import Dominio.Propietario;
-import Dominio.Recarga;
 import Exceptions.SistemaPeajeException;
 import java.util.List;
 
@@ -61,5 +60,4 @@ public class ServicioUsuario {
         }
         return ret;
     }
-
 }

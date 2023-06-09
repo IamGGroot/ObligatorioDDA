@@ -13,6 +13,7 @@ public class ServicioPeaje {
     private List<Recarga> recargas;
     private List<Puesto> puestos;
     private List<Bonificacion> bonificaciones;
+    
 
     public ServicioPeaje() {
         vehiculos = new ArrayList();
@@ -52,6 +53,10 @@ public class ServicioPeaje {
 
     public List<Bonificacion> getBonificaciones() {
         return bonificaciones;
+    }
+    
+    public void aprobarRecarga(){
+        
     }
 
 }

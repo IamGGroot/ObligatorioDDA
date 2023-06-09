@@ -3,7 +3,6 @@ package Dominio;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Propietario extends Usuario {
 
     private double saldoMinimo;
@@ -68,7 +67,7 @@ public class Propietario extends Usuario {
         notificar(Evento.NOTIFICACIONES_BORRADAS);
     }
 
-    public Vehiculo getVehiculo(String matricula ){
+    public Vehiculo getVehiculo(String matricula) {
         for (Vehiculo v : misVehiculos) {
             if (v.getMatricula().equals(matricula)) {
                 return v;
@@ -84,5 +83,14 @@ public class Propietario extends Usuario {
     public boolean tieneBonificacionAsignada(Puesto puestoSeleccionado) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-   
+
+    public List<Transito> getTransitos() {
+        List<Transito> transitos = new ArrayList();
+        List<Vehiculo> vehiculos = this.getMisVehiculos();
+        for (Vehiculo v : vehiculos) {
+            transitos.addAll(v.getTransitos());
+        }
+        return transitos;
+    }
+
 }

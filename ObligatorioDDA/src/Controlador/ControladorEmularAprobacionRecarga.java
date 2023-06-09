@@ -1,6 +1,8 @@
 package Controlador;
 
 import Dominio.Administrador;
+import Dominio.Propietario;
+import Dominio.Recarga;
 import Interfaz.VistaEmularAprobacionRecarga;
 import Observer.Observable;
 import Observer.Observador;
@@ -31,7 +33,11 @@ public class ControladorEmularAprobacionRecarga implements Observador{
         vista.salir();
     }
     }
-     
 
+    public void aprobarRecarga(Recarga recarga, Propietario propietario) {
+        recarga.aprobar(usuarioAdmin);
+        propietario.getCuenta().recargar(recarga.getMonto());
+        listarListarRecargasPendientes();
+    }
 
 }
