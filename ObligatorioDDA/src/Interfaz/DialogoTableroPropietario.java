@@ -2,6 +2,7 @@ package Interfaz;
 
 import Controlador.ControladorTableroPropietario;
 import Dominio.Bonificacion;
+import Dominio.Cuenta;
 import Dominio.Notificacion;
 import Dominio.Propietario;
 import Dominio.Recarga;
@@ -10,6 +11,7 @@ import Dominio.Vehiculo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -20,6 +22,7 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
 
     public DialogoTableroPropietario(java.awt.Frame parent, boolean modal, Propietario propietario) {
         super(parent, modal);
+
         initComponents();
         this.controlador = new ControladorTableroPropietario(this, propietario);
         inicializar();
@@ -383,7 +386,8 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRecargarActionPerformed
-       // this.recargar();
+
+        this.recargar();
     }//GEN-LAST:event_bRecargarActionPerformed
 
     private void bCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarActionPerformed
@@ -584,9 +588,11 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
         controlador.cerrar();
     }
 
-//    private void recargar() {
-//        controlador.recargar();
-//    }
+    private void recargar() {
+        Cuenta cuenta7 = new Cuenta();
+        Propietario propietario1 = new Propietario(1000, cuenta7, "Miguel Sánchez", "miguel123", 4378921);
+        new DialogoRecargarSaldo((java.awt.Frame) this.getParent(), false, (Propietario) propietario1).setVisible(true);
+    }
 
     private void borrarNotificaciones() {
         controlador.borrarNotificaciones();

@@ -1,22 +1,23 @@
-
 package Interfaz;
 
 import Controlador.ControladorRecargarSaldo;
 import Dominio.Propietario;
+import java.awt.Frame;
 
+public class DialogoRecargarSaldo extends javax.swing.JFrame implements VistaRecargarSaldo {
 
-public class DialogoRecargarSaldo extends javax.swing.JDialog implements VistaRecargarSaldo {
+    private ControladorRecargarSaldo controlador;
 
-   private ControladorRecargarSaldo controlador;
-   
-    public DialogoRecargarSaldo(java.awt.Frame parent, boolean modal, Propietario propietario) {
-        super(parent, modal);
+    public DialogoRecargarSaldo(Frame parent, boolean modal, Propietario propietario) {
+        
         initComponents();
-        this.controlador=new ControladorRecargarSaldo(this,propietario);
+        this.controlador = new ControladorRecargarSaldo(this, propietario);
         inicializar();
     }
 
-    
+    public DialogoRecargarSaldo(Frame frame, boolean b) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -156,12 +157,12 @@ public class DialogoRecargarSaldo extends javax.swing.JDialog implements VistaRe
 
     @Override
     public void mostrarSaldo(double saldo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mostrarNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     private void inicializar() {//aca traigo los datos con la vista cuando inicializa

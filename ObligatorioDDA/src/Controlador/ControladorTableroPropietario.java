@@ -1,16 +1,12 @@
 package Controlador;
 
 import Dominio.Propietario;
-import Dominio.Recarga;
-import Dominio.Transito;
-import Dominio.Vehiculo;
 import Interfaz.DialogoRecargarSaldo;
-import Interfaz.VistaRecargarSaldo;
 import Interfaz.VistaTableroPropietario;
 import Observer.Observable;
 import Observer.Observador;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.Frame;
+
 
 public class ControladorTableroPropietario implements Observador {
 
@@ -63,9 +59,6 @@ public class ControladorTableroPropietario implements Observador {
         vista.mostrarRecargas(this.propietario.getCuenta().getRecargas());
     }
 
-//    public void recargar() {
-//        new DialogoRecargarSaldo(vista,propietario).setVisible(true);//Preguntar a ANA
-//    }
 
     public void borrarNotificaciones() {
         this.propietario.borrarNotificaciones();
