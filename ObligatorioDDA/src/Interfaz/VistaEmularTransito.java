@@ -14,4 +14,6 @@ public interface VistaEmularTransito {
     public void listarPuestos(List<Puesto> puestos);
 
     public void mostrarTarifas();
+    
+    public void mostrarMensaje(String mensaje);
 }

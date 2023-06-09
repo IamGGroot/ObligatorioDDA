@@ -19,6 +19,10 @@ public class Bonificacion {
         this.tipoBonificacion = tipoBonificacion;
     }
 
+    public Bonificacion() {
+
+    }
+
     public String getNombre() {
         return nombre;
     }

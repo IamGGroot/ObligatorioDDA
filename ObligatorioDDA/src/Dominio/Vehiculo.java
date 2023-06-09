@@ -59,7 +59,7 @@ public class Vehiculo {
         return montoTotal;
     }
 
-    public static Vehiculo getVehiculoPorMatricula(String matricula, List<Vehiculo> vehiculos) {
+    public Vehiculo getVehiculoPorMatricula(String matricula, List<Vehiculo> vehiculos) {
         for (Vehiculo vehiculo : vehiculos) {
             if (vehiculo.getMatricula().equals(matricula)) {
                 return vehiculo;

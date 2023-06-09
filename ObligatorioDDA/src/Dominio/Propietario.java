@@ -45,6 +45,7 @@ public class Propietario extends Usuario {
     }
 
     public void agregarNotificacion(Notificacion n) {
+
         this.notificaciones.add(n);
 
     }
@@ -55,6 +56,15 @@ public class Propietario extends Usuario {
 
     public List<Bonificacion> getBonificaciones() {
         return bonificaciones;
+    }
+
+    public Bonificacion getBonificacion(Puesto puesto) {
+        for (Bonificacion b : bonificaciones) {
+            if (b.getPuesto() == puesto) {
+                return b;
+            }
+        }
+        return null;
     }
 
     public void agregarBonificacion(Bonificacion b) {

@@ -60,4 +60,9 @@ public class ServicioUsuario {
         }
         return ret;
     }
+
+    public List<Propietario> getPropietarios() {
+
+        return propietarios;
+    }
 }

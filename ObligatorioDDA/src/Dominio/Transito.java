@@ -8,12 +8,18 @@ public class Transito {
     private Bonificacion bonificacion;
     private Puesto puesto;
     private Vehiculo vehiculo;
+    private double montoPagado;
 
-    public Transito(Date fechaYHora, Bonificacion bonificacion, Puesto puesto, Vehiculo vehiculo) {
+    public Transito(Date fechaYHora, Bonificacion bonificacion, Puesto puesto, Vehiculo vehiculo, double montoPagado) {
         this.fechaYHora = fechaYHora;
         this.bonificacion = bonificacion;
         this.puesto = puesto;
         this.vehiculo = vehiculo;
+        this.montoPagado = montoPagado;
+    }
+
+    public double getMontoPagado() {
+        return montoPagado;
     }
 
     public Date getFechaYHora() {

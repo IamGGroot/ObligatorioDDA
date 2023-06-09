@@ -6,10 +6,13 @@ import Dominio.Administrador;
 import Dominio.Bonificacion;
 import Dominio.Propietario;
 import Dominio.Puesto;
+import Dominio.Recarga;
+import Servicios.FachadaServicios;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements VistaAsignarBonificaciones {
 
@@ -64,18 +67,8 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
         lCedula.setText("Cédula:");
 
         cBonificaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cBonificaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cBonificacionesActionPerformed(evt);
-            }
-        });
 
         cPuestos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cPuestos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cPuestosActionPerformed(evt);
-            }
-        });
 
         bBuscar.setText("Buscar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,30 +109,33 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(bCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addComponent(bAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lBonificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(tCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                                    .addComponent(bBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(cBonificaciones, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cPuestos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(bCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(bAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lBonificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(tCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                        .addComponent(bBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cBonificaciones, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cPuestos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(lPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -177,16 +173,8 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     private void tCedula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tCedula1ActionPerformed
     }//GEN-LAST:event_tCedula1ActionPerformed
 
-    private void cPuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cPuestosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cPuestosActionPerformed
-
-    private void cBonificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBonificacionesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cBonificacionesActionPerformed
-
     private void bAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAsignarActionPerformed
-        asignarBonificacion();
+        this.asignarBonificacion();
     }//GEN-LAST:event_bAsignarActionPerformed
 
     private void bCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarActionPerformed
@@ -240,20 +228,6 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     }
 
     @Override
-    public void mostrarBonificaciones(List<Propietario> propietarios) {
-
-        Propietario propietarioSeleccionado = propietarios.get(0);
-        lPropietario.setText("Propietario: " + propietarioSeleccionado.getNombre());
-
-        DefaultTableModel modeloTabla = new DefaultTableModel(new Object[]{"Bonificación", "Puesto"}, 0);
-        tablaBonificacionPuesto.setModel(modeloTabla);
-
-        for (Bonificacion bonificacion : propietarioSeleccionado.getBonificaciones()) {
-            modeloTabla.addRow(new Object[]{bonificacion.getNombre(), bonificacion.getPuesto().getNombre()});
-        }
-    }
-
-    @Override
     public void cerrar() {
         controlador.cerrar();
     }
@@ -270,34 +244,74 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
 
     @Override
     public void buscar() {
-        String cedula = tCedula.getText();
-        controlador.buscarPropietario(cedula);
+
+        int cedula = Integer.parseInt(tCedula.getText());
+        Propietario propietario = controlador.obtenerPropietarioPorCedula(cedula);
+        if (propietario != null) {
+            mostrarPropietario(propietario);
+            mostrarTabla(propietario);
+        } else {
+            mostrarMensaje("“No existe el propietario");
+            return;
+        }
+
+    }
+
+    private void mostrarPropietario(Propietario propietario) {
+        lPropietario.setText(propietario.getNombre());
+    }
+
+    private void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void mostrarTabla(Propietario propietario) {
+        String[] columnNames = {"Bonificación", "Puesto"};
+
+        DefaultTableModel modeloDefault = new DefaultTableModel(columnNames, propietario.getBonificaciones().size()) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        tablaBonificacionPuesto.setModel(modeloDefault);
+
+        TableModel modeloDatos = tablaBonificacionPuesto.getModel();
+        for (int i = 0; i < propietario.getBonificaciones().size(); i++) {
+            Bonificacion b = propietario.getBonificaciones().get(i);
+
+            modeloDatos.setValueAt(b.getNombre(), i, 0);
+            modeloDatos.setValueAt(b.getPuesto().getNombre(), i, 1);
+        }
+
     }
 
     @Override
     public void asignarBonificacion() {
+        int cedula = Integer.parseInt(tCedula.getText());
+        Propietario propietario = controlador.obtenerPropietarioPorCedula(cedula);
+        String selectedBonificacion = (String) cBonificaciones.getSelectedItem();
+        String selectedPuesto = (String) cPuestos.getSelectedItem();
 
-        Propietario propietarioSeleccionado = controlador.getPropietarioPorCedula(tCedula.getText());
-
-        if (propietarioSeleccionado == null) {
-            JOptionPane.showMessageDialog(this, "No se ha seleccionado ningún propietario", "Error", JOptionPane.ERROR_MESSAGE);
+        if (selectedBonificacion.equals("Elija una opción")) {
+            mostrarMensaje("Debe especificar una bonificación");
             return;
         }
 
-        Bonificacion bonificacionSeleccionada = (Bonificacion) cBonificaciones.getSelectedItem();
-        Puesto puestoSeleccionado = (Puesto) cPuestos.getSelectedItem();
-
-        if (bonificacionSeleccionada == null || puestoSeleccionado == null) {
-            JOptionPane.showMessageDialog(this, "Debe especificar una bonificación y un puesto", "Error", JOptionPane.ERROR_MESSAGE);
+        if (selectedPuesto.equals("Elija una opción")) {
+            mostrarMensaje("Debe seleccionar una puesto");
             return;
         }
 
-        if (propietarioSeleccionado.tieneBonificacionAsignada(puestoSeleccionado)) {
-            JOptionPane.showMessageDialog(this, "El propietario ya tiene una bonificación asignada para ese puesto", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+        List<Bonificacion> bonificacionesPropietario = propietario.getBonificaciones();
+        for (Bonificacion b : bonificacionesPropietario) {
+            if (b.getPuesto().getNombre().equals(selectedPuesto)) {
+                mostrarMensaje("Ya tiene una bonificación asignada para ese puesto");
+                return;
+            }
 
-        controlador.asignarBonificacion(propietarioSeleccionado, bonificacionSeleccionada, puestoSeleccionado);
+        }
+        
+        controlador.asignarBonificacion(propietario, selectedBonificacion, selectedPuesto);
     }
-
 }

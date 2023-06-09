@@ -11,7 +11,6 @@ import Dominio.Propietario;
 import Dominio.Puesto;
 import Dominio.Recarga;
 import Dominio.Tarifa;
-import Dominio.TipoBonificacion;
 import Dominio.Trabajadores;
 import Dominio.Transito;
 import Dominio.Vehiculo;
@@ -152,7 +151,6 @@ public class DatosDePrueba {
         Recarga recarga1 = new Recarga(fecha1, 1000, true, admin1);
         Recarga recarga2 = new Recarga(fecha2, 1200, false, admin1);
         Recarga recarga3 = new Recarga(fecha3, 4500, false, admin1);
-
         Recarga recarga4 = new Recarga(fecha4, 2300, false, admin2);
         Recarga recarga5 = new Recarga(fecha5, 1200, true, admin2);
         Recarga recarga6 = new Recarga(fecha6, 2000, false, admin2);
@@ -185,57 +183,85 @@ public class DatosDePrueba {
         cuenta1.agregar(recarga1);
         cuenta1.recargar(recarga1.getMonto());
         cuenta1.agregar(recarga2);
+        cuenta1.recargar(recarga2.getMonto());
         cuenta1.agregar(recarga3);
+        cuenta1.recargar(recarga3.getMonto());
 
         Cuenta cuenta2 = new Cuenta();
         cuenta2.agregar(recarga4);
+        cuenta2.recargar(recarga4.getMonto());
         cuenta2.agregar(recarga5);
         cuenta2.recargar(recarga5.getMonto());
         cuenta2.agregar(recarga6);
+        cuenta2.recargar(recarga6.getMonto());
 
         Cuenta cuenta3 = new Cuenta();
         cuenta3.agregar(recarga7);
+        cuenta3.recargar(recarga7.getMonto());
         cuenta3.agregar(recarga8);
+        cuenta3.recargar(recarga8.getMonto());
         cuenta3.agregar(recarga9);
+        cuenta3.recargar(recarga9.getMonto());
 
         Cuenta cuenta4 = new Cuenta();
         cuenta4.agregar(recarga10);
+        cuenta4.recargar(recarga10.getMonto());
         cuenta4.agregar(recarga11);
+        cuenta4.recargar(recarga11.getMonto());
         cuenta4.agregar(recarga12);
+        cuenta4.recargar(recarga12.getMonto());
 
         Cuenta cuenta5 = new Cuenta();
         cuenta5.agregar(recarga13);
+        cuenta5.recargar(recarga13.getMonto());
         cuenta5.agregar(recarga14);
+        cuenta5.recargar(recarga14.getMonto());
         cuenta5.agregar(recarga15);
+        cuenta5.recargar(recarga15.getMonto());
 
         Cuenta cuenta6 = new Cuenta();
         cuenta6.agregar(recarga16);
+        cuenta6.recargar(recarga16.getMonto());
         cuenta6.agregar(recarga17);
+        cuenta6.recargar(recarga17.getMonto());
         cuenta6.agregar(recarga18);
+        cuenta6.recargar(recarga18.getMonto());
 
         Cuenta cuenta7 = new Cuenta();
         cuenta7.agregar(recarga19);
+        cuenta7.recargar(recarga19.getMonto());
         cuenta7.agregar(recarga20);
+        cuenta7.recargar(recarga20.getMonto());
         cuenta7.agregar(recarga21);
+        cuenta7.recargar(recarga21.getMonto());
 
         Cuenta cuenta8 = new Cuenta();
         cuenta8.agregar(recarga22);
+        cuenta8.recargar(recarga22.getMonto());
         cuenta8.agregar(recarga23);
+        cuenta8.recargar(recarga23.getMonto());
         cuenta8.agregar(recarga24);
+        cuenta8.recargar(recarga24.getMonto());
 
         Cuenta cuenta9 = new Cuenta();
         cuenta9.agregar(recarga25);
+        cuenta9.recargar(recarga25.getMonto());
         cuenta9.agregar(recarga26);
+        cuenta9.recargar(recarga26.getMonto());
         cuenta9.agregar(recarga27);
+        cuenta9.recargar(recarga27.getMonto());
 
         Cuenta cuenta10 = new Cuenta();
         cuenta10.agregar(recarga28);
+        cuenta10.recargar(recarga28.getMonto());
         cuenta10.agregar(recarga29);
+        cuenta10.recargar(recarga29.getMonto());
         cuenta10.agregar(recarga30);
+        cuenta10.recargar(recarga30.getMonto());
 
         Propietario propietario1 = new Propietario(1000, cuenta1, "Miguel Sánchez", "miguel123", 4378921);
         Propietario propietario2 = new Propietario(2000, cuenta2, "Ana González", "ana123", 6027534);
-        Propietario propietario3 = new Propietario(1500, cuenta3, "Carlos Rodríguez", "carlos123", 4356789);
+        Propietario propietario3 = new Propietario(1500, cuenta3, "Carlos Rodríguez", "carlos123", 356789);
         Propietario propietario4 = new Propietario(1200, cuenta4, "Laura Pérez", "laura123", 1982356);
         Propietario propietario5 = new Propietario(2000, cuenta5, "Luisa Martínez", "luisa123", 8924567);
         Propietario propietario6 = new Propietario(1500, cuenta6, "Alejandro Castro", "ale123", 2210789);
@@ -455,29 +481,29 @@ public class DatosDePrueba {
         propietario10.agregarNotificacion(notificacion19);
         propietario10.agregarNotificacion(notificacion20);
 
-        Transito transito1 = new Transito(fecha29, bonificacion3, puesto1, vehiculo1);
-        Transito transito2 = new Transito(fecha27, bonificacion4, puesto2, vehiculo10);
-        Transito transito3 = new Transito(fecha25, bonificacion5, puesto3, vehiculo2);
-        Transito transito4 = new Transito(fecha23, bonificacion6, puesto4, vehiculo2);
-        Transito transito5 = new Transito(fecha21, bonificacion17, puesto1, vehiculo3);
-        Transito transito6 = new Transito(fecha19, bonificacion18, puesto2, vehiculo3);
-        Transito transito7 = new Transito(fecha17, bonificacion19, puesto3, vehiculo4);
-        Transito transito8 = new Transito(fecha15, bonificacion20, puesto4, vehiculo4);
+        Transito transito1 = new Transito(fecha29, bonificacion3, puesto1, vehiculo1, 0);
+        Transito transito2 = new Transito(fecha27, bonificacion4, puesto2, vehiculo10, 0);
+        Transito transito3 = new Transito(fecha25, bonificacion5, puesto3, vehiculo2, 0);
+        Transito transito4 = new Transito(fecha23, bonificacion6, puesto4, vehiculo2, 0);
+        Transito transito5 = new Transito(fecha21, bonificacion17, puesto1, vehiculo3, 0);
+        Transito transito6 = new Transito(fecha19, bonificacion18, puesto2, vehiculo3, 0);
+        Transito transito7 = new Transito(fecha17, bonificacion19, puesto3, vehiculo4, 0);
+        Transito transito8 = new Transito(fecha15, bonificacion20, puesto4, vehiculo4, 0);
         //estos transitos corresponden a exonerados
         vehiculo1.agregarTransito(transito1);
 
-        Transito transito9 = new Transito(fecha13, bonificacion1, puesto1, vehiculo1);
-        Transito transito10 = new Transito(fecha11, bonificacion2, puesto2, vehiculo5);
-        Transito transito11 = new Transito(fecha9, bonificacion7, puesto10, vehiculo5);
-        Transito transito12 = new Transito(fecha7, bonificacion8, puesto11, vehiculo6);
-        Transito transito13 = new Transito(fecha5, bonificacion10, puesto8, vehiculo6);
-        Transito transito14 = new Transito(fecha3, bonificacion11, puesto9, vehiculo7);
-        Transito transito15 = new Transito(fecha1, bonificacion12, puesto5, vehiculo7);
-        Transito transito16 = new Transito(fecha28, bonificacion13, puesto6, vehiculo8);
-        Transito transito17 = new Transito(fecha26, bonificacion14, puesto7, vehiculo8);
-        Transito transito18 = new Transito(fecha24, bonificacion15, puesto8, vehiculo9);
-        Transito transito19 = new Transito(fecha22, bonificacion16, puesto9, vehiculo9);
-        Transito transito20 = new Transito(fecha20, bonificacion7, puesto10, vehiculo10);
+        Transito transito9 = new Transito(fecha13, bonificacion1, puesto1, vehiculo1, 100);
+        Transito transito10 = new Transito(fecha11, bonificacion2, puesto2, vehiculo5, 100);
+        Transito transito11 = new Transito(fecha9, bonificacion7, puesto10, vehiculo5, 200);
+        Transito transito12 = new Transito(fecha7, bonificacion8, puesto11, vehiculo6, 200);
+        Transito transito13 = new Transito(fecha5, bonificacion10, puesto8, vehiculo6, 200);
+        Transito transito14 = new Transito(fecha3, bonificacion11, puesto9, vehiculo7, 200);
+        Transito transito15 = new Transito(fecha1, bonificacion12, puesto5, vehiculo7, 200);
+        Transito transito16 = new Transito(fecha28, bonificacion13, puesto6, vehiculo8, 200);
+        Transito transito17 = new Transito(fecha26, bonificacion14, puesto7, vehiculo8, 400);
+        Transito transito18 = new Transito(fecha24, bonificacion15, puesto8, vehiculo9, 400);
+        Transito transito19 = new Transito(fecha22, bonificacion16, puesto9, vehiculo9, 400);
+        Transito transito20 = new Transito(fecha20, bonificacion7, puesto10, vehiculo10, 400);
         vehiculo1.agregarTransito(transito9);
 
         //Falta que tenga sentido lo que pagaron. Las bonificaciones y puestos corresponden. 

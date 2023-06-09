@@ -78,13 +78,16 @@ public class FachadaServicios {
         return servicioPeaje.getBonificaciones();
     }
 
-    public void agregarNotificacion(Notificacion notificacion) {
-//        servicioUsuario.agregarNotificacion(notificacion);
+    public void agregarBonificacion(Bonificacion bonificacion) {
+        servicioPeaje.agregar(bonificacion);
     }
 
     public void agregar(Bonificacion bonificacion) {
         servicioPeaje.agregar(bonificacion);
     }
-    
+
+    public List<Propietario> getPropietarios() {
+        return servicioUsuario.getPropietarios();
+    }
 
 }

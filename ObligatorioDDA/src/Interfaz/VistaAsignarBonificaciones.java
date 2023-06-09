@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface VistaAsignarBonificaciones {
 
-    public void mostrarBonificaciones(List<Propietario> propietariosConBonificaciones);
-
     public void listarBonificaciones(List<Bonificacion> bonificaciones);
 
     public void listarPuestos(List<Puesto> puestos);

@@ -3,13 +3,12 @@ package Interfaz;
 import Controlador.ControladorEmularTransito;
 import Dominio.Administrador;
 import Dominio.Bonificacion;
-import Dominio.Categoria;
-import Dominio.Notificacion;
 import Dominio.Propietario;
 import Dominio.Puesto;
 import Dominio.Tarifa;
 import Dominio.Vehiculo;
 import Servicios.FachadaServicios;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -45,7 +44,6 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
         cPuestos = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tTarifas = new javax.swing.JTable();
-        lResultadoEmularTransito = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -101,23 +99,20 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lResultadoEmularTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lMatricula)
+                    .addComponent(lPuestos)
+                    .addComponent(lTarifas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(cPuestos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lMatricula)
-                            .addComponent(lPuestos)
-                            .addComponent(lTarifas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(cPuestos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tMatricula)
-                                    .addComponent(bCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                                .addComponent(bRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                            .addComponent(tMatricula)
+                            .addComponent(bCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addComponent(bRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,9 +136,7 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
                     .addComponent(bRegistrar))
                 .addGap(18, 18, 18)
                 .addComponent(bCerrar)
-                .addGap(36, 36, 36)
-                .addComponent(lResultadoEmularTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,7 +161,6 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lMatricula;
     private javax.swing.JLabel lPuestos;
-    private javax.swing.JLabel lResultadoEmularTransito;
     private javax.swing.JLabel lTarifas;
     private javax.swing.JTextField tMatricula;
     private javax.swing.JTable tTarifas;
@@ -237,12 +229,13 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
 
     private void registrar() {
         String matricula = tMatricula.getText();
-        String selectedPuesto = (String) cPuestos.getSelectedItem();
 
         if (matricula.isEmpty()) {
             mostrarMensaje("Ingrese la matrícula del vehículo");
             return;
         }
+
+        String selectedPuesto = (String) cPuestos.getSelectedItem();
 
         if (selectedPuesto.equals("Elija una opción")) {
             mostrarMensaje("Debe elegir una opción");
@@ -257,51 +250,52 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
             mostrarMensaje("No existe el vehículo");
             return;
         }
-
+        Propietario propietario = vehiculo.getPropietario();
         Puesto puesto = controlador.obtenerPuestoPorNombre(selectedPuesto);
 
-        if (puesto == null) {
-            mostrarMensaje("El puesto seleccionado no existe");
+        double costoTransito = controlador.calcularCostoTransito(vehiculo, puesto);
+        if (costoTransito == -1) {
+            mostrarMensaje("No se encontró una tarifa para la categoría del vehículo con la matrícula indicada");
             return;
         }
 
-        if (controlador.registrarTransito(vehiculo, puesto, fechaHoraActual)) {
+        Bonificacion bonificacion = controlador.obtenerBonificacion(propietario, puesto);
 
-            double saldoActualizado = controlador.actualizarSaldoPropietario(vehiculo, puesto);
-
-            Propietario propietario = vehiculo.getPropietario();
-
-            Categoria categoria = vehiculo.getCategoria();
-
-            Bonificacion bonificacion = controlador.obtenerBonificacion(propietario);
-
-            double costoTransito = controlador.calcularCostoTransito(vehiculo, puesto);
-
-            String mensaje = propietario.getNombre() + categoria.getNombre() + bonificacion.getNombre() + costoTransito + saldoActualizado;
-
-            mostrarMensaje(mensaje);
-
-            String notificacion = fechaHoraActual.toString() + " - Pasaste por el puesto " + puesto.getNombre() + " con el vehículo " + vehiculo.getMatricula();
-            registrarNotificacion(notificacion, fechaHoraActual, propietario);
-
-            if (saldoActualizado < propietario.getSaldoMinimo()) {
-                String notificacionSaldo = fechaHoraActual.toString() + " - Tu saldo actual es de $" + saldoActualizado + " Te recomendamos hacer una recarga";
-                registrarNotificacion(notificacionSaldo, fechaHoraActual, propietario);
-            }
-        } else {
-            mostrarMensaje("Error al registrar el tránsito");
+        if (bonificacion != null) {
+            costoTransito = costoTransito * bonificacion.calcularBonificacion() / 100;
         }
+
+        double saldoPropietario = controlador.getSaldoCuentaPropietario(propietario);
+
+        if (costoTransito > saldoPropietario) {
+            mostrarMensaje("El saldo del propietario es insuficiente. Efectúe una recarga para poder realizar el tránsito.");
+            return;
+        }
+
+        controlador.registrarTransito(fechaHoraActual, bonificacion, puesto, vehiculo, costoTransito);
+
+        saldoPropietario = controlador.getSaldoCuentaPropietario(propietario);
+
+        mostrarMensaje(
+                "Propietario: " + propietario.getNombre() + "\n"
+                + "Categoría: " + vehiculo.getCategoria().getNombre() + "\n"
+                + "Bonificación: " + bonificacion.getNombre() + "\n"
+                + "Costo Tránsito: " + costoTransito + "\n"
+                + "Saldo Actual: " + saldoPropietario
+        );
+
+        String notificacion = "Pasaste por el puesto " + puesto.getNombre() + " con el vehículo " + vehiculo.getMatricula();
+        controlador.registrarNotificacion(notificacion, fechaHoraActual, propietario);
+
+        if (saldoPropietario < propietario.getSaldoMinimo()) {
+            String notificacionSaldo = "Tu saldo actual es de $" + saldoPropietario + " Te recomendamos hacer una recarga";
+            controlador.registrarNotificacion(notificacionSaldo, fechaHoraActual, propietario);
+        }
+
     }
 
-    private void mostrarMensaje(String mensaje) {
-         JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    public void registrarNotificacion(String mensaje, Date fechaYHora, Propietario propietario) {
-
-        Notificacion notificacion = new Notificacion(mensaje, fechaYHora);
-
-        propietario.agregarNotificacion(notificacion);
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.INFORMATION_MESSAGE);
     }
 
 }
