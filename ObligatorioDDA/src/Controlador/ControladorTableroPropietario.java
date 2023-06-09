@@ -4,7 +4,8 @@ import Dominio.Propietario;
 import Dominio.Recarga;
 import Dominio.Transito;
 import Dominio.Vehiculo;
-import Interfaz.RecargarSaldo;
+import Interfaz.DialogoRecargarSaldo;
+import Interfaz.VistaRecargarSaldo;
 import Interfaz.VistaTableroPropietario;
 import Observer.Observable;
 import Observer.Observador;
@@ -15,7 +16,7 @@ public class ControladorTableroPropietario implements Observador {
 
     private VistaTableroPropietario vista;
     private Propietario propietario;
-
+    
     public ControladorTableroPropietario(VistaTableroPropietario vista, Propietario propietario) {
         this.vista = vista;
         this.propietario = propietario;
@@ -62,9 +63,9 @@ public class ControladorTableroPropietario implements Observador {
         vista.mostrarRecargas(this.propietario.getCuenta().getRecargas());
     }
 
-    public void recargar() {
-        new RecargarSaldo().setVisible(true);
-    }
+//    public void recargar() {
+//        new DialogoRecargarSaldo(vista,propietario).setVisible(true);//Preguntar a ANA
+//    }
 
     public void borrarNotificaciones() {
         this.propietario.borrarNotificaciones();

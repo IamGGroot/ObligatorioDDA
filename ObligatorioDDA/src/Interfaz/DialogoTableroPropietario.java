@@ -383,7 +383,7 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRecargarActionPerformed
-        this.recargar();
+       // this.recargar();
     }//GEN-LAST:event_bRecargarActionPerformed
 
     private void bCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarActionPerformed
@@ -584,9 +584,9 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
         controlador.cerrar();
     }
 
-    private void recargar() {
-        controlador.recargar();
-    }
+//    private void recargar() {
+//        controlador.recargar();
+//    }
 
     private void borrarNotificaciones() {
         controlador.borrarNotificaciones();

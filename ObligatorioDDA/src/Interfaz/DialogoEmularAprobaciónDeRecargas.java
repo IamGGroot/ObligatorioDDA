@@ -11,11 +11,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements VistaEmularAprobacionRecarga {
+public class DialogoEmularAprobaciónDeRecargas extends javax.swing.JDialog implements VistaEmularAprobacionRecarga {
 
     private ControladorEmularAprobacionRecarga controlador;
 
-    public EmularAprobaciónDeRecargas(Administrador usuarioAdmin) {
+    public DialogoEmularAprobaciónDeRecargas(Administrador usuarioAdmin) {
         initComponents();
         this.controlador = new ControladorEmularAprobacionRecarga(this, usuarioAdmin);
         inicializar();

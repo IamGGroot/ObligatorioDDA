@@ -1,21 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Interfaz;
 
-/**
- *
- * @author gsilv
- */
-public class RecargarSaldo extends javax.swing.JFrame {
+import Controlador.ControladorRecargarSaldo;
+import Dominio.Propietario;
 
-    /**
-     * Creates new form RecargarSaldo
-     */
-    public RecargarSaldo() {
+
+public class DialogoRecargarSaldo extends javax.swing.JDialog implements VistaRecargarSaldo {
+
+   private ControladorRecargarSaldo controlador;
+   
+    public DialogoRecargarSaldo(java.awt.Frame parent, boolean modal, Propietario propietario) {
+        super(parent, modal);
         initComponents();
+        this.controlador=new ControladorRecargarSaldo(this,propietario);
+        inicializar();
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -152,4 +153,18 @@ public class RecargarSaldo extends javax.swing.JFrame {
     private javax.swing.JTextField tMontoARecargar;
     private javax.swing.JTextArea tNombreUsuario;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mostrarSaldo(double saldo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mostrarNombre() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void inicializar() {//aca traigo los datos con la vista cuando inicializa
+        //controlador.mo
+    }
 }
