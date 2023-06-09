@@ -56,6 +56,11 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
         });
 
         bCerrar.setText("Cerrar");
+        bCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCerrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,6 +105,10 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
         // TODO add your handling code here:
     }//GEN-LAST:event_bAprobarActionPerformed
 
+    private void bCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bCerrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAprobar;
@@ -121,7 +130,6 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
         renderCustomTablaRecargas();
     }
 
-    @Override
     public void aprobarRecarga() {
         int selectedRow = tablaRecargas.getSelectedRow();
         if (selectedRow != -1) {
@@ -129,15 +137,6 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
             Recarga recarga = (Recarga) tablaRecargas.getValueAt(selectedRow, 2);
             controlador.aprobarRecarga(recarga, propietario);
         }
-
-        //TODO terminar   
-        // controlador.aprobar();
-    }
-
-    @Override
-    public void cerrar() {
-
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -147,11 +146,6 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
 
     @Override
     public void salir() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void listarBonificaciones(List<Bonificacion> bonificaciones) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
