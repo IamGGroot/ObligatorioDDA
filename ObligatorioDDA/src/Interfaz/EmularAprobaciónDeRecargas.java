@@ -7,6 +7,7 @@ import Dominio.Propietario;
 import Dominio.Recarga;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -106,7 +107,7 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
     }//GEN-LAST:event_bAprobarActionPerformed
 
     private void bCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarActionPerformed
-        // TODO add your handling code here:
+        this.cerrar();        // TODO add your handling code here:
     }//GEN-LAST:event_bCerrarActionPerformed
 
 
@@ -141,12 +142,16 @@ public class EmularAprobaciónDeRecargas extends javax.swing.JFrame implements V
 
     @Override
     public boolean confirmar(String mensaje, String title) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return JOptionPane.showConfirmDialog(this, mensaje, title, JOptionPane.YES_NO_OPTION) == 0;
     }
 
     @Override
     public void salir() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        dispose();
+    }
+    
+    private void cerrar(){
+    controlador.cerrar();
     }
 
     private DefaultTableModel crearTabla() {
