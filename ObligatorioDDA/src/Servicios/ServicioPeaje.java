@@ -83,8 +83,7 @@ public class ServicioPeaje {
         Transito t = new Transito(new Date(), b, puesto, v, 0);
 
 
-        b.setTransito(t);
-        Double montoAPagar = puesto.calcularMontoConBonificacion(v, b);
+        Double montoAPagar = puesto.calcularMontoConBonificacion(v, b,t);
 
         if (montoAPagar > v.getPropietario().getCuenta().getSaldo()) {
             throw new SistemaPeajeException("Saldo insuficiente " + v.getPropietario().getCuenta().getSaldo());
