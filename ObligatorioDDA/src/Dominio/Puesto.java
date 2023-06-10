@@ -3,7 +3,7 @@ package Dominio;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Puesto {
+public class Puesto implements Renderizable{
 
     private String nombre;
     private String direccion;
@@ -48,6 +48,11 @@ public class Puesto {
 
     public void agregarBonificacion(Bonificacion bonificacion) {
         this.bonificaciones.add(bonificacion);
+    }
+
+    @Override
+    public String getRenderDetail() {
+        return this.getNombre();
     }
 
 }

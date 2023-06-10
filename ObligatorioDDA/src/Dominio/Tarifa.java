@@ -1,6 +1,6 @@
 package Dominio;
 
-public class Tarifa {
+public class Tarifa implements Renderizable {
 
     private double monto;
     private String nombre;
@@ -30,6 +30,11 @@ public class Tarifa {
 
     public void setCategoria(Categoria Categoria) {
         this.categoria = Categoria;
+    }
+
+    @Override
+    public String getRenderDetail() {
+        return this.getNombre();
     }
 
 }

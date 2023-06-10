@@ -3,16 +3,23 @@ package Interfaz;
 import Controlador.ControladorEmularTransito;
 import Dominio.Administrador;
 import Dominio.Bonificacion;
+import Dominio.Categoria;
 import Dominio.Propietario;
 import Dominio.Puesto;
+import Dominio.Renderizable;
 import Dominio.Tarifa;
 import Dominio.Vehiculo;
 import Servicios.FachadaServicios;
+import java.awt.Component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.ListCellRenderer;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class DialogoEmularTransito extends javax.swing.JDialog implements VistaEmularTransito {
@@ -23,6 +30,7 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
         super(parent, modal);
         initComponents();
         controlador = new ControladorEmularTransito(this, usuarioAdmin);
+        cPuestos.setRenderer(new Detalle());
         inicializar();
     }
 
@@ -183,31 +191,23 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
 
     @Override
     public void listarPuestos(List<Puesto> puestos) {
-        DefaultComboBoxModel listaDefault = new DefaultComboBoxModel();
-        cPuestos.setModel(listaDefault);
-        listaDefault.addElement("Elija una opción");
 
+   
         for (Puesto p : puestos) {
-            listaDefault.addElement(p.getNombre());
+            cPuestos.addItem(p);
         }
 
     }
 
     public void mostrarTarifas() {
 
-        String selectedPuesto = (String) cPuestos.getSelectedItem();
+        Puesto selectedPuesto = (Puesto) cPuestos.getSelectedItem();
 
         if (!selectedPuesto.equals("Elija una opción")) {
-            List<Puesto> puestos = FachadaServicios.getInstancia().getPuestos();
-            Puesto selectedPuestoPro = null;
-            for (Puesto p : puestos) {
-                if (p.getNombre() == selectedPuesto) {
-                    selectedPuestoPro = p;
-                    break;
-                }
-            }
 
-            List<Tarifa> tarifas = selectedPuestoPro.getTarifas();
+            List<Puesto> puestos = FachadaServicios.getInstancia().getPuestos();
+
+            List<Tarifa> tarifas = selectedPuesto.getTarifas();
 
             DefaultTableModel modeloDefault = new DefaultTableModel() {
                 @Override
@@ -215,27 +215,30 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
                     return false;
                 }
             };
+
             modeloDefault.addColumn("Categoría");
             modeloDefault.addColumn("Monto");
             tTarifas.setModel(modeloDefault);
 
             for (int i = 0; i < tarifas.size(); i++) {
                 Tarifa t = tarifas.get(i);
-                modeloDefault.addRow(new Object[]{t.getCategoria().getNombre(), t.getMonto()});
+                modeloDefault.addRow(new Object[]{t, t});
 
             }
+            renderCustomTablaTarifas();
         }
     }
 
     private void registrar() {
         String matricula = tMatricula.getText();
 
+        //falta hacer excepciones
         if (matricula.isEmpty()) {
             mostrarMensaje("Ingrese la matrícula del vehículo");
             return;
         }
 
-        String selectedPuesto = (String) cPuestos.getSelectedItem();
+        Puesto selectedPuesto = (Puesto) cPuestos.getSelectedItem();
 
         if (selectedPuesto.equals("Elija una opción")) {
             mostrarMensaje("Debe elegir una opción");
@@ -251,15 +254,14 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
             return;
         }
         Propietario propietario = vehiculo.getPropietario();
-        Puesto puesto = controlador.obtenerPuestoPorNombre(selectedPuesto);
 
-        double costoTransito = controlador.calcularCostoTransito(vehiculo, puesto);
+        double costoTransito = controlador.calcularCostoTransito(vehiculo, selectedPuesto);
         if (costoTransito == -1) {
             mostrarMensaje("No se encontró una tarifa para la categoría del vehículo con la matrícula indicada");
             return;
         }
 
-        Bonificacion bonificacion = controlador.obtenerBonificacion(propietario, puesto);
+        Bonificacion bonificacion = controlador.obtenerBonificacion(propietario, selectedPuesto);
 
         if (bonificacion != null) {
             costoTransito = costoTransito * bonificacion.calcularBonificacion() / 100;
@@ -272,7 +274,7 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
             return;
         }
 
-        controlador.registrarTransito(fechaHoraActual, bonificacion, puesto, vehiculo, costoTransito);
+        controlador.registrarTransito(fechaHoraActual, bonificacion, selectedPuesto, vehiculo, costoTransito);
 
         saldoPropietario = controlador.getSaldoCuentaPropietario(propietario);
 
@@ -284,7 +286,7 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
                 + "Saldo Actual: " + saldoPropietario
         );
 
-        String notificacion = "Pasaste por el puesto " + puesto.getNombre() + " con el vehículo " + vehiculo.getMatricula();
+        String notificacion = "Pasaste por el puesto " + selectedPuesto.getNombre() + " con el vehículo " + vehiculo.getMatricula();
         controlador.registrarNotificacion(notificacion, fechaHoraActual, propietario);
 
         if (saldoPropietario < propietario.getSaldoMinimo()) {
@@ -298,4 +300,33 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
         JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    private class Detalle implements ListCellRenderer<Renderizable> {
+
+        @Override
+        public Component getListCellRendererComponent(JList<? extends Renderizable> list, Renderizable value, int index, boolean isSelected, boolean cellHasFocus) {
+            JLabel label = new JLabel();
+            label.setText(value.getRenderDetail());
+            return label;
+        }
+
+    }
+
+    private void renderCustomTablaTarifas() {
+        tTarifas.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public void setValue(Object value) {
+                String cat = ((Tarifa) value).getCategoria().getNombre();
+                setText(cat);
+            }
+        });
+        tTarifas.getColumnModel().getColumn(1).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public void setValue(Object value) {
+                Double monto = ((Tarifa) value).getMonto();
+                setText(Double.toString(monto));
+
+            }
+        });
+
+    }
 }

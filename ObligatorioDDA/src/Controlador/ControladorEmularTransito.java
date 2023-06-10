@@ -41,7 +41,7 @@ public class ControladorEmularTransito implements Observador {
     }
 
     public void listarPuestos() {
-
+        
         this.vista.listarPuestos(FachadaServicios.getInstancia().getPuestos());
     }
 
@@ -72,20 +72,20 @@ public class ControladorEmularTransito implements Observador {
     }
 
     public void registrarTransito(Date fechaHoraActual, Bonificacion bonificacion, Puesto puesto, Vehiculo vehiculo, double costoTransito) {
-        if (bonificacion.getTipoBonificacion().getNombre() == "Frecuentes") {
-//                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yy");
-//        String dia = dateFormat.format(fechaUltimaPasada);
+//        if (bonificacion.getTipoBonificacion().getNombre() == "Frecuentes") {
+////                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yy");
+////        String dia = dateFormat.format(fechaUltimaPasada);
+////
+////        String diahoy = dateFormat.format(new Date());
+////
+////        if (dia == diahoy) {
+////            return getDescuento();
+////        } else {
+////            return 0;
+////        }
 //
-//        String diahoy = dateFormat.format(new Date());
-//
-//        if (dia == diahoy) {
-//            return getDescuento();
-//        } else {
-//            return 0;
+////FALTA TRAER LA FECHA DE LA ULTIMA PASADA PARA VER SI APLICA DESCUENTO DE FRECUENTES
 //        }
-
-//FALTA TRAER LA FECHA DE LA ULTIMA PASADA PARA VER SI APLICA DESCUENTO DE FRECUENTES
-        }
         costoTransito = costoTransito * bonificacion.calcularBonificacion() / 100;
         Transito transito = new Transito(fechaHoraActual, bonificacion, puesto, vehiculo, costoTransito);
         vehiculo.agregarTransito(transito);
