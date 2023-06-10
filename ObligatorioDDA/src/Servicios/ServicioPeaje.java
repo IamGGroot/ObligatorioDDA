@@ -82,7 +82,9 @@ public class ServicioPeaje {
 //me tiro error point null, la bonificacion es null, proba varios puestos y varias veces con la primer matricula de los datos de prueba para que te salte
         Transito t = new Transito(new Date(), b, puesto, v, 0);
 
-        Double montoAPagar = puesto.calcularMontoConBonificacion(v, b, t);
+
+        b.setTransito(t);
+        Double montoAPagar = puesto.calcularMontoConBonificacion(v, b);
 
         if (montoAPagar > v.getPropietario().getCuenta().getSaldo()) {
             throw new SistemaPeajeException("Saldo insuficiente " + v.getPropietario().getCuenta().getSaldo());
