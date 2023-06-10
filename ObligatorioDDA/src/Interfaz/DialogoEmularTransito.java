@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -255,6 +256,7 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
     }
 
     private void renderCustomTablaTarifas() {
+
         tTarifas.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
             @Override
             public void setValue(Object value) {

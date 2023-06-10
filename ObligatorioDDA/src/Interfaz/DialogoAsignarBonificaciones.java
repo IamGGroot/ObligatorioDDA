@@ -9,13 +9,13 @@ import Dominio.Puesto;
 import Dominio.Renderizable;
 import java.awt.Component;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements VistaAsignarBonificaciones {
 
@@ -215,19 +215,21 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     @Override
     public void listarBonificaciones(List<Bonificacion> bonificaciones) {
 
+        DefaultComboBoxModel<Bonificacion> model = new DefaultComboBoxModel<>();
         for (Bonificacion b : bonificaciones) {
-            cBonificaciones.addItem(b.toString());
+            model.addElement(b);
         }
-
+        cBonificaciones.setModel(model);
     }
 
     @Override
     public void listarPuestos(List<Puesto> puestos) {
 
+        DefaultComboBoxModel<Puesto> model = new DefaultComboBoxModel<>();
         for (Puesto p : puestos) {
-            cPuestos.addItem(p.toString());
+            model.addElement(p);
         }
-
+        cPuestos.setModel(model);
     }
 
     @Override
