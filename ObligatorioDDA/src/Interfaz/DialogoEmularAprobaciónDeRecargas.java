@@ -2,7 +2,6 @@ package Interfaz;
 
 import Controlador.ControladorEmularAprobacionRecarga;
 import Dominio.Administrador;
-import Dominio.Bonificacion;
 import Dominio.Propietario;
 import Dominio.Recarga;
 import java.util.Date;

@@ -6,11 +6,14 @@ import Dominio.Administrador;
 import Dominio.Bonificacion;
 import Dominio.Propietario;
 import Dominio.Puesto;
-import Dominio.Recarga;
-import Servicios.FachadaServicios;
+import Dominio.Renderizable;
+import java.awt.Component;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.ListCellRenderer;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -22,6 +25,9 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
         super(parent, modal);
         initComponents();
         controlador = new ControladorAsignarBonificaciones(this, usuarioAdmin);
+        cBonificaciones.setRenderer(new Detalle());
+        cPuestos.setRenderer(new Detalle());
+
         inicializar();
 
     }
@@ -41,8 +47,8 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
         lBonificaciones = new javax.swing.JLabel();
         lPuestos = new javax.swing.JLabel();
         lCedula = new javax.swing.JLabel();
-        cBonificaciones = new javax.swing.JComboBox<>();
-        cPuestos = new javax.swing.JComboBox<>();
+        cBonificaciones = new javax.swing.JComboBox();
+        cPuestos = new javax.swing.JComboBox();
         bBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaBonificacionPuesto = new javax.swing.JTable();
@@ -66,9 +72,12 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
 
         lCedula.setText("Cédula:");
 
-        cBonificaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cBonificaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cBonificaciones.setSelectedIndex(-1);
+        cBonificaciones.setToolTipText("");
 
-        cPuestos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cPuestos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cPuestos.setSelectedIndex(-1);
 
         bBuscar.setText("Buscar");
         bBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -178,11 +187,11 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     }//GEN-LAST:event_bAsignarActionPerformed
 
     private void bCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarActionPerformed
-        cerrar();
+        this.cerrar();
     }//GEN-LAST:event_bCerrarActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        buscar();
+        this.buscarPorCedula();
     }//GEN-LAST:event_bBuscarActionPerformed
 
 
@@ -190,8 +199,8 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     private javax.swing.JButton bAsignar;
     private javax.swing.JButton bBuscar;
     private javax.swing.JButton bCerrar;
-    private javax.swing.JComboBox<String> cBonificaciones;
-    private javax.swing.JComboBox<String> cPuestos;
+    private javax.swing.JComboBox cBonificaciones;
+    private javax.swing.JComboBox cPuestos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lBonificaciones;
@@ -205,24 +214,18 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
 
     @Override
     public void listarBonificaciones(List<Bonificacion> bonificaciones) {
-        DefaultComboBoxModel listaDefault = new DefaultComboBoxModel();
-        cBonificaciones.setModel(listaDefault);
-        listaDefault.addElement("Elija una opción");
 
         for (Bonificacion b : bonificaciones) {
-            listaDefault.addElement(b.getNombre());
+            cBonificaciones.addItem(b.toString());
         }
 
     }
 
     @Override
     public void listarPuestos(List<Puesto> puestos) {
-        DefaultComboBoxModel listaDefault = new DefaultComboBoxModel();
-        cPuestos.setModel(listaDefault);
-        listaDefault.addElement("Elija una opción");
 
         for (Puesto p : puestos) {
-            listaDefault.addElement(p.getNombre());
+            cPuestos.addItem(p.toString());
         }
 
     }
@@ -243,22 +246,17 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     }
 
     @Override
-    public void buscar() {
+    public void buscarPorCedula() {
 
         int cedula = Integer.parseInt(tCedula.getText());
-        Propietario propietario = controlador.obtenerPropietarioPorCedula(cedula);
-        if (propietario != null) {
-            mostrarPropietario(propietario);
+
+        controlador.obtenerPropietarioPorCedula(cedula);
+
+        if (lPropietario != null) {
+
             mostrarTabla(propietario);
-        } else {
-            mostrarMensaje("“No existe el propietario");
-            return;
         }
 
-    }
-
-    private void mostrarPropietario(Propietario propietario) {
-        lPropietario.setText(propietario.getNombre());
     }
 
     private void mostrarMensaje(String mensaje) {
@@ -280,18 +278,18 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
         for (int i = 0; i < propietario.getBonificaciones().size(); i++) {
             Bonificacion b = propietario.getBonificaciones().get(i);
 
-            modeloDatos.setValueAt(b.getNombre(), i, 0);
-            modeloDatos.setValueAt(b.getPuesto().getNombre(), i, 1);
-        }
+            modeloDefault.addRow(new Object[]{b, b.getPuesto()});
 
+        }
+        renderCustomTablaBonificacionPuesto();
     }
 
     @Override
     public void asignarBonificacion() {
         int cedula = Integer.parseInt(tCedula.getText());
         Propietario propietario = controlador.obtenerPropietarioPorCedula(cedula);
-        String selectedBonificacion = (String) cBonificaciones.getSelectedItem();
-        String selectedPuesto = (String) cPuestos.getSelectedItem();
+        Bonificacion selectedBonificacion = (Bonificacion) cBonificaciones.getSelectedItem();
+        Puesto selectedPuesto = (Puesto) cPuestos.getSelectedItem();
 
         if (selectedBonificacion.equals("Elija una opción")) {
             mostrarMensaje("Debe especificar una bonificación");
@@ -311,7 +309,37 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
             }
 
         }
-        
+
         controlador.asignarBonificacion(propietario, selectedBonificacion, selectedPuesto);
+    }
+
+    private class Detalle implements ListCellRenderer<Renderizable> {
+
+        @Override
+        public Component getListCellRendererComponent(JList<? extends Renderizable> list, Renderizable value, int index, boolean isSelected, boolean cellHasFocus) {
+            JLabel label = new JLabel();
+            label.setText(value.getRenderDetail());
+            return label;
+        }
+
+    }
+
+    private void renderCustomTablaBonificacionPuesto() {
+        tablaBonificacionPuesto.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public void setValue(Object value) {
+                String bonificacion = ((Bonificacion) value).toString();
+                setText(bonificacion);
+            }
+        });
+        tablaBonificacionPuesto.getColumnModel().getColumn(1).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public void setValue(Object value) {
+                String puesto = ((Puesto) value).getNombre();
+                setText(puesto);
+
+            }
+        });
+
     }
 }

@@ -4,14 +4,10 @@ import Controlador.ControladorEmularTransito;
 import Dominio.Administrador;
 import Dominio.Bonificacion;
 import Dominio.Categoria;
-import Dominio.Propietario;
 import Dominio.Puesto;
 import Dominio.Renderizable;
 import Dominio.Tarifa;
-import Dominio.Transito;
-import Dominio.Vehiculo;
 import java.awt.Component;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -224,28 +220,27 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
     }
 
     @Override
-    public void mostrarError(String message) {
-        JOptionPane.showMessageDialog(this, message, "Error al emular transito", JOptionPane.ERROR_MESSAGE);
-        this.dispose();
-    }
-
-    @Override
     public void mostrarExito(String propietario, String categoria, Bonificacion bonificacion, double montoPagado, double saldo) {        
-        String menssage = "Propietario: " + propietario + "\n"
+        String mensaje = "Propietario: " + propietario + "\n"
                 + "Categoría: " + categoria + "\n";
 
         if (bonificacion != null) {
-            menssage += "Bonificación: " + bonificacion.getTipoBonificacion().getNombre() + "\n";
+            mensaje += "Bonificación: " + bonificacion.getTipoBonificacion().getNombre() + "\n";
         }
         
-        menssage += "Costo Tránsito: " + montoPagado + "\n"
+        mensaje += "Costo Tránsito: " + montoPagado + "\n"
                 + "Saldo Actual: " + saldo;
         
-        mostrarMensaje(menssage);
+        mostrarMensaje(mensaje);
     }
     
     public void mostrarMensaje(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    public void mostrarError(String mensaje) {
+  JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.ERROR_MESSAGE);
     }
 
     private class Detalle implements ListCellRenderer<Renderizable> {

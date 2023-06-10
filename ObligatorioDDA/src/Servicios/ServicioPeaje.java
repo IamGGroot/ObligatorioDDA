@@ -41,15 +41,16 @@ public class ServicioPeaje {
         recargas.add(recarga);
     }
 
-    public void agregar(Bonificacion bonificacion) {
+    public void agregar(Bonificacion bonificacion) throws SistemaPeajeException {
         Propietario p = bonificacion.getPropietario();
         Bonificacion b = p.existeBonificacionEnPuesto(bonificacion.getPuesto());
         if (b == null) {
             bonificaciones.add(bonificacion);
         } else {
-            b.setTransito(bonificacion.getTransito());
-            b.setFechaAsignada(new Date());
-            b.setTipoBonificacion(bonificacion.getTipoBonificacion());
+            throw new SistemaPeajeException("Ya tiene una bonificación asignada para ese puesto");
+//            b.setTransito(bonificacion.getTransito());
+//            b.setFechaAsignada(new Date());
+//            b.setTipoBonificacion(bonificacion.getTipoBonificacion());
         }
     }
 
@@ -76,10 +77,13 @@ public class ServicioPeaje {
     }
 
     public Transito emularTransito(String matricula, Puesto puesto) throws SistemaPeajeException {
+
         Vehiculo v = getVehiculoPorMatricula(matricula);
         Propietario propietarioVehiculo = v.getPropietario();
         Bonificacion b = propietarioVehiculo.getBonificacion(puesto);
+//me tiro error point null, la bonificacion es null, proba varios puestos y varias veces con la primer matricula de los datos de prueba para que te salte
         Transito t = new Transito(new Date(), b, puesto, v, 0);
+
         b.setTransito(t);
         Double montoAPagar = puesto.calcularMontoConBonificacion(v, b);
 

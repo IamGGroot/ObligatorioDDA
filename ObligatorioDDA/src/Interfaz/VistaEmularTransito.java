@@ -18,7 +18,7 @@ public interface VistaEmularTransito {
     
     public void mostrarMensaje(String mensaje);
 
-    public void mostrarError(String message);
-
     public void mostrarExito(String propietario, String categoria, Bonificacion bonificacion, double montoPagado, double saldo);
+
+    public void mostrarError(String mensaje);
 }

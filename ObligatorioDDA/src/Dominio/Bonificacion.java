@@ -2,7 +2,7 @@ package Dominio;
 
 import java.util.Date;
 
-public class Bonificacion {
+public class Bonificacion implements Renderizable {
 
     private Date fechaAsignada;
     private Puesto puesto;
@@ -14,7 +14,7 @@ public class Bonificacion {
         this.fechaAsignada = fechaAsignada;
         this.puesto = puesto;
         this.propietario = propietario;
-        this.tipoBonificacion = tipoBonificacion;        
+        this.tipoBonificacion = tipoBonificacion;
     }
 
     public Date getFechaAsignada() {
@@ -51,5 +51,11 @@ public class Bonificacion {
 
     public int calcularBonificacion() {
         return this.tipoBonificacion.calcularDescuento(this.transito);
+    }
+
+
+    @Override
+    public String getRenderDetail() {
+        return this.getTipoBonificacion().getNombre();
     }
 }

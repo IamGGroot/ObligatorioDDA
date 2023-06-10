@@ -15,9 +15,11 @@ public interface VistaAsignarBonificaciones {
 
     public void cerrar();
 
-    public void buscar();
+    public void buscarPorCedula();
 
     public boolean confirmar(String mensaje, String title);
 
     public void salir();
-}
+
+    public void mostrarError(String mensaje);
+}s

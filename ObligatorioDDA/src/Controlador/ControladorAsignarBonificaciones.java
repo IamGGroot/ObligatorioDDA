@@ -4,7 +4,7 @@ import Dominio.Administrador;
 import Dominio.Bonificacion;
 import Dominio.Propietario;
 import Dominio.Puesto;
-import Dominio.Vehiculo;
+import Exceptions.SistemaPeajeException;
 import Interfaz.VistaAsignarBonificaciones;
 import Observer.Observable;
 import Observer.Observador;
@@ -43,22 +43,28 @@ public class ControladorAsignarBonificaciones implements Observador {
     }
 
     public Propietario obtenerPropietarioPorCedula(int cedula) {
-        List<Propietario> propietarios = FachadaServicios.getInstancia().getPropietarios();
-        for (Propietario p : propietarios) {
-            if (p.getCedula() == (cedula)) {
-                return p;
+        try {
+
+            List<Propietario> propietarios = FachadaServicios.getInstancia().getPropietarios();
+            for (Propietario p : propietarios) {
+                if (p.getCedula() == (cedula)) {
+                    return this.vista.mostrarPropietario(p);
+                }
             }
+
+        } catch (SistemaPeajeException e) {
+            this.vista.mostrarError(e.getMessage());
         }
-        return null;
+
     }
 
-    public void asignarBonificacion(Propietario propietario, String bonificacion, String puesto) {
+    public void asignarBonificacion(Propietario propietario, Bonificacion bonificacion, Puesto puesto) {
 
         List<Bonificacion> bonificaciones = FachadaServicios.getInstancia().getBonificaciones();
-        Bonificacion selectedBonificacion = new Bonificacion();
+        Bonificacion selectedBonificacion = null;
 
         for (Bonificacion b : bonificaciones) {
-            if (b.getNombre() == bonificacion) {
+            if (b == bonificacion) {
                 selectedBonificacion = b;
                 break;
             }
@@ -67,7 +73,7 @@ public class ControladorAsignarBonificaciones implements Observador {
         Puesto selectedPuesto = null;
 
         for (Puesto p : puestos) {
-            if (p.getNombre() == puesto) {
+            if (p == puesto) {
                 selectedPuesto = p;
                 break;
             }
@@ -75,9 +81,8 @@ public class ControladorAsignarBonificaciones implements Observador {
 
         Date fecha = new Date();
 
-        
-        Bonificacion nuevaBonificacion = new Bonificacion(selectedBonificacion.getNombre(), fecha, selectedPuesto, propietario, selectedBonificacion.getTipoBonificacion());
-       
+        Bonificacion nuevaBonificacion = new Bonificacion(fecha, selectedPuesto, propietario, selectedBonificacion.getTipoBonificacion());
+
         FachadaServicios.getInstancia().agregar(nuevaBonificacion);
         selectedPuesto.agregarBonificacion(nuevaBonificacion);
         propietario.agregarBonificacion(nuevaBonificacion);
