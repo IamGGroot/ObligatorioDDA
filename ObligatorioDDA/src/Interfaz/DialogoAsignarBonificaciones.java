@@ -314,10 +314,11 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     }
 
     private void renderCustomTablaBonificacionPuesto() {
+        
         tablaBonificacionPuesto.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
             @Override
             public void setValue(Object value) {
-                String bonificacion = ((Bonificacion) value).toString();
+                String bonificacion = ((Bonificacion) value).getTipoBonificacion().getNombre();
                 setText(bonificacion);
             }
         });
