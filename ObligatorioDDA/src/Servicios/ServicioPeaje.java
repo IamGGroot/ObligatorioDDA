@@ -44,6 +44,7 @@ public class ServicioPeaje {
     public void agregar(Bonificacion bonificacion) throws SistemaPeajeException {
         Propietario p = bonificacion.getPropietario();
         Bonificacion b = p.existeBonificacionEnPuesto(bonificacion.getPuesto());
+<<<<<<< HEAD
         if (b == null) {
             bonificaciones.add(bonificacion);
         } else {
@@ -51,7 +52,12 @@ public class ServicioPeaje {
 //            b.setTransito(bonificacion.getTransito());
 //            b.setFechaAsignada(new Date());
 //            b.setTipoBonificacion(bonificacion.getTipoBonificacion());
+=======
+        if (b != null) {
+            throw new SistemaPeajeException("Ya existe una bonificacion");
+>>>>>>> b3c786b9e2f6fc1b1bda8fc4bd24af918a162d28
         }
+        bonificaciones.add(bonificacion);
     }
 
     public List<Recarga> getRecargas() {
@@ -83,9 +89,13 @@ public class ServicioPeaje {
         Bonificacion b = propietarioVehiculo.getBonificacion(puesto);
 //me tiro error point null, la bonificacion es null, proba varios puestos y varias veces con la primer matricula de los datos de prueba para que te salte
         Transito t = new Transito(new Date(), b, puesto, v, 0);
+<<<<<<< HEAD
 
         b.setTransito(t);
         Double montoAPagar = puesto.calcularMontoConBonificacion(v, b);
+=======
+        Double montoAPagar = puesto.calcularMontoConBonificacion(v, b, t);
+>>>>>>> b3c786b9e2f6fc1b1bda8fc4bd24af918a162d28
 
         if (montoAPagar > v.getPropietario().getCuenta().getSaldo()) {
             throw new SistemaPeajeException("Saldo insuficiente " + v.getPropietario().getCuenta().getSaldo());
