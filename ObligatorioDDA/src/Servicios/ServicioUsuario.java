@@ -47,10 +47,6 @@ public class ServicioUsuario {
         throw new SistemaPeajeException("Acceso denegado");
     }
 
-    private Exception SistemaPeajeException(String ud_Ya_está_logueado) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     public List<Propietario> getPropietariosConRecargasPendientes() {
         List<Propietario> ret = new ArrayList<Propietario>();
         for (Propietario p : propietarios) {

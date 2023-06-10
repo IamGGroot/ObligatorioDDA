@@ -1,14 +1,12 @@
 package Dominio;
 
-public class Tarifa implements Renderizable {
+public class Tarifa {
 
     private double monto;
-    private String nombre;
     private Categoria categoria;
 
-    public Tarifa(double monto, String nombre, Categoria Categoria) {
+    public Tarifa(double monto, Categoria Categoria) {
         this.monto = monto;
-        this.nombre = nombre;
         this.categoria = Categoria;
     }
 
@@ -20,21 +18,12 @@ public class Tarifa implements Renderizable {
         return monto;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
     public Categoria getCategoria() {
         return categoria;
     }
 
     public void setCategoria(Categoria Categoria) {
         this.categoria = Categoria;
-    }
-
-    @Override
-    public String getRenderDetail() {
-        return this.getNombre();
     }
 
 }

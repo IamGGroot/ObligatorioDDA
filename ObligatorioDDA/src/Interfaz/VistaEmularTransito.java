@@ -1,5 +1,6 @@
 package Interfaz;
 
+import Dominio.Bonificacion;
 import Dominio.Puesto;
 import java.util.List;
 
@@ -16,4 +17,8 @@ public interface VistaEmularTransito {
     public void mostrarTarifas();
     
     public void mostrarMensaje(String mensaje);
+
+    public void mostrarError(String message);
+
+    public void mostrarExito(String propietario, String categoria, Bonificacion bonificacion, double montoPagado, double saldo);
 }

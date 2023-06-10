@@ -8,13 +8,11 @@ import Dominio.Propietario;
 import Dominio.Puesto;
 import Dominio.Renderizable;
 import Dominio.Tarifa;
+import Dominio.Transito;
 import Dominio.Vehiculo;
-import Servicios.FachadaServicios;
 import java.awt.Component;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -159,7 +157,7 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
     }//GEN-LAST:event_cPuestosActionPerformed
 
     private void bRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegistrarActionPerformed
-        this.registrar();
+        this.emularTransito();
     }//GEN-LAST:event_bRegistrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -191,111 +189,61 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
 
     @Override
     public void listarPuestos(List<Puesto> puestos) {
-
-   
         for (Puesto p : puestos) {
             cPuestos.addItem(p);
         }
-
     }
 
     public void mostrarTarifas() {
-
         Puesto selectedPuesto = (Puesto) cPuestos.getSelectedItem();
+        List<Tarifa> tarifas = selectedPuesto.getTarifas();
 
-        if (!selectedPuesto.equals("Elija una opción")) {
-
-            List<Puesto> puestos = FachadaServicios.getInstancia().getPuestos();
-
-            List<Tarifa> tarifas = selectedPuesto.getTarifas();
-
-            DefaultTableModel modeloDefault = new DefaultTableModel() {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    return false;
-                }
-            };
-
-            modeloDefault.addColumn("Categoría");
-            modeloDefault.addColumn("Monto");
-            tTarifas.setModel(modeloDefault);
-
-            for (int i = 0; i < tarifas.size(); i++) {
-                Tarifa t = tarifas.get(i);
-                modeloDefault.addRow(new Object[]{t, t});
-
+        DefaultTableModel modeloDefault = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
             }
-            renderCustomTablaTarifas();
+        };
+
+        modeloDefault.addColumn("Categoría");
+        modeloDefault.addColumn("Monto");
+        tTarifas.setModel(modeloDefault);
+
+        for (int i = 0; i < tarifas.size(); i++) {
+            Tarifa t = tarifas.get(i);
+            modeloDefault.addRow(new Object[]{t.getCategoria(), t});
+
         }
+        renderCustomTablaTarifas();
     }
 
-    private void registrar() {
+    private void emularTransito() {
         String matricula = tMatricula.getText();
-
-        //falta hacer excepciones
-        if (matricula.isEmpty()) {
-            mostrarMensaje("Ingrese la matrícula del vehículo");
-            return;
-        }
-
         Puesto selectedPuesto = (Puesto) cPuestos.getSelectedItem();
+        controlador.emularTransito(matricula, selectedPuesto);
+    }
 
-        if (selectedPuesto.equals("Elija una opción")) {
-            mostrarMensaje("Debe elegir una opción");
-            return;
-        }
+    @Override
+    public void mostrarError(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error al emular transito", JOptionPane.ERROR_MESSAGE);
+        this.dispose();
+    }
 
-        Date fechaHoraActual = new Date();
-
-        Vehiculo vehiculo = controlador.obtenerVehiculoPorMatricula(matricula);
-
-        if (vehiculo == null) {
-            mostrarMensaje("No existe el vehículo");
-            return;
-        }
-        Propietario propietario = vehiculo.getPropietario();
-
-        double costoTransito = controlador.calcularCostoTransito(vehiculo, selectedPuesto);
-        if (costoTransito == -1) {
-            mostrarMensaje("No se encontró una tarifa para la categoría del vehículo con la matrícula indicada");
-            return;
-        }
-
-        Bonificacion bonificacion = controlador.obtenerBonificacion(propietario, selectedPuesto);
+    @Override
+    public void mostrarExito(String propietario, String categoria, Bonificacion bonificacion, double montoPagado, double saldo) {        
+        String menssage = "Propietario: " + propietario + "\n"
+                + "Categoría: " + categoria + "\n";
 
         if (bonificacion != null) {
-            costoTransito = costoTransito * bonificacion.calcularBonificacion() / 100;
+            menssage += "Bonificación: " + bonificacion.getTipoBonificacion().getNombre() + "\n";
         }
-
-        double saldoPropietario = controlador.getSaldoCuentaPropietario(propietario);
-
-        if (costoTransito > saldoPropietario) {
-            mostrarMensaje("El saldo del propietario es insuficiente. Efectúe una recarga para poder realizar el tránsito.");
-            return;
-        }
-
-        controlador.registrarTransito(fechaHoraActual, bonificacion, selectedPuesto, vehiculo, costoTransito);
-
-        saldoPropietario = controlador.getSaldoCuentaPropietario(propietario);
-
-        mostrarMensaje(
-                "Propietario: " + propietario.getNombre() + "\n"
-                + "Categoría: " + vehiculo.getCategoria().getNombre() + "\n"
-                + "Bonificación: " + bonificacion.getNombre() + "\n"
-                + "Costo Tránsito: " + costoTransito + "\n"
-                + "Saldo Actual: " + saldoPropietario
-        );
-
-        String notificacion = "Pasaste por el puesto " + selectedPuesto.getNombre() + " con el vehículo " + vehiculo.getMatricula();
-        controlador.registrarNotificacion(notificacion, fechaHoraActual, propietario);
-
-        if (saldoPropietario < propietario.getSaldoMinimo()) {
-            String notificacionSaldo = "Tu saldo actual es de $" + saldoPropietario + " Te recomendamos hacer una recarga";
-            controlador.registrarNotificacion(notificacionSaldo, fechaHoraActual, propietario);
-        }
-
+        
+        menssage += "Costo Tránsito: " + montoPagado + "\n"
+                + "Saldo Actual: " + saldo;
+        
+        mostrarMensaje(menssage);
     }
-
+    
     public void mostrarMensaje(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -315,7 +263,7 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
         tTarifas.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
             @Override
             public void setValue(Object value) {
-                String cat = ((Tarifa) value).getCategoria().getNombre();
+                String cat = ((Categoria) value).getNombre();
                 setText(cat);
             }
         });

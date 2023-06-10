@@ -4,27 +4,17 @@ import java.util.Date;
 
 public class Bonificacion {
 
-    private String nombre;
     private Date fechaAsignada;
     private Puesto puesto;
     private Propietario propietario;
     private TipoBonificacion tipoBonificacion;
     private Transito transito;
 
-    public Bonificacion(String nombre, Date fechaAsignada, Puesto puesto, Propietario propietario, TipoBonificacion tipoBonificacion) {
-        this.nombre = nombre;
+    public Bonificacion(Date fechaAsignada, Puesto puesto, Propietario propietario, TipoBonificacion tipoBonificacion) {
         this.fechaAsignada = fechaAsignada;
         this.puesto = puesto;
         this.propietario = propietario;
         this.tipoBonificacion = tipoBonificacion;
-    }
-
-    public Bonificacion() {
-
-    }
-
-    public String getNombre() {
-        return nombre;
     }
 
     public Date getFechaAsignada() {
@@ -41,6 +31,14 @@ public class Bonificacion {
 
     public TipoBonificacion getTipoBonificacion() {
         return tipoBonificacion;
+    }
+
+    public void setFechaAsignada(Date fechaAsignada) {
+        this.fechaAsignada = fechaAsignada;
+    }
+
+    public void setTipoBonificacion(TipoBonificacion tipoBonificacion) {
+        this.tipoBonificacion = tipoBonificacion;
     }
 
     public Transito getTransito() {

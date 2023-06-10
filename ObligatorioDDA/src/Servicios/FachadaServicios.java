@@ -6,6 +6,7 @@ import Dominio.Notificacion;
 import Dominio.Propietario;
 import Dominio.Puesto;
 import Dominio.Recarga;
+import Dominio.Transito;
 import Dominio.Vehiculo;
 import Exceptions.SistemaPeajeException;
 
@@ -90,4 +91,7 @@ public class FachadaServicios {
         return servicioUsuario.getPropietarios();
     }
 
+    public Transito emularTransito(String matricula, Puesto puesto) throws SistemaPeajeException {
+        return servicioPeaje.emularTransito(matricula, puesto);
+    }
 }

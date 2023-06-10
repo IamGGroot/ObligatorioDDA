@@ -522,11 +522,17 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
             Vehiculo v = t.getVehiculo();
             modeloDatos.setValueAt(t.getPuesto().getNombre(), i, 0);
             modeloDatos.setValueAt(t.getVehiculo().getMatricula(), i, 1);
-            modeloDatos.setValueAt(t.getPuesto().tarifaParaVehiculo(v).getNombre(), i, 2);
+            modeloDatos.setValueAt(t.getPuesto().tarifaParaVehiculo(v).getCategoria().getNombre(), i, 2);
             modeloDatos.setValueAt(t.getPuesto().tarifaParaVehiculo(v).getMonto(), i, 3);
-            modeloDatos.setValueAt(t.getBonificacion().getTipoBonificacion().getNombre(), i, 4);
-            modeloDatos.setValueAt(t.getBonificacion().calcularBonificacion(), i, 5);
-            modeloDatos.setValueAt(t.calcularMonto(v), i, 6);
+            if (t.getBonificacion() == null) {
+                modeloDatos.setValueAt("", i, 4);
+                modeloDatos.setValueAt(0, i, 5);
+
+            } else {
+                modeloDatos.setValueAt(t.getBonificacion().getTipoBonificacion().getNombre(), i, 4);
+                modeloDatos.setValueAt(t.getBonificacion().calcularBonificacion(), i, 5);
+            }
+            modeloDatos.setValueAt(t.getMontoPagado(), i, 6);
             modeloDatos.setValueAt(formatDate(t.getFechaYHora()), i, 7);
         }
         nTransitos.setText(transitos.size() + "");

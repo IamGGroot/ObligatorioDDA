@@ -47,4 +47,9 @@ public class Cuenta extends Observable {
         }
         return recargasPendientes;
     }
+
+    public void actualizarSaldo(Double montoPagado) {
+        Double nuevoSaldo = this.getSaldo() - montoPagado;
+        this.setSaldo(nuevoSaldo);
+    }
 }

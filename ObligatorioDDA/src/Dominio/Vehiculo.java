@@ -1,7 +1,6 @@
 package Dominio;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Vehiculo {
@@ -49,23 +48,18 @@ public class Vehiculo {
 
     public void agregarTransito(Transito nuevoTransito) {
         this.transitos.add(nuevoTransito);
+        String notificacion = "Pasaste por el puesto " + nuevoTransito.getPuesto().getNombre() + " con el vehículo " + nuevoTransito.getVehiculo().getMatricula();
+        this.propietario.agregarNotificacion(new Notificacion(notificacion));
+        this.propietario.registrarTransito(nuevoTransito.getMontoPagado());
+        
     }
 
     public double montoTotalTransitos() {
         double montoTotal = 0;
         for (Transito t : transitos) {
-            montoTotal += t.calcularMonto(this);
+            montoTotal += t.getPuesto().calcularMontoConBonificacion(this, t.getBonificacion());
         }
         return montoTotal;
-    }
-
-    public Vehiculo getVehiculoPorMatricula(String matricula, List<Vehiculo> vehiculos) {
-        for (Vehiculo vehiculo : vehiculos) {
-            if (vehiculo.getMatricula().equals(matricula)) {
-                return vehiculo;
-            }
-        }
-        return null;  
     }
 
 }

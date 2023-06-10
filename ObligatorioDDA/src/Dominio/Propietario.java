@@ -1,6 +1,8 @@
 package Dominio;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Propietario extends Usuario {
@@ -45,9 +47,7 @@ public class Propietario extends Usuario {
     }
 
     public void agregarNotificacion(Notificacion n) {
-
         this.notificaciones.add(n);
-
     }
 
     public List<Notificacion> getNotificaciones() {
@@ -90,8 +90,13 @@ public class Propietario extends Usuario {
         return !this.cuenta.getRecargasPendientes().isEmpty();
     }
 
-    public boolean tieneBonificacionAsignada(Puesto puestoSeleccionado) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Bonificacion existeBonificacionEnPuesto(Puesto puesto) {
+        for (Bonificacion b : this.getBonificaciones()) {
+            if (b.getPuesto() == puesto) {
+                return b;
+            }
+        }
+        return null;
     }
 
     public List<Transito> getTransitos() {
@@ -101,6 +106,26 @@ public class Propietario extends Usuario {
             transitos.addAll(v.getTransitos());
         }
         return transitos;
+    }
+
+    public void registrarTransito(double montoPagado) {
+        this.getCuenta().actualizarSaldo(montoPagado);
+        Double saldoActual = this.getCuenta().getSaldo();
+        if (saldoActual < this.saldoMinimo) {
+            String notificacionSaldo = "Tu saldo actual es de $" + saldoActual + " Te recomendamos hacer una recarga";
+            notificaciones.add(new Notificacion(notificacionSaldo));
+        }
+    }
+
+    public List<Transito> obtenerTransitosVehiculoPuestoFecha(Vehiculo v, Puesto p, LocalDate fecha) {
+        List<Transito> transitos = new ArrayList();
+        for (Transito t : this.getTransitos()) {
+            if (t.getPuesto().equals(p) && t.getVehiculo().equals(v)) {
+                transitos.add(t);
+            }
+        }
+        return transitos;
+
     }
 
 }

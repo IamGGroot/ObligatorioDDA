@@ -26,6 +26,9 @@ public class Transito {
         return fechaYHora;
     }
 
+    public void setMontoPagado(double montoPagado) {
+        this.montoPagado = montoPagado;
+    }
 
     public Bonificacion getBonificacion() {
         return bonificacion;
@@ -48,9 +51,7 @@ public class Transito {
     }
 
     public double calcularMonto(Vehiculo vehiculo) {
-        double tarifa = puesto.tarifaParaVehiculo(vehiculo).getMonto();
-        int descuento = bonificacion.calcularBonificacion();
-        return tarifa - descuento;
+        return puesto.calcularMontoConBonificacion(vehiculo, bonificacion);
     }
 
 }

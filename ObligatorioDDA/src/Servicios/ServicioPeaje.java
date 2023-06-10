@@ -1,10 +1,14 @@
 package Servicios;
 
 import Dominio.Bonificacion;
+import Dominio.Propietario;
 import Dominio.Puesto;
 import Dominio.Recarga;
+import Dominio.Transito;
 import java.util.ArrayList;
 import Dominio.Vehiculo;
+import Exceptions.SistemaPeajeException;
+import java.util.Date;
 import java.util.List;
 
 public class ServicioPeaje {
@@ -13,8 +17,6 @@ public class ServicioPeaje {
     private List<Recarga> recargas;
     private List<Puesto> puestos;
     private List<Bonificacion> bonificaciones;
-
-    
 
     public ServicioPeaje() {
         vehiculos = new ArrayList();
@@ -40,7 +42,15 @@ public class ServicioPeaje {
     }
 
     public void agregar(Bonificacion bonificacion) {
-        bonificaciones.add(bonificacion);
+        Propietario p = bonificacion.getPropietario();
+        Bonificacion b = p.existeBonificacionEnPuesto(bonificacion.getPuesto());
+        if (b == null) {
+            bonificaciones.add(bonificacion);
+        } else {
+            b.setTransito(bonificacion.getTransito());
+            b.setFechaAsignada(new Date());
+            b.setTipoBonificacion(bonificacion.getTipoBonificacion());
+        }
     }
 
     public List<Recarga> getRecargas() {
@@ -55,9 +65,31 @@ public class ServicioPeaje {
     public List<Bonificacion> getBonificaciones() {
         return bonificaciones;
     }
-    
-    public void aprobarRecarga(){
-        
+
+    public Vehiculo getVehiculoPorMatricula(String matricula) throws SistemaPeajeException {
+        for (Vehiculo vehiculo : vehiculos) {
+            if (vehiculo.getMatricula().equals(matricula)) {
+                return vehiculo;
+            }
+        }
+        throw new SistemaPeajeException("No existe el vehículo");
+    }
+
+    public Transito emularTransito(String matricula, Puesto puesto) throws SistemaPeajeException {
+        Vehiculo v = getVehiculoPorMatricula(matricula);
+        Propietario propietarioVehiculo = v.getPropietario();
+        Bonificacion b = propietarioVehiculo.getBonificacion(puesto);
+        Transito t = new Transito(new Date(), b, puesto, v, 0);
+        b.setTransito(t);
+        Double montoAPagar = puesto.calcularMontoConBonificacion(v, b);
+
+        if (montoAPagar > v.getPropietario().getCuenta().getSaldo()) {
+            throw new SistemaPeajeException("Saldo insuficiente " + v.getPropietario().getCuenta().getSaldo());
+        }
+
+        t.setMontoPagado(montoAPagar);
+        v.agregarTransito(t);
+        return t;
     }
 
 }
