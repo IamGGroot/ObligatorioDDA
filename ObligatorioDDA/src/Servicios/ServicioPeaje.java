@@ -41,16 +41,13 @@ public class ServicioPeaje {
         recargas.add(recarga);
     }
 
-    public void agregar(Bonificacion bonificacion) {
+    public void agregar(Bonificacion bonificacion) throws SistemaPeajeException {
         Propietario p = bonificacion.getPropietario();
         Bonificacion b = p.existeBonificacionEnPuesto(bonificacion.getPuesto());
-        if (b == null) {
-            bonificaciones.add(bonificacion);
-        } else {
-            b.setTransito(bonificacion.getTransito());
-            b.setFechaAsignada(new Date());
-            b.setTipoBonificacion(bonificacion.getTipoBonificacion());
+        if (b != null) {
+            throw new SistemaPeajeException("Ya existe una bonificacion");
         }
+        bonificaciones.add(bonificacion);
     }
 
     public List<Recarga> getRecargas() {
@@ -80,8 +77,7 @@ public class ServicioPeaje {
         Propietario propietarioVehiculo = v.getPropietario();
         Bonificacion b = propietarioVehiculo.getBonificacion(puesto);
         Transito t = new Transito(new Date(), b, puesto, v, 0);
-        b.setTransito(t);
-        Double montoAPagar = puesto.calcularMontoConBonificacion(v, b);
+        Double montoAPagar = puesto.calcularMontoConBonificacion(v, b, t);
 
         if (montoAPagar > v.getPropietario().getCuenta().getSaldo()) {
             throw new SistemaPeajeException("Saldo insuficiente " + v.getPropietario().getCuenta().getSaldo());

@@ -50,10 +50,10 @@ public class Puesto implements Renderizable {
         this.bonificaciones.add(bonificacion);
     }
 
-    public double calcularMontoConBonificacion(Vehiculo v, Bonificacion b) {
+    public double calcularMontoConBonificacion(Vehiculo v, Bonificacion b, Transito t) {
         double tarifa = this.tarifaParaVehiculo(v).getMonto();
         if (b == null) return tarifa;
-        int descuento = b.calcularBonificacion();
+        int descuento = b.calcularBonificacion(t);
         return tarifa - descuento;
     }
 

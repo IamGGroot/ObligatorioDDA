@@ -8,7 +8,6 @@ public class Bonificacion {
     private Puesto puesto;
     private Propietario propietario;
     private TipoBonificacion tipoBonificacion;
-    private Transito transito;
 
     public Bonificacion(Date fechaAsignada, Puesto puesto, Propietario propietario, TipoBonificacion tipoBonificacion) {
         this.fechaAsignada = fechaAsignada;
@@ -41,15 +40,7 @@ public class Bonificacion {
         this.tipoBonificacion = tipoBonificacion;
     }
 
-    public Transito getTransito() {
-        return transito;
-    }
-
-    public void setTransito(Transito transito) {
-        this.transito = transito;
-    }
-
-    public int calcularBonificacion() {
-        return this.tipoBonificacion.calcularDescuento(this.transito);
+    public int calcularBonificacion(Transito t) {
+        return this.tipoBonificacion.calcularDescuento(t);
     }
 }

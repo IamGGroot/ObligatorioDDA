@@ -57,7 +57,7 @@ public class Vehiculo {
     public double montoTotalTransitos() {
         double montoTotal = 0;
         for (Transito t : transitos) {
-            montoTotal += t.getPuesto().calcularMontoConBonificacion(this, t.getBonificacion());
+            montoTotal += t.getPuesto().calcularMontoConBonificacion(this, t.getBonificacion(), t);
         }
         return montoTotal;
     }

@@ -51,7 +51,7 @@ public class Transito {
     }
 
     public double calcularMonto(Vehiculo vehiculo) {
-        return puesto.calcularMontoConBonificacion(vehiculo, bonificacion);
+        return puesto.calcularMontoConBonificacion(vehiculo, bonificacion, this);
     }
 
 }
