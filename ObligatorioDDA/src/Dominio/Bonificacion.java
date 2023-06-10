@@ -14,7 +14,7 @@ public class Bonificacion {
         this.fechaAsignada = fechaAsignada;
         this.puesto = puesto;
         this.propietario = propietario;
-        this.tipoBonificacion = tipoBonificacion;
+        this.tipoBonificacion = tipoBonificacion;        
     }
 
     public Date getFechaAsignada() {
@@ -50,6 +50,6 @@ public class Bonificacion {
     }
 
     public int calcularBonificacion() {
-        return this.tipoBonificacion.calcularDescuento(transito);
+        return this.tipoBonificacion.calcularDescuento(this.transito);
     }
 }

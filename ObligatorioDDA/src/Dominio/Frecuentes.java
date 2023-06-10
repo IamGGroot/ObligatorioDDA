@@ -22,7 +22,7 @@ public class Frecuentes extends TipoBonificacion {
 
     @Override
     public int calcularDescuento(Transito transito) {
-        if(transito == null) return 0;
+//        if(transito == null) return 0;
 
         Propietario p = transito.getVehiculo().getPropietario();
         LocalDate fechaTActual = transito.getFechaYHora().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

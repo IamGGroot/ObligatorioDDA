@@ -279,7 +279,6 @@ public class DatosDePrueba {
         propietario1.agregarBonificacion(bonificacion2);
         puesto1.agregarBonificacion(bonificacion1);
         puesto2.agregarBonificacion(bonificacion2);
-        
 
         Bonificacion bonificacion3 = new Bonificacion(fecha25, puesto1, propietario2, exonerados2);
         Bonificacion bonificacion4 = new Bonificacion(fecha23, puesto2, propietario2, exonerados2);
@@ -439,28 +438,48 @@ public class DatosDePrueba {
         propietario10.agregarNotificacion(notificacion20);
 
         Transito transito1 = new Transito(fecha29, bonificacion3, puesto1, vehiculo1, 0);
+        bonificacion3.setTransito(transito1);
         Transito transito2 = new Transito(fecha27, bonificacion4, puesto2, vehiculo10, 0);
+        bonificacion4.setTransito(transito2);
         Transito transito3 = new Transito(fecha25, bonificacion5, puesto3, vehiculo2, 0);
+        bonificacion5.setTransito(transito3);
         Transito transito4 = new Transito(fecha23, bonificacion6, puesto4, vehiculo2, 0);
+        bonificacion6.setTransito(transito4);
         Transito transito5 = new Transito(fecha21, bonificacion17, puesto1, vehiculo3, 0);
+        bonificacion17.setTransito(transito5);
         Transito transito6 = new Transito(fecha19, bonificacion18, puesto2, vehiculo3, 0);
+        bonificacion18.setTransito(transito6);
         Transito transito7 = new Transito(fecha17, bonificacion19, puesto3, vehiculo4, 0);
+        bonificacion19.setTransito(transito7);
         Transito transito8 = new Transito(fecha15, bonificacion20, puesto4, vehiculo4, 0);
+        bonificacion20.setTransito(transito8);
         //estos transitos corresponden a exonerados
         vehiculo1.agregarTransito(transito1);
 
         Transito transito9 = new Transito(fecha13, bonificacion1, puesto1, vehiculo1, 50);
+        bonificacion1.setTransito(transito9);
         Transito transito10 = new Transito(fecha11, bonificacion2, puesto2, vehiculo5, 50);
+        bonificacion2.setTransito(transito10);
         Transito transito11 = new Transito(fecha9, bonificacion7, puesto10, vehiculo5, 200);
+        bonificacion7.setTransito(transito11);
         Transito transito12 = new Transito(fecha7, bonificacion8, puesto11, vehiculo6, 200);
+        bonificacion8.setTransito(transito12);
         Transito transito13 = new Transito(fecha5, bonificacion10, puesto8, vehiculo6, 100);
+        bonificacion10.setTransito(transito13);
         Transito transito14 = new Transito(fecha3, bonificacion11, puesto9, vehiculo7, 100);
+        bonificacion11.setTransito(transito14);
         Transito transito15 = new Transito(fecha1, bonificacion12, puesto5, vehiculo7, 100);
+        bonificacion12.setTransito(transito15);
         Transito transito16 = new Transito(fecha28, bonificacion13, puesto6, vehiculo8, 100);
+        bonificacion13.setTransito(transito16);
         Transito transito17 = new Transito(fecha26, bonificacion14, puesto7, vehiculo8, 200);
+        bonificacion14.setTransito(transito17);
         Transito transito18 = new Transito(fecha24, bonificacion15, puesto8, vehiculo9, 200);
+        bonificacion15.setTransito(transito18);
         Transito transito19 = new Transito(fecha22, bonificacion16, puesto9, vehiculo9, 200);
+        bonificacion16.setTransito(transito19);
         Transito transito20 = new Transito(fecha20, bonificacion7, puesto10, vehiculo10, 200);
+        bonificacion7.setTransito(transito20);
         vehiculo1.agregarTransito(transito9);
 
         //Falta que tenga sentido lo que pagaron. Las bonificaciones y puestos corresponden. 
