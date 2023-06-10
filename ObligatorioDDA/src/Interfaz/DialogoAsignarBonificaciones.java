@@ -191,7 +191,7 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     }//GEN-LAST:event_bCerrarActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        this.buscarPorCedula();
+        this.buscar();
     }//GEN-LAST:event_bBuscarActionPerformed
 
 
@@ -245,36 +245,38 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
         dispose();
     }
 
-    @Override
-    public void buscarPorCedula() {
+    public void buscar() {
 
         int cedula = Integer.parseInt(tCedula.getText());
-
-        controlador.obtenerPropietarioPorCedula(cedula);
-
-        if (lPropietario != null) {
-
-            mostrarTabla(propietario);
-        }
+        controlador.buscarPropietarioPorCedula(cedula);
 
     }
 
-    private void mostrarMensaje(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.INFORMATION_MESSAGE);
+    @Override
+    public void mostrarPropietarioYTabla(Propietario p) {
+        mostrarPropietario(p);
+        mostrarTabla(p);
+
+    }
+
+    private void mostrarPropietario(Propietario p) {
+        lPropietario.setText(p.getNombre());
     }
 
     private void mostrarTabla(Propietario propietario) {
-        String[] columnNames = {"Bonificación", "Puesto"};
 
-        DefaultTableModel modeloDefault = new DefaultTableModel(columnNames, propietario.getBonificaciones().size()) {
+        DefaultTableModel modeloDefault = new DefaultTableModel() {
+
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
+
+        modeloDefault.addColumn("Bonificación");
+        modeloDefault.addColumn("Puesto");
         tablaBonificacionPuesto.setModel(modeloDefault);
 
-        TableModel modeloDatos = tablaBonificacionPuesto.getModel();
         for (int i = 0; i < propietario.getBonificaciones().size(); i++) {
             Bonificacion b = propietario.getBonificaciones().get(i);
 
@@ -287,30 +289,15 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     @Override
     public void asignarBonificacion() {
         int cedula = Integer.parseInt(tCedula.getText());
-        Propietario propietario = controlador.obtenerPropietarioPorCedula(cedula);
-        Bonificacion selectedBonificacion = (Bonificacion) cBonificaciones.getSelectedItem();
         Puesto selectedPuesto = (Puesto) cPuestos.getSelectedItem();
+        Bonificacion selectedBonificacion = (Bonificacion) cBonificaciones.getSelectedItem();
+        controlador.asignarBonificacion(selectedBonificacion, selectedPuesto, cedula);
 
-        if (selectedBonificacion.equals("Elija una opción")) {
-            mostrarMensaje("Debe especificar una bonificación");
-            return;
-        }
+    }
 
-        if (selectedPuesto.equals("Elija una opción")) {
-            mostrarMensaje("Debe seleccionar una puesto");
-            return;
-        }
-
-        List<Bonificacion> bonificacionesPropietario = propietario.getBonificaciones();
-        for (Bonificacion b : bonificacionesPropietario) {
-            if (b.getPuesto().getNombre().equals(selectedPuesto)) {
-                mostrarMensaje("Ya tiene una bonificación asignada para ese puesto");
-                return;
-            }
-
-        }
-
-        controlador.asignarBonificacion(propietario, selectedBonificacion, selectedPuesto);
+    @Override
+    public void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.ERROR_MESSAGE);
     }
 
     private class Detalle implements ListCellRenderer<Renderizable> {

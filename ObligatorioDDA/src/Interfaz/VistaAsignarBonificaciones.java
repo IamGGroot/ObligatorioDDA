@@ -15,11 +15,13 @@ public interface VistaAsignarBonificaciones {
 
     public void cerrar();
 
-    public void buscarPorCedula();
+    public void buscar();
 
     public boolean confirmar(String mensaje, String title);
 
     public void salir();
 
     public void mostrarError(String mensaje);
-}s
+
+    public void mostrarPropietarioYTabla(Propietario p);
+}

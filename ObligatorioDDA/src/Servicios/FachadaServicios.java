@@ -79,19 +79,23 @@ public class FachadaServicios {
         return servicioPeaje.getBonificaciones();
     }
 
-    public void agregarBonificacion(Bonificacion bonificacion) {
+    public void agregarBonificacion(Bonificacion bonificacion) throws SistemaPeajeException {
         servicioPeaje.agregar(bonificacion);
     }
 
-    public void agregar(Bonificacion bonificacion) {
+    public void agregar(Bonificacion bonificacion) throws SistemaPeajeException {
         servicioPeaje.agregar(bonificacion);
     }
 
-    public List<Propietario> getPropietarios() {
+    public List<Propietario> getPropietarios() throws SistemaPeajeException {
         return servicioUsuario.getPropietarios();
     }
 
     public Transito emularTransito(String matricula, Puesto puesto) throws SistemaPeajeException {
         return servicioPeaje.emularTransito(matricula, puesto);
+    }
+
+    public Propietario getPropietarioPorCedula(int cedula) throws SistemaPeajeException {
+        return servicioUsuario.getPropietarioPorCedula(cedula);
     }
 }

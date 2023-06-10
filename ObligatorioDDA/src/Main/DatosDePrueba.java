@@ -135,6 +135,19 @@ public class DatosDePrueba {
         Recarga recarga29 = new Recarga(fecha29, 800);
         Recarga recarga30 = new Recarga(fecha30, 300);
 
+        recarga1.aprobar(admin1);
+        recarga2.aprobar(admin1);
+        recarga5.aprobar(admin2);
+        recarga6.aprobar(admin2);
+        recarga9.aprobar(admin3);
+        recarga12.aprobar(admin3);
+        recarga15.aprobar(admin4);
+        recarga18.aprobar(admin4);
+        recarga21.aprobar(admin5);
+        recarga25.aprobar(admin5);
+        recarga28.aprobar(admin6);
+        recarga30.aprobar(admin6);
+
         Cuenta cuenta1 = new Cuenta();
         cuenta1.agregar(recarga1);
         cuenta1.recargar(recarga1.getMonto());

@@ -42,15 +42,11 @@ public class ControladorAsignarBonificaciones implements Observador {
         this.vista.listarPuestos(FachadaServicios.getInstancia().getPuestos());
     }
 
-    public Propietario obtenerPropietarioPorCedula(int cedula) {
+    public void buscarPropietarioPorCedula(int cedula) {
         try {
+            Propietario p = FachadaServicios.getInstancia().getPropietarioPorCedula(cedula);
 
-            List<Propietario> propietarios = FachadaServicios.getInstancia().getPropietarios();
-            for (Propietario p : propietarios) {
-                if (p.getCedula() == (cedula)) {
-                    return this.vista.mostrarPropietario(p);
-                }
-            }
+            this.vista.mostrarPropietarioYTabla(p);
 
         } catch (SistemaPeajeException e) {
             this.vista.mostrarError(e.getMessage());
@@ -58,35 +54,26 @@ public class ControladorAsignarBonificaciones implements Observador {
 
     }
 
-    public void asignarBonificacion(Propietario propietario, Bonificacion bonificacion, Puesto puesto) {
+    public void asignarBonificacion(Bonificacion bonificacion, Puesto puesto, int cedula) {
+        try {
 
-        List<Bonificacion> bonificaciones = FachadaServicios.getInstancia().getBonificaciones();
-        Bonificacion selectedBonificacion = null;
+            Propietario p = FachadaServicios.getInstancia().getPropietarioPorCedula(cedula);
 
-        for (Bonificacion b : bonificaciones) {
-            if (b == bonificacion) {
-                selectedBonificacion = b;
-                break;
+            List<Bonificacion> bonificacionesPropietario = p.getBonificaciones();
+            for (Bonificacion b : bonificacionesPropietario) {
+                if (b.getPuesto().equals(puesto)) {
+                    throw new SistemaPeajeException("Ya tiene una bonificación asignada para ese puesto");
+                }
             }
+
+            Date fecha = new Date();
+            //hay que ver como asignar la bonificacion con fechas individuales de asignacion para cada propietario
+            Bonificacion nuevaBonificacion = new Bonificacion(fecha, puesto, p, bonificacion.getTipoBonificacion());
+            p.agregarBonificacion(nuevaBonificacion);
+
+        } catch (SistemaPeajeException e) {
+            this.vista.mostrarError(e.getMessage());
         }
-        List<Puesto> puestos = FachadaServicios.getInstancia().getPuestos();
-        Puesto selectedPuesto = null;
-
-        for (Puesto p : puestos) {
-            if (p == puesto) {
-                selectedPuesto = p;
-                break;
-            }
-        }
-
-        Date fecha = new Date();
-
-        Bonificacion nuevaBonificacion = new Bonificacion(fecha, selectedPuesto, propietario, selectedBonificacion.getTipoBonificacion());
-
-        FachadaServicios.getInstancia().agregar(nuevaBonificacion);
-        selectedPuesto.agregarBonificacion(nuevaBonificacion);
-        propietario.agregarBonificacion(nuevaBonificacion);
-
     }
 
 }

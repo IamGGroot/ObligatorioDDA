@@ -61,4 +61,13 @@ public class ServicioUsuario {
 
         return propietarios;
     }
+
+    public Propietario getPropietarioPorCedula(int cedula) throws SistemaPeajeException {
+        for (Propietario p : propietarios) {
+            if (p.getCedula() == cedula) {
+                return p;
+            }
+        }
+        throw new SistemaPeajeException("No existe el propietario");
+    }
 }

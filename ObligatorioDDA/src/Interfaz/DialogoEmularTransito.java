@@ -220,27 +220,27 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
     }
 
     @Override
-    public void mostrarExito(String propietario, String categoria, Bonificacion bonificacion, double montoPagado, double saldo) {        
+    public void mostrarExito(String propietario, String categoria, Bonificacion bonificacion, double montoPagado, double saldo) {
         String mensaje = "Propietario: " + propietario + "\n"
                 + "Categoría: " + categoria + "\n";
 
         if (bonificacion != null) {
             mensaje += "Bonificación: " + bonificacion.getTipoBonificacion().getNombre() + "\n";
         }
-        
+
         mensaje += "Costo Tránsito: " + montoPagado + "\n"
                 + "Saldo Actual: " + saldo;
-        
+
         mostrarMensaje(mensaje);
     }
-    
+
     public void mostrarMensaje(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void mostrarError(String mensaje) {
-  JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, mensaje, "", JOptionPane.ERROR_MESSAGE);
     }
 
     private class Detalle implements ListCellRenderer<Renderizable> {
