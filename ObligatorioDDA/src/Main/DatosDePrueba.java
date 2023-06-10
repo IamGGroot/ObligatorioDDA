@@ -151,12 +151,12 @@ public class DatosDePrueba {
         Cuenta cuenta1 = new Cuenta();
         cuenta1.agregar(recarga1);
         cuenta1.recargar(recarga1.getMonto());
-//        cuenta1.agregar(recarga2);
-//        cuenta1.recargar(recarga2.getMonto());
-//        cuenta1.agregar(recarga3);
-//        cuenta1.recargar(recarga3.getMonto());
 
         Cuenta cuenta2 = new Cuenta();
+        cuenta2.agregar(recarga2);
+        cuenta2.recargar(recarga2.getMonto());
+        cuenta2.agregar(recarga3);
+        cuenta2.recargar(recarga3.getMonto());
         cuenta2.agregar(recarga4);
         cuenta2.recargar(recarga4.getMonto());
         cuenta2.agregar(recarga5);
@@ -458,8 +458,16 @@ public class DatosDePrueba {
         Transito transito6 = new Transito(fecha19, bonificacion18, puesto2, vehiculo3, 0);
         Transito transito7 = new Transito(fecha17, bonificacion19, puesto3, vehiculo4, 0);
         Transito transito8 = new Transito(fecha15, bonificacion20, puesto4, vehiculo4, 0);
+
         //estos transitos corresponden a exonerados
         vehiculo1.agregarTransito(transito1);
+        vehiculo10.agregarTransito(transito2);
+        vehiculo2.agregarTransito(transito3);
+        vehiculo2.agregarTransito(transito4);
+        vehiculo3.agregarTransito(transito5);
+        vehiculo3.agregarTransito(transito6);
+        vehiculo4.agregarTransito(transito7);
+        vehiculo4.agregarTransito(transito8);
 
         Transito transito9 = new Transito(fecha13, bonificacion1, puesto1, vehiculo1, 50);
         Transito transito10 = new Transito(fecha11, bonificacion2, puesto2, vehiculo5, 50);
@@ -474,6 +482,17 @@ public class DatosDePrueba {
         Transito transito19 = new Transito(fecha22, bonificacion16, puesto9, vehiculo9, 200);
         Transito transito20 = new Transito(fecha20, bonificacion7, puesto10, vehiculo10, 200);
         vehiculo1.agregarTransito(transito9);
+        vehiculo5.agregarTransito(transito10);
+        vehiculo5.agregarTransito(transito11);
+        vehiculo6.agregarTransito(transito12);
+        vehiculo6.agregarTransito(transito13);
+        vehiculo7.agregarTransito(transito14);
+        vehiculo7.agregarTransito(transito15);
+        vehiculo8.agregarTransito(transito16);
+        vehiculo8.agregarTransito(transito17);
+        vehiculo9.agregarTransito(transito18);
+        vehiculo9.agregarTransito(transito19);
+        vehiculo10.agregarTransito(transito20);
 
         //Falta que tenga sentido lo que pagaron. Las bonificaciones y puestos corresponden. 
         //No revise que las fechas tengan sentido con las fechas de adjudicacion de las bonificaciones usadas con la de los transitos.
