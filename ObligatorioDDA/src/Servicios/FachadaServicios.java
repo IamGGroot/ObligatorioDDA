@@ -9,10 +9,11 @@ import Dominio.Recarga;
 import Dominio.Transito;
 import Dominio.Vehiculo;
 import Exceptions.SistemaPeajeException;
+import Observer.Observable;
 
 import java.util.List;
 
-public class FachadaServicios {
+public class FachadaServicios extends Observable {
 
     private static FachadaServicios instancia;
 

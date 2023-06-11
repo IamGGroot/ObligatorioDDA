@@ -163,7 +163,7 @@ public class DialogoPrincipalAdministrador extends javax.swing.JDialog implement
 
     @Override
     public void emularAprobacionRecarga(Administrador usuarioAdmin) {
-        new DialogoEmularAprobaciónDeRecargas(usuarioAdmin).setVisible(true);
+        new VentanaEmularAprobaciónDeRecargas(usuarioAdmin).setVisible(true);
     }
 
     @Override

@@ -4,13 +4,15 @@ import Dominio.Propietario;
 import Dominio.Recarga;
 import Exceptions.SistemaPeajeException;
 import Interfaz.VistaRecargarSaldo;
+import Observer.Observable;
+import Observer.Observador;
 import java.util.Date;
 
 /**
  *
  * @author Santiago Lacretta
  */
-public class ControladorRecargarSaldo {
+public class ControladorRecargarSaldo extends Observable {
 
     private VistaRecargarSaldo vista;
     private Propietario propietario;
@@ -32,10 +34,14 @@ public class ControladorRecargarSaldo {
         Recarga recarga = new Recarga(new Date(), monto);
         try {
             this.propietario.getCuenta().agregar(recarga);
+           notificar(Observable.Evento.RECARGA_AGREGADA);
             vista.mostrarExito("Recarga ingresada correctamente");
+            
         } catch (SistemaPeajeException e) {
             vista.mostrarError(e.getMessage());
         }
     }
+
+  
 
 }

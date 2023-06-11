@@ -87,7 +87,9 @@ public class Propietario extends Usuario {
     }
 
     public boolean tieneRecargasPendientes() {
+        notificar(Evento.RECARGA_AGREGADA);
         return !this.cuenta.getRecargasPendientes().isEmpty();
+        
     }
 
     public Bonificacion existeBonificacionEnPuesto(Puesto puesto) {

@@ -10,11 +10,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-public class DialogoEmularAprobaciónDeRecargas extends javax.swing.JDialog implements VistaEmularAprobacionRecarga {
+public class VentanaEmularAprobaciónDeRecargas extends javax.swing.JFrame implements VistaEmularAprobacionRecarga {
 
     private ControladorEmularAprobacionRecarga controlador;
 
-    public DialogoEmularAprobaciónDeRecargas(Administrador usuarioAdmin) {
+    public VentanaEmularAprobaciónDeRecargas(Administrador usuarioAdmin) {
         initComponents();
         this.controlador = new ControladorEmularAprobacionRecarga(this, usuarioAdmin);
         inicializar();
@@ -30,7 +30,6 @@ public class DialogoEmularAprobaciónDeRecargas extends javax.swing.JDialog impl
         bAprobar = new javax.swing.JButton();
         bCerrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aprobación de recargas");
 
         lRecargasPendientes.setText("Recargas pendientes:");
