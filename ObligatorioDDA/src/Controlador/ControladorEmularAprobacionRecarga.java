@@ -50,7 +50,7 @@ public class ControladorEmularAprobacionRecarga implements Observador{
     public void aprobarRecarga(Recarga recarga, Propietario propietario) {
         recarga.aprobar(usuarioAdmin);
         propietario.getCuenta().recargar(recarga.getMonto());
-        //listarListarRecargasPendientes();
+        listarListarRecargasPendientes();
     }
 
 }
