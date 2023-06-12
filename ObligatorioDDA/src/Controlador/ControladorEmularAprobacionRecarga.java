@@ -1,15 +1,16 @@
 package Controlador;
 
 import Dominio.Administrador;
-import Dominio.Cuenta;
 import Dominio.Propietario;
 import Dominio.Recarga;
+import Exceptions.SistemaPeajeException;
 import Interfaz.VistaEmularAprobacionRecarga;
 import Observer.Observable;
 import Observer.Observador;
 import Servicios.FachadaServicios;
+import java.util.List;
 
-public class ControladorEmularAprobacionRecarga implements Observador{
+public class ControladorEmularAprobacionRecarga implements Observador {
 
     private VistaEmularAprobacionRecarga vista;
     private Administrador usuarioAdmin;
@@ -18,6 +19,7 @@ public class ControladorEmularAprobacionRecarga implements Observador{
         this.vista = vista;
         this.usuarioAdmin = usuarioAdmin;
         this.usuarioAdmin.subscribir(this);
+        this.inicilizar();
     }
 
     public void listarListarRecargasPendientes() {
@@ -26,21 +28,14 @@ public class ControladorEmularAprobacionRecarga implements Observador{
 
     @Override
     public void notificar(Observable origen, Object evento) {
-        if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_APROBADA)) {
-            //this.vista.mostrarRecargas(FachadaServicios.getInstancia().getPropietariosConRecargasPendientes())
+        if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_APROBADA) || ((Observable.Evento) evento).equals(Observable.Evento.RECARGA_AGREGADA)) {
             listarListarRecargasPendientes();
         }
-        
-        if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_AGREGADA)) {
-            listarListarRecargasPendientes();
-             //this.vista.mostrarRecargas(FachadaServicios.getInstancia().getPropietariosConRecargasPendientes());
-        }
-        
+
     }
 
-    public void cerrar(){
-    if(vista.confirmar("Confirma que desea salir?", "Salir del sistema")){
-     //Desuscribir
+    public void cerrar() {
+        if (vista.confirmar("Confirma que desea salir?", "Salir del sistema")) {
             usuarioAdmin.setLogueado(false);
             this.usuarioAdmin.desubscribir(this);
             vista.salir();
@@ -48,9 +43,17 @@ public class ControladorEmularAprobacionRecarga implements Observador{
     }
 
     public void aprobarRecarga(Recarga recarga, Propietario propietario) {
+        propietario.getCuenta().subscribir(this);
         recarga.aprobar(usuarioAdmin);
         propietario.getCuenta().recargar(recarga.getMonto());
-        listarListarRecargasPendientes();
+    }
+
+    private void inicilizar() {
+        List<Propietario> propietarios = FachadaServicios.getInstancia().getPropietarios();
+        
+        for (Propietario p: propietarios){
+            p.getCuenta().subscribir(this);
+        }
     }
 
 }

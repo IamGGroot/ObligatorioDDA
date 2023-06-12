@@ -9,7 +9,9 @@ public abstract class Observable {
     public enum Evento {
         NOTIFICACIONES_BORRADAS,
         RECARGA_APROBADA,
-        RECARGA_AGREGADA;
+        RECARGA_AGREGADA,
+        RECARGA_CREADA,
+        TRANSITO_AGREGADO;
     }
 
     private List<Observador> observadores;

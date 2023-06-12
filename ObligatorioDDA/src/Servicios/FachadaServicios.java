@@ -88,7 +88,7 @@ public class FachadaServicios extends Observable {
         servicioPeaje.agregar(bonificacion);
     }
 
-    public List<Propietario> getPropietarios() throws SistemaPeajeException {
+    public List<Propietario> getPropietarios() {
         return servicioUsuario.getPropietarios();
     }
 

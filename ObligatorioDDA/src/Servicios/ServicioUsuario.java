@@ -58,7 +58,6 @@ public class ServicioUsuario {
     }
 
     public List<Propietario> getPropietarios() {
-
         return propietarios;
     }
 

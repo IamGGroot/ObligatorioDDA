@@ -532,8 +532,9 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
                 modeloDatos.setValueAt(0, i, 5);
 
             } else {
-                modeloDatos.setValueAt(t.getBonificacion().getTipoBonificacion().getNombre(), i, 4);
-                modeloDatos.setValueAt(t.getBonificacion().calcularBonificacion(t), i, 5);
+                Bonificacion b = t.getBonificacion();
+                modeloDatos.setValueAt(b.getTipoBonificacion().getNombre(), i, 4);
+                modeloDatos.setValueAt(b.calcularBonificacion(t), i, 5);
             }
             modeloDatos.setValueAt(t.getMontoPagado(), i, 6);
             modeloDatos.setValueAt(formatDate(t.getFechaYHora()), i, 7);

@@ -45,6 +45,7 @@ public class VentanaEmularAprobaciónDeRecargas extends javax.swing.JFrame imple
                 "Fecha", "Propietario", "Monto"
             }
         ));
+        tablaRecargas.setRequestFocusEnabled(false);
         jScrollPane1.setViewportView(tablaRecargas);
 
         bAprobar.setText("Aprobar");

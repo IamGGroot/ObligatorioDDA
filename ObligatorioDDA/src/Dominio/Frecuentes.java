@@ -26,7 +26,7 @@ public class Frecuentes extends TipoBonificacion {
         LocalDate fechaTActual = transito.getFechaYHora().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         List<Transito> transitos = p.obtenerTransitosVehiculoPuestoFecha(transito.getVehiculo(), transito.getPuesto(), fechaTActual);
 
-        if (transitos.isEmpty() || transitos.get(0).getFechaYHora().equals(transito.getFechaYHora())) {
+        if (transitos.isEmpty()) {
             return 0;
         }
         if (transitos.size() >= 1) {

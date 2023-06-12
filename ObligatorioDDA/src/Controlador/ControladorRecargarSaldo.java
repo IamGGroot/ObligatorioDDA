@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author Santiago Lacretta
  */
-public class ControladorRecargarSaldo extends Observable {
+public class ControladorRecargarSaldo implements Observador {
 
     private VistaRecargarSaldo vista;
     private Propietario propietario;
@@ -20,6 +20,7 @@ public class ControladorRecargarSaldo extends Observable {
     public ControladorRecargarSaldo(VistaRecargarSaldo vista, Propietario propietario) {
         this.vista = vista;
         this.propietario = propietario;
+        this.propietario.getCuenta().subscribir(this);
     }
 
     public void obtenerNombre() {
@@ -34,14 +35,18 @@ public class ControladorRecargarSaldo extends Observable {
         Recarga recarga = new Recarga(new Date(), monto);
         try {
             this.propietario.getCuenta().agregar(recarga);
-           notificar(Observable.Evento.RECARGA_AGREGADA);
-            vista.mostrarExito("Recarga ingresada correctamente");
-            
         } catch (SistemaPeajeException e) {
             vista.mostrarError(e.getMessage());
         }
     }
 
-  
-
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_AGREGADA)) {
+            vista.mostrarExito("Recarga ingresada correctamente");
+        }
+        if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_APROBADA)) {
+            obtenerSaldo();
+        }
+    }
 }

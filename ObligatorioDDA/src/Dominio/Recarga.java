@@ -1,9 +1,8 @@
 package Dominio;
 
-import Observer.Observable;
 import java.util.Date;
 
-public class Recarga extends Observable {
+public class Recarga {
 
     private Date fechaYHora;
     private double monto;

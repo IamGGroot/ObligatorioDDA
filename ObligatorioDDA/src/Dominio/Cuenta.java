@@ -37,7 +37,6 @@ public class Cuenta extends Observable {
     public void recargar(Double monto) {//ACA es donde se actueliza el estado de la recarga
         this.saldo += monto;
         notificar(Evento.RECARGA_APROBADA);
-        
     }
 
     public List<Recarga> getRecargasPendientes() {

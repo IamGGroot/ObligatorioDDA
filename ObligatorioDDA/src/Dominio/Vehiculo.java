@@ -1,9 +1,10 @@
 package Dominio;
 
+import Observer.Observable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vehiculo {
+public class Vehiculo extends Observable {
 
     private String matricula;
     private String color;
@@ -51,6 +52,8 @@ public class Vehiculo {
         String notificacion = "Pasaste por el puesto " + nuevoTransito.getPuesto().getNombre() + " con el vehículo " + nuevoTransito.getVehiculo().getMatricula();
         this.propietario.agregarNotificacion(new Notificacion(notificacion));
         this.propietario.registrarTransito(nuevoTransito.getMontoPagado());
+        notificar(Evento.TRANSITO_AGREGADO);
+        
         
     }
 

@@ -91,6 +91,7 @@ public class ServicioPeaje {
 
         t.setMontoPagado(montoAPagar);
         v.agregarTransito(t);
+        
         return t;
     }
 

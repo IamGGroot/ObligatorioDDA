@@ -1,25 +1,23 @@
 package Controlador;
 
 import Dominio.Propietario;
+import Dominio.Vehiculo;
 import Interfaz.DialogoTableroPropietario;
 import Interfaz.VentanaRecargarSaldo;
 import Interfaz.VistaTableroPropietario;
 import Observer.Observable;
 import Observer.Observador;
-import Servicios.FachadaServicios;
-import java.awt.Frame;
-
+import java.util.List;
 
 public class ControladorTableroPropietario implements Observador {
 
     private VistaTableroPropietario vista;
     private Propietario propietario;
-    
+
     public ControladorTableroPropietario(VistaTableroPropietario vista, Propietario propietario) {
         this.vista = vista;
         this.propietario = propietario;
-        this.propietario.subscribir(this);
-        this.propietario.getCuenta().subscribir(this);
+        this.inicializarSubscripciones();
     }
 
     @Override
@@ -29,9 +27,17 @@ public class ControladorTableroPropietario implements Observador {
         }
         if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_AGREGADA)) {
             obtenerRecargas();
-            
+        }
+
+        if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_APROBADA)) {
+            obtenerSaldo();
         }
         
+        if (((Observable.Evento) evento).equals(Observable.Evento.TRANSITO_AGREGADO)) {
+            obtenerTransitos();
+        }
+
+
         //aca voy a poder actualizar las listas y mostrar básicamente. 
     }
 
@@ -67,7 +73,6 @@ public class ControladorTableroPropietario implements Observador {
         vista.mostrarRecargas(this.propietario.getCuenta().getRecargas());
     }
 
-
     public void borrarNotificaciones() {
         this.propietario.borrarNotificaciones();
     }
@@ -78,5 +83,14 @@ public class ControladorTableroPropietario implements Observador {
 
     public void recargar(DialogoTableroPropietario dialogTableroPropietario) {
         new VentanaRecargarSaldo((java.awt.Frame) dialogTableroPropietario.getParent(), false, this.propietario).setVisible(true);
+    }
+
+    private void inicializarSubscripciones() {
+        this.propietario.subscribir(this);
+        this.propietario.getCuenta().subscribir(this);
+        List<Vehiculo> vehiculos = this.propietario.getMisVehiculos();
+        for(Vehiculo v: vehiculos){
+            v.subscribir(this);
+        }
     }
 }
