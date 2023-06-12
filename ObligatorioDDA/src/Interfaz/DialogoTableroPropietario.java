@@ -9,6 +9,9 @@ import Dominio.Propietario;
 import Dominio.Recarga;
 import Dominio.Transito;
 import Dominio.Vehiculo;
+import Observer.Observable;
+import Observer.Observador;
+import Servicios.FachadaServicios;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-public class DialogoTableroPropietario extends javax.swing.JDialog implements VistaTableroPropietario {
+public class DialogoTableroPropietario extends javax.swing.JDialog implements VistaTableroPropietario, Observador {
 
     private ControladorTableroPropietario controlador;
 
@@ -605,5 +608,10 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
 
     private void borrarNotificaciones() {
         controlador.borrarNotificaciones();
+    }
+
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

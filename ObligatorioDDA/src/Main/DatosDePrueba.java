@@ -228,7 +228,7 @@ public class DatosDePrueba {
         cuenta10.agregar(recarga30);
         cuenta10.recargar(recarga30.getMonto());
 
-        Propietario propietario1 = new Propietario(1000, cuenta1, "Miguel Sánchez", "miguel123", 4378921);
+        Propietario propietario1 = new Propietario(1000, cuenta1, "Miguel Sánchez", "migue123", 4378921);
         Propietario propietario2 = new Propietario(2000, cuenta2, "Ana González", "ana123", 6027534);
         Propietario propietario3 = new Propietario(1500, cuenta3, "Carlos Rodríguez", "carlos123", 356789);
         Propietario propietario4 = new Propietario(1200, cuenta4, "Laura Pérez", "laura123", 1982356);

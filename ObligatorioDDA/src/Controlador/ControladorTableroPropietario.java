@@ -6,6 +6,7 @@ import Interfaz.VentanaRecargarSaldo;
 import Interfaz.VistaTableroPropietario;
 import Observer.Observable;
 import Observer.Observador;
+import Servicios.FachadaServicios;
 import java.awt.Frame;
 
 
@@ -28,7 +29,9 @@ public class ControladorTableroPropietario implements Observador {
         }
         if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_AGREGADA)) {
             obtenerRecargas();
+            
         }
+        
         //aca voy a poder actualizar las listas y mostrar básicamente. 
     }
 
