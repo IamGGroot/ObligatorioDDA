@@ -9,8 +9,6 @@ import Interfaz.VistaAsignarBonificaciones;
 import Observer.Observable;
 import Observer.Observador;
 import Servicios.FachadaServicios;
-import java.util.Date;
-import java.util.List;
 
 public class ControladorAsignarBonificaciones implements Observador {
 
