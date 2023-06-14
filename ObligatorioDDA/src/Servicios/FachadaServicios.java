@@ -85,4 +85,8 @@ public class FachadaServicios extends Observable {
     public Propietario getPropietarioPorCedula(int cedula) throws SistemaPeajeException {
         return servicioUsuario.getPropietarioPorCedula(cedula);
     }
+
+    public void asignarBonificacion(Bonificacion bonificacion, Puesto puesto, Propietario p) throws SistemaPeajeException {
+        servicioPeaje.asignarBonificacion(bonificacion, puesto, p);
+    }
 }

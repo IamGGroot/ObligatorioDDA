@@ -70,7 +70,12 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
         jScrollPane6 = new javax.swing.JScrollPane();
         nRecargas = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         tablaNotificaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -408,6 +413,10 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
     private void bBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBorrarActionPerformed
         this.borrarNotificaciones();
     }//GEN-LAST:event_bBorrarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.cerrar();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bBorrar;

@@ -23,7 +23,7 @@ public class ControladorAsignarBonificaciones implements Observador {
     }
 
     public void cerrar() {
-        if (vista.confirmar("Confirma que desea salir", "Salir del sistema")) {
+        if (vista.confirmar("Confirma que desea salir", "Asignar Bonificaciones")) {
             usuarioAdmin.setLogueado(false);
             vista.salir();
         }
@@ -54,21 +54,11 @@ public class ControladorAsignarBonificaciones implements Observador {
 
     }
 
-    //TODO verificar si no se puede mover esta lógica a la fachada. 
     public void asignarBonificacion(Bonificacion bonificacion, Puesto puesto, int cedula) {
         try {
             Propietario p = FachadaServicios.getInstancia().getPropietarioPorCedula(cedula);
             p.subscribir(this);
-            List<Bonificacion> bonificacionesPropietario = p.getBonificaciones();
-            for (Bonificacion b : bonificacionesPropietario) {
-                if (b.getPuesto().equals(puesto)) {
-                    throw new SistemaPeajeException("Ya tiene una bonificación asignada para ese puesto");
-                }
-            }
-
-            Date fecha = new Date();
-            Bonificacion nuevaBonificacion = new Bonificacion(fecha, puesto, p, bonificacion.getTipoBonificacion());
-            p.agregarBonificacion(nuevaBonificacion);
+            FachadaServicios.getInstancia().asignarBonificacion(bonificacion, puesto, p);
             p.desubscribir(this);
         } catch (SistemaPeajeException e) {
             this.vista.mostrarError(e.getMessage());

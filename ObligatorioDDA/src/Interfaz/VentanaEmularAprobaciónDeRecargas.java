@@ -30,7 +30,13 @@ public class VentanaEmularAprobaciónDeRecargas extends javax.swing.JFrame imple
         bAprobar = new javax.swing.JButton();
         bCerrar = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Aprobación de recargas");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         lRecargasPendientes.setText("Recargas pendientes:");
 
@@ -108,6 +114,10 @@ public class VentanaEmularAprobaciónDeRecargas extends javax.swing.JFrame imple
         this.cerrar();
     }//GEN-LAST:event_bCerrarActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.cerrar();
+    }//GEN-LAST:event_formWindowClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAprobar;
@@ -147,9 +157,9 @@ public class VentanaEmularAprobaciónDeRecargas extends javax.swing.JFrame imple
     public void salir() {
         dispose();
     }
-    
-    private void cerrar(){
-    controlador.cerrar();
+
+    private void cerrar() {
+        controlador.cerrar();
     }
 
     private DefaultTableModel crearTabla() {

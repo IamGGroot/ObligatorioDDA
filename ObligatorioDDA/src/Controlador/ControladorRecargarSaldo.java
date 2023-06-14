@@ -19,6 +19,16 @@ public class ControladorRecargarSaldo implements Observador {
         this.propietario.getCuenta().subscribir(this);
     }
 
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_AGREGADA)) {
+            vista.mostrarExito("Recarga ingresada correctamente");
+        }
+        if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_APROBADA)) {
+            obtenerSaldo();
+        }
+    }
+
     public void obtenerNombre() {
         vista.mostrarNombre(this.propietario.getNombre());
     }
@@ -36,13 +46,10 @@ public class ControladorRecargarSaldo implements Observador {
         }
     }
 
-    @Override
-    public void notificar(Observable origen, Object evento) {
-        if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_AGREGADA)) {
-            vista.mostrarExito("Recarga ingresada correctamente");
-        }
-        if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_APROBADA)) {
-            obtenerSaldo();
+    public void cerrar() {
+        if (vista.confirmar("Confirma que desea salir", "Recargar saldo")) {
+            this.propietario.getCuenta().desubscribir(this);
+            vista.salir();
         }
     }
 }

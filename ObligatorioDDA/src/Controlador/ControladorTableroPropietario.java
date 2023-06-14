@@ -46,11 +46,10 @@ public class ControladorTableroPropietario implements Observador {
     }
 
     public void cerrar() {
-        if (vista.confirmar("Confirma que desea salir", "Salir del sistema")) {
+        if (vista.confirmar("Confirma que desea salir", "Tablero propietario")) {
             this.finalizarSubscripciones();
             vista.salir();
         }
-
     }
 
     public void obtenerNombre() {

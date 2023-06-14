@@ -57,7 +57,13 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
         jSeparator1 = new javax.swing.JSeparator();
         tCedula = new javax.swing.JTextField();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Asignar bonificaciones");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         lBonificaciones.setText("Bonificaciones:");
 
@@ -183,6 +189,10 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
         this.buscar();
     }//GEN-LAST:event_bBuscarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.cerrar();
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -18,10 +18,9 @@ public class Frecuentes extends TipoBonificacion {
 
     @Override
     public int calcularDescuento(Transito transito) {
-        Propietario p = transito.getVehiculo().getPropietario();
+        Vehiculo v = transito.getVehiculo();
         LocalDate fechaTActual = transito.getFechaYHora().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        List<Transito> transitos = p.obtenerTransitosVehiculoPuestoFecha(transito.getVehiculo(), transito.getPuesto(), fechaTActual);
-
+        List<Transito> transitos = v.obtenerTransitosPuestoFecha(transito.getPuesto(), fechaTActual);
         if (!transitos.isEmpty()) {
             return getDescuento();
         }

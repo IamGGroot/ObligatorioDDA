@@ -29,8 +29,13 @@ public class VentanaRecargarSaldo extends javax.swing.JFrame implements VistaRec
         jScrollPane10 = new javax.swing.JScrollPane();
         tNombreUsuario = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Recarga de saldo");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         fSaldoCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Utilidades/dinero.png"))); // NOI18N
 
@@ -117,6 +122,10 @@ public class VentanaRecargarSaldo extends javax.swing.JFrame implements VistaRec
         this.solicitarRecarga();
     }//GEN-LAST:event_bAceptarActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.cerrar();
+    }//GEN-LAST:event_formWindowClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
@@ -154,6 +163,10 @@ public class VentanaRecargarSaldo extends javax.swing.JFrame implements VistaRec
         }
     }
 
+    private void cerrar() {
+        controlador.cerrar();
+    }
+
     @Override
     public void mostrarError(String msg) {
         JOptionPane.showMessageDialog(this, msg, "Login incorrecto", JOptionPane.ERROR_MESSAGE);
@@ -161,6 +174,16 @@ public class VentanaRecargarSaldo extends javax.swing.JFrame implements VistaRec
 
     @Override
     public void mostrarExito(String msg) {
-        JOptionPane.showMessageDialog(this, msg, "Login incorrecto", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, msg, "Recarga", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    public boolean confirmar(String mensaje, String title) {
+        return JOptionPane.showConfirmDialog(this, mensaje, title, JOptionPane.YES_NO_OPTION) == 0;
+    }
+
+    @Override
+    public void salir() {
+        dispose();
     }
 }

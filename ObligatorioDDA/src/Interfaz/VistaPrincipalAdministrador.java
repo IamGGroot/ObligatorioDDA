@@ -4,8 +4,6 @@ import Dominio.Administrador;
 
 public interface VistaPrincipalAdministrador {
 
-    public void cerrar();
-
     public boolean confirmar(String mensaje, String title);
 
     public void salir();

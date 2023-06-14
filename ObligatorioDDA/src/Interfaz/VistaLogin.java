@@ -6,9 +6,9 @@ public interface VistaLogin {
 
     public void mostrarError(String msg);
 
-    public void cerrarVentana();
+    public void salir();
 
     public void ejecutarLogin(Usuario usu);
-    
+
     public void mostrarTitulo(String title);
 }

@@ -117,10 +117,10 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
     }
 
     @Override
-    public void cerrarVentana() {
+    public void salir() {
         this.dispose();
     }
-
+    
     @Override
     public void mostrarTitulo(String title) {
         this.setTitle(title);

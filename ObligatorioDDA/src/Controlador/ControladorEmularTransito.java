@@ -20,7 +20,7 @@ public class ControladorEmularTransito {
     }
 
     public void cerrar() {
-        if (vista.confirmar("Confirma que desea salir", "Salir del sistema")) {
+        if (vista.confirmar("Confirma que desea salir", "Emular transito")) {
             usuarioAdmin.setLogueado(false);
             vista.salir();
         }
