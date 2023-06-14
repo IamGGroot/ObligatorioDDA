@@ -87,9 +87,8 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
 
     private void cerrar() {
-        
         if(JOptionPane.showConfirmDialog(this, "Confirma que desea salir", "Salir del sistema", JOptionPane.YES_NO_OPTION) == 0) {
-            this.dispose();
+            System.exit(0); //salir completamente del sistema
         }
     }
 
