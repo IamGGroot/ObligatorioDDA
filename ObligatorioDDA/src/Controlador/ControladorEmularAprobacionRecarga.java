@@ -43,7 +43,7 @@ public class ControladorEmularAprobacionRecarga implements Observador {
 
     public void aprobarRecarga(Recarga recarga, Propietario propietario) {
         propietario.getCuenta().subscribir(this);
-        propietario.getCuenta().recargar(recarga, usuarioAdmin);
+        propietario.getCuenta().aprobar(recarga, usuarioAdmin);
         propietario.agregarNotificacion(new Notificacion("Tu recarga de $" + recarga.getMonto() + " fue aprobada"));
     }
 

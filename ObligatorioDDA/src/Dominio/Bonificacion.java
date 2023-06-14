@@ -32,14 +32,6 @@ public class Bonificacion implements Renderizable {
         return tipoBonificacion;
     }
 
-    public void setFechaAsignada(Date fechaAsignada) {
-        this.fechaAsignada = fechaAsignada;
-    }
-
-    public void setTipoBonificacion(TipoBonificacion tipoBonificacion) {
-        this.tipoBonificacion = tipoBonificacion;
-    }
-
     public int calcularBonificacion(Transito t) {
         return this.tipoBonificacion.calcularDescuento(t);
     }

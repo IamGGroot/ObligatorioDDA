@@ -3,7 +3,6 @@ package Servicios;
 import Dominio.Bonificacion;
 import Dominio.Propietario;
 import Dominio.Puesto;
-import Dominio.Recarga;
 import Dominio.Transito;
 import java.util.ArrayList;
 import Dominio.Vehiculo;
@@ -14,13 +13,11 @@ import java.util.List;
 public class ServicioPeaje {
 
     private List<Vehiculo> vehiculos;
-    private List<Recarga> recargas;
     private List<Puesto> puestos;
     private List<Bonificacion> bonificaciones;
 
     public ServicioPeaje() {
         vehiculos = new ArrayList();
-        recargas = new ArrayList();
         puestos = new ArrayList();
         bonificaciones = new ArrayList();
     }
@@ -29,17 +26,9 @@ public class ServicioPeaje {
         vehiculos.add(vehiculo);
     }
 
-    public List<Vehiculo> getVehiculos() {
-        return vehiculos;
-    }
 
     public void agregar(Puesto puesto) {
         puestos.add(puesto);
-    }
-
-    public void agregar(Recarga recarga) {
-        recargas.add(recarga);
-//TODO        FachadaServicios.getInstancia().notificar(Observable.Evento.RECARGA_AGREGADA);
     }
 
     public void agregar(Bonificacion bonificacion) throws SistemaPeajeException {
@@ -51,10 +40,6 @@ public class ServicioPeaje {
 
         }
         bonificaciones.add(bonificacion);
-    }
-
-    public List<Recarga> getRecargas() {
-        return recargas;
     }
 
     public List<Puesto> getPuestos() {
@@ -86,8 +71,9 @@ public class ServicioPeaje {
             montoAPagar = puesto.tarifaParaVehiculo(v).getMonto();
         } else {
             int descuento = b.calcularBonificacion(t);
-            t.setDescuentoAplicado(descuento);
-            montoAPagar = puesto.tarifaParaVehiculo(v).getMonto() - descuento;
+            double totalDescuento = (puesto.tarifaParaVehiculo(v).getMonto()*descuento)/100;
+            t.setDescuentoAplicado(totalDescuento);
+            montoAPagar = puesto.tarifaParaVehiculo(v).getMonto() - totalDescuento;
         }
 
         if (montoAPagar > v.getPropietario().getCuenta().getSaldo()) {

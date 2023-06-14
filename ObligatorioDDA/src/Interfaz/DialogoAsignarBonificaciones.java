@@ -43,7 +43,6 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tCedula1 = new javax.swing.JTextField();
         lBonificaciones = new javax.swing.JLabel();
         lPuestos = new javax.swing.JLabel();
         lCedula = new javax.swing.JLabel();
@@ -57,12 +56,6 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
         lPropietario = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         tCedula = new javax.swing.JTextField();
-
-        tCedula1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tCedula1ActionPerformed(evt);
-            }
-        });
 
         setTitle("Asignar bonificaciones");
 
@@ -179,9 +172,6 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tCedula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tCedula1ActionPerformed
-    }//GEN-LAST:event_tCedula1ActionPerformed
-
     private void bAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAsignarActionPerformed
         this.asignarBonificacion();
     }//GEN-LAST:event_bAsignarActionPerformed
@@ -208,7 +198,6 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     private javax.swing.JLabel lPropietario;
     private javax.swing.JLabel lPuestos;
     private javax.swing.JTextField tCedula;
-    private javax.swing.JTextField tCedula1;
     private javax.swing.JTable tablaBonificacionPuesto;
     // End of variables declaration//GEN-END:variables
 
@@ -232,7 +221,6 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
         cPuestos.setModel(model);
     }
 
-    @Override
     public void cerrar() {
         controlador.cerrar();
     }
@@ -248,17 +236,14 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     }
 
     public void buscar() {
-
         int cedula = Integer.parseInt(tCedula.getText());
         controlador.buscarPropietarioPorCedula(cedula);
-
     }
 
     @Override
     public void mostrarPropietarioYTabla(Propietario p) {
         mostrarPropietario(p);
         mostrarTabla(p);
-
     }
 
     private void mostrarPropietario(Propietario p) {
@@ -288,7 +273,6 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
         renderCustomTablaBonificacionPuesto();
     }
 
-    @Override
     public void asignarBonificacion() {
         int cedula = Integer.parseInt(tCedula.getText());
         Puesto selectedPuesto = (Puesto) cPuestos.getSelectedItem();
@@ -314,7 +298,7 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
     }
 
     private void renderCustomTablaBonificacionPuesto() {
-        
+
         tablaBonificacionPuesto.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
             @Override
             public void setValue(Object value) {

@@ -6,9 +6,6 @@ public class Exonerados extends TipoBonificacion {
         super(nombre);
     }
 
-    public Exonerados() {
-        super("Exonerados");
-    }
 
     @Override
     public int calcularDescuento(Transito transito) {

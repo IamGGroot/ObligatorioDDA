@@ -47,15 +47,14 @@ public class ControladorAsignarBonificaciones implements Observador {
     public void buscarPropietarioPorCedula(int cedula) {
         try {
             Propietario p = FachadaServicios.getInstancia().getPropietarioPorCedula(cedula);
-
             this.vista.mostrarPropietarioYTabla(p);
-
         } catch (SistemaPeajeException e) {
             this.vista.mostrarError(e.getMessage());
         }
 
     }
 
+    //TODO verificar si no se puede mover esta lógica a la fachada. 
     public void asignarBonificacion(Bonificacion bonificacion, Puesto puesto, int cedula) {
         try {
             Propietario p = FachadaServicios.getInstancia().getPropietarioPorCedula(cedula);

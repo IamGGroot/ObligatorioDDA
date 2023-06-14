@@ -18,10 +18,6 @@ public class Trabajadores extends TipoBonificacion {
         super(nombre);
     }
 
-    public Trabajadores() {
-        super("Frecuentes");
-    }
-
     @Override
     public int calcularDescuento(Transito transito) {
         Calendar calendario = Calendar.getInstance();

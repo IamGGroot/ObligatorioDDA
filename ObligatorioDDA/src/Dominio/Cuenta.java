@@ -23,10 +23,6 @@ public class Cuenta extends Observable {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
     public boolean agregar(Recarga r) throws SistemaPeajeException {
         if (r.getMonto() < 1) throw new SistemaPeajeException("Monto invalido");
         recargas.add(r);
@@ -34,7 +30,7 @@ public class Cuenta extends Observable {
         return true;
     }
 
-    public void recargar(Recarga recarga, Administrador admin) {
+    public void aprobar(Recarga recarga, Administrador admin) {
         recarga.aprobar(admin);
         this.saldo += recarga.getMonto();
         notificar(Evento.RECARGA_APROBADA);
@@ -52,6 +48,6 @@ public class Cuenta extends Observable {
 
     public void actualizarSaldo(Double montoPagado) {
         Double nuevoSaldo = this.getSaldo() - montoPagado;
-        this.setSaldo(nuevoSaldo);
+        this.saldo = nuevoSaldo;
     }
 }

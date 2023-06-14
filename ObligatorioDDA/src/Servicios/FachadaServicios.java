@@ -2,10 +2,8 @@ package Servicios;
 
 import Dominio.Administrador;
 import Dominio.Bonificacion;
-import Dominio.Notificacion;
 import Dominio.Propietario;
 import Dominio.Puesto;
-import Dominio.Recarga;
 import Dominio.Transito;
 import Dominio.Vehiculo;
 import Exceptions.SistemaPeajeException;
@@ -40,10 +38,6 @@ public class FachadaServicios extends Observable {
         servicioPeaje.agregar(vehiculo);
     }
 
-    public List<Vehiculo> getVehiculos() {
-        return servicioPeaje.getVehiculos();
-    }
-
     public void agregar(Administrador administrador) {
         servicioUsuario.agregar(administrador);
     }
@@ -58,11 +52,6 @@ public class FachadaServicios extends Observable {
 
     public Administrador loginAdministrador(int cedula, String password) throws SistemaPeajeException {
         return servicioUsuario.loginAdministrador(cedula, password);
-    }
-
-    public void agregar(Recarga recarga) {
-        servicioPeaje.agregar(recarga);
-        //TODO Acá revisar si no es quien dispara el evento de agregar recarga?
     }
 
     public List<Propietario> getPropietariosConRecargasPendientes() {
@@ -83,7 +72,6 @@ public class FachadaServicios extends Observable {
 
     public void agregar(Bonificacion bonificacion) throws SistemaPeajeException {
         servicioPeaje.agregar(bonificacion);
-        //TODO acá enviamos el evento de agregar bonificacion?
     }
 
     public List<Propietario> getPropietarios() {

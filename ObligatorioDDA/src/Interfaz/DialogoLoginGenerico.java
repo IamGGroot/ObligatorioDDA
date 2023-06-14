@@ -15,7 +15,6 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
         initComponents();
         this.setLocationRelativeTo(parent);
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,21 +35,9 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
             }
         });
 
-        tCedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tCedulaActionPerformed(evt);
-            }
-        });
-
         lCedula.setText("Cédula:");
 
         lPassword.setText("Password:");
-
-        tPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tPasswordActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,17 +80,8 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
     }// </editor-fold>//GEN-END:initComponents
 
     private void bIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bIngresarActionPerformed
-        ingresar();
-        // TODO add your handling code here:
+        this.ingresar();
     }//GEN-LAST:event_bIngresarActionPerformed
-
-    private void tCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tCedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tCedulaActionPerformed
-
-    private void tPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tPasswordActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bIngresar;

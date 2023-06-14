@@ -22,10 +22,6 @@ public class Propietario extends Usuario {
         this.misVehiculos = new ArrayList();
     }
 
-    public Propietario(String nombre, String password, int cedula) {
-        super(nombre, password, cedula);
-    }
-
     public List<Vehiculo> getMisVehiculos() {
         return misVehiculos;
     }
@@ -36,10 +32,6 @@ public class Propietario extends Usuario {
 
     public Cuenta getCuenta() {
         return cuenta;
-    }
-
-    public void setCuenta(Cuenta cuenta) {
-        this.cuenta = cuenta;
     }
 
     public double getSaldoMinimo() {
@@ -78,15 +70,6 @@ public class Propietario extends Usuario {
         notificar(Evento.NOTIFICACIONES_BORRADAS);
     }
 
-    public Vehiculo getVehiculo(String matricula) {
-        for (Vehiculo v : misVehiculos) {
-            if (v.getMatricula().equals(matricula)) {
-                return v;
-            }
-        }
-        return null;
-    }
-
     public boolean tieneRecargasPendientes() {
         return !this.cuenta.getRecargasPendientes().isEmpty();
 
@@ -113,12 +96,13 @@ public class Propietario extends Usuario {
     public void registrarTransito(double montoPagado) {
         this.getCuenta().actualizarSaldo(montoPagado);
         Double saldoActual = this.getCuenta().getSaldo();
-        if (saldoActual < this.saldoMinimo) {
+        if (saldoActual < this.getSaldoMinimo()) {
             String notificacionSaldo = "Tu saldo actual es de $" + saldoActual + " Te recomendamos hacer una recarga";
             this.agregarNotificacion(new Notificacion(notificacionSaldo));
         }
     }
 
+    //TODO revisar este metodo
     public List<Transito> obtenerTransitosVehiculoPuestoFecha(Vehiculo v, Puesto p, LocalDate fecha) {
         List<Transito> transitos = new ArrayList();
 

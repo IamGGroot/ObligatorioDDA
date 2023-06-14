@@ -21,16 +21,8 @@ public class Notificacion {
         return mensaje;
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
-
     public Date getFechaYHora() {
         return fechaYHora;
-    }
-
-    public void setFechaYHora(Date fechaYHora) {
-        this.fechaYHora = fechaYHora;
     }
 
 }

@@ -102,11 +102,10 @@ public class VentanaEmularAprobaciónDeRecargas extends javax.swing.JFrame imple
 
     private void bAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAprobarActionPerformed
         this.aprobarRecarga();
-        // TODO add your handling code here:
     }//GEN-LAST:event_bAprobarActionPerformed
 
     private void bCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarActionPerformed
-        this.cerrar();        // TODO add your handling code here:
+        this.cerrar();
     }//GEN-LAST:event_bCerrarActionPerformed
 
 

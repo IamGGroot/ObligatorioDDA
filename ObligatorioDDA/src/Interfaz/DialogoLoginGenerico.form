@@ -77,9 +77,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tCedula">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tCedulaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lCedula">
       <Properties>
@@ -92,9 +89,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="tPassword">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tPasswordActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

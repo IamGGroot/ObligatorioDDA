@@ -21,20 +21,8 @@ public class Puesto implements Renderizable {
         return nombre;
     }
 
-    public List<Bonificacion> getBonificacion() {
-        return bonificaciones;
-    }
-
-    public void setBonificacion(List<Bonificacion> bonificaciones) {
-        this.bonificaciones = bonificaciones;
-    }
-
     public List<Tarifa> getTarifas() {
         return tarifas;
-    }
-
-    public void setTarifas(List<Tarifa> tarifas) {
-        this.tarifas = tarifas;
     }
 
     public Tarifa tarifaParaVehiculo(Vehiculo v) {

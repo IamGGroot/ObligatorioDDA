@@ -7,11 +7,9 @@ import Dominio.Transito;
 import Dominio.Vehiculo;
 import Exceptions.SistemaPeajeException;
 import Interfaz.VistaEmularTransito;
-import Observer.Observable;
-import Observer.Observador;
 import Servicios.FachadaServicios;
 
-public class ControladorEmularTransito implements Observador {
+public class ControladorEmularTransito {
 
     VistaEmularTransito vista;
     Administrador usuarioAdmin;
@@ -26,10 +24,6 @@ public class ControladorEmularTransito implements Observador {
             usuarioAdmin.setLogueado(false);
             vista.salir();
         }
-    }
-
-    @Override
-    public void notificar(Observable origen, Object evento) {
     }
 
     public void listarPuestos() {
