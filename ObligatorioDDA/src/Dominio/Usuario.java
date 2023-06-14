@@ -4,7 +4,6 @@ import Observer.Observable;
 
 public abstract class Usuario extends Observable {
 
-    //private String tipoUsuario; //aca va a ser como en agenda? 
     private String nombre;
 
     private String password;

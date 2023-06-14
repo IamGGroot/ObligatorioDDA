@@ -82,22 +82,18 @@ public class DatosDePrueba {
         Date fecha8 = new Date(121, 9, 25);  // 25 de octubre de 2021
         Date fecha9 = new Date(122, 0, 1);   // 1 de enero de 2022
         Date fecha10 = new Date(122, 3, 15); // 15 de abril de 2022
-        Date fecha11 = new Date(122, 6, 30); // 30 de julio de 2022
         Date fecha12 = new Date(120, 1, 28); // 28 de febrero de 2020
         Date fecha13 = new Date(121, 4, 20); // 20 de mayo de 2021
         Date fecha14 = new Date(121, 8, 12); // 12 de septiembre de 2021
         Date fecha15 = new Date(122, 1, 28); // 28 de febrero de 2022
         Date fecha16 = new Date(122, 4, 20); // 20 de mayo de 2022
-        Date fecha17 = new Date(122, 8, 12); // 12 de septiembre de 2022
         Date fecha18 = new Date(120, 2, 7);  // 7 de marzo de 2020
         Date fecha19 = new Date(121, 5, 10); // 10 de junio de 2021
-        Date fecha20 = new Date(121, 7, 22); // 22 de agosto de 2021
         Date fecha21 = new Date(122, 2, 7);  // 7 de marzo de 2022
         Date fecha22 = new Date(122, 5, 10); // 10 de junio de 2022
         Date fecha23 = new Date(122, 7, 22); // 22 de agosto de 2022
         Date fecha24 = new Date(120, 4, 31); // 31 de mayo de 2020
         Date fecha25 = new Date(121, 1, 9);  // 9 de febrero de 2021
-        Date fecha26 = new Date(121, 11, 5); // 5 de diciembre de 2021
         Date fecha27 = new Date(122, 4, 31); // 31 de mayo de 2022
         Date fecha28 = new Date(122, 1, 9);  // 9 de febrero de 2022
         Date fecha29 = new Date(122, 11, 5); // 5 de diciembre de 2022
@@ -197,13 +193,9 @@ public class DatosDePrueba {
 
         Frecuentes frecuentes1 = new Frecuentes("Frecuente Tarifa Amiga");
         Frecuentes frecuentes2 = new Frecuentes("Frecuente Descuento Familiar");
-        Frecuentes frecuentes3 = new Frecuentes("Frecuente Descuento Fidelidad");
-        Trabajadores trabajadores1 = new Trabajadores("Trabajadores Empresa UPM");
-        Trabajadores trabajadores2 = new Trabajadores("Trabajadores Empresa Effice");
         Trabajadores trabajadores3 = new Trabajadores("Trabajadores Empresa Fanapel");
-        Exonerados exonerados1 = new Exonerados("Exonerados Vecino cercano");
         Exonerados exonerados2 = new Exonerados("Exonerados Ministerio Vivienda");
-        Exonerados exonerados3 = new Exonerados("Exonerados Presidencia");
+    
 
         Bonificacion bonificacion1 = new Bonificacion(fecha29, puesto1, propietario1, frecuentes2);
         Bonificacion bonificacion2 = new Bonificacion(fecha27, puesto2, propietario1, frecuentes2);
