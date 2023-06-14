@@ -250,7 +250,7 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
             int cedula = Integer.parseInt(tCedula.getText());
             controlador.buscarPropietarioPorCedula(cedula);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El campo cedula solo admite caraceters numéricos", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La cédula solo admite caracteres numéricos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -294,7 +294,7 @@ public class DialogoAsignarBonificaciones extends javax.swing.JDialog implements
             Bonificacion selectedBonificacion = (Bonificacion) cBonificaciones.getSelectedItem();
             controlador.asignarBonificacion(selectedBonificacion, selectedPuesto, cedula);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El campo cedula solo admite caraceters numéricos", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La cédula solo admite caracteres numéricos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
