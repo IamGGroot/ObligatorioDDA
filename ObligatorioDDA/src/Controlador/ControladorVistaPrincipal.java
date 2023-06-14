@@ -14,7 +14,7 @@ public class ControladorVistaPrincipal {
     }
 
     public void cerrar() {
-        if (vista.confirmar("Confirma que desea salir", "Salir del sistema")) {
+        if (vista.confirmar("Confirma que desea salir", "Administrador")) {
             usuarioAdmin.setLogueado(false);
             vista.salir();
         }

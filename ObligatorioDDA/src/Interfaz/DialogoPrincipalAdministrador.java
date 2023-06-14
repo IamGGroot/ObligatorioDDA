@@ -28,7 +28,7 @@ public class DialogoPrincipalAdministrador extends javax.swing.JDialog implement
         bAsignarBonificacion = new javax.swing.JButton();
         bSalir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -129,7 +129,6 @@ public class DialogoPrincipalAdministrador extends javax.swing.JDialog implement
     private javax.swing.JButton bSalir;
     // End of variables declaration//GEN-END:variables
 
-    @Override
     public void cerrar() {
         controlador.cerrar();
     }

@@ -1,6 +1,8 @@
 package Dominio;
 
 import Observer.Observable;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,8 +55,7 @@ public class Vehiculo extends Observable {
         this.propietario.agregarNotificacion(new Notificacion(notificacion));
         this.propietario.registrarTransito(nuevoTransito.getMontoPagado());
         notificar(Evento.TRANSITO_AGREGADO);
-        
-        
+
     }
 
     public double montoTotalTransitos() {
@@ -63,6 +64,18 @@ public class Vehiculo extends Observable {
             montoTotal += t.getMontoPagado();
         }
         return montoTotal;
+    }
+
+    List<Transito> obtenerTransitosPuestoFecha(Puesto puesto, LocalDate fecha) {
+        List<Transito> transitosPuestoFecha = new ArrayList();
+
+        for (Transito t : this.getTransitos()) {
+            LocalDate fechaTActual = t.getFechaYHora().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            if (t.getPuesto().equals(puesto) && fechaTActual.equals(fecha)) {
+                transitosPuestoFecha.add(t);
+            }
+        }
+        return transitosPuestoFecha;
     }
 
 }

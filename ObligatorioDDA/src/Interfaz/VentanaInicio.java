@@ -1,5 +1,7 @@
 package Interfaz;
 
+import javax.swing.JOptionPane;
+
 public class VentanaInicio extends javax.swing.JFrame {
 
     public VentanaInicio() {
@@ -13,7 +15,12 @@ public class VentanaInicio extends javax.swing.JFrame {
         bLoginAdministrador = new javax.swing.JButton();
         bLoginPropietario = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         bLoginAdministrador.setText("Login Administrador");
         bLoginAdministrador.addActionListener(new java.awt.event.ActionListener() {
@@ -54,12 +61,16 @@ public class VentanaInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bLoginAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginAdministradorActionPerformed
-        this.loginAdministrador();        // TODO add your handling code here:
+        this.loginAdministrador();
     }//GEN-LAST:event_bLoginAdministradorActionPerformed
 
     private void bLoginPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginPropietarioActionPerformed
-        this.loginPropietario();        // TODO add your handling code here:
+        this.loginPropietario();
     }//GEN-LAST:event_bLoginPropietarioActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.cerrar();
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -73,6 +84,13 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     private void loginPropietario() {
         new DialogoLoginPropietario(this, false).setVisible(true);
+    }
+
+    private void cerrar() {
+        
+        if(JOptionPane.showConfirmDialog(this, "Confirma que desea salir", "Salir del sistema", JOptionPane.YES_NO_OPTION) == 0) {
+            this.dispose();
+        }
     }
 
 }

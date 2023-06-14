@@ -26,7 +26,6 @@ public class ServicioPeaje {
         vehiculos.add(vehiculo);
     }
 
-
     public void agregar(Puesto puesto) {
         puestos.add(puesto);
     }
@@ -71,7 +70,7 @@ public class ServicioPeaje {
             montoAPagar = puesto.tarifaParaVehiculo(v).getMonto();
         } else {
             int descuento = b.calcularBonificacion(t);
-            double totalDescuento = (puesto.tarifaParaVehiculo(v).getMonto()*descuento)/100;
+            double totalDescuento = (puesto.tarifaParaVehiculo(v).getMonto() * descuento) / 100;
             t.setDescuentoAplicado(totalDescuento);
             montoAPagar = puesto.tarifaParaVehiculo(v).getMonto() - totalDescuento;
         }
@@ -84,6 +83,19 @@ public class ServicioPeaje {
         v.agregarTransito(t);
 
         return t;
+    }
+
+    public void asignarBonificacion(Bonificacion bonificacion, Puesto puesto, Propietario p) throws SistemaPeajeException {
+        List<Bonificacion> bonificacionesPropietario = p.getBonificaciones();
+        for (Bonificacion b : bonificacionesPropietario) {
+            if (b.getPuesto().equals(puesto)) {
+                throw new SistemaPeajeException("Ya tiene una bonificación asignada para ese puesto");
+            }
+        }
+
+        Date fecha = new Date();
+        Bonificacion nuevaBonificacion = new Bonificacion(fecha, puesto, p, bonificacion.getTipoBonificacion());
+        p.agregarBonificacion(nuevaBonificacion);
     }
 
 }

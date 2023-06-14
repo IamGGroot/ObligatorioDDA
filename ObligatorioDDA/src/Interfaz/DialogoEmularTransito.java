@@ -47,7 +47,12 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
         jScrollPane1 = new javax.swing.JScrollPane();
         tTarifas = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         lPuestos.setText("Puestos:");
 
@@ -156,6 +161,10 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
         this.emularTransito();
     }//GEN-LAST:event_bRegistrarActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.cerrar();
+    }//GEN-LAST:event_formWindowClosing
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCerrar;
     private javax.swing.JButton bRegistrar;
@@ -168,7 +177,6 @@ public class DialogoEmularTransito extends javax.swing.JDialog implements VistaE
     private javax.swing.JTable tTarifas;
     // End of variables declaration//GEN-END:variables
 
-    @Override
     public void cerrar() {
         controlador.cerrar();
     }

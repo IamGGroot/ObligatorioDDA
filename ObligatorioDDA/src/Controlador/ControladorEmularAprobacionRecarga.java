@@ -34,7 +34,7 @@ public class ControladorEmularAprobacionRecarga implements Observador {
     }
 
     public void cerrar() {
-        if (vista.confirmar("Confirma que desea salir?", "Salir del sistema")) {
+        if (vista.confirmar("Confirma que desea salir?", "Aprobación de recarga")) {
             usuarioAdmin.setLogueado(false);
             this.finalizarSubscripciones();
             vista.salir();

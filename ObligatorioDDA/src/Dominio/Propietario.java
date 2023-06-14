@@ -101,19 +101,4 @@ public class Propietario extends Usuario {
             this.agregarNotificacion(new Notificacion(notificacionSaldo));
         }
     }
-
-    //TODO revisar este metodo
-    public List<Transito> obtenerTransitosVehiculoPuestoFecha(Vehiculo v, Puesto p, LocalDate fecha) {
-        List<Transito> transitos = new ArrayList();
-
-        for (Transito t : this.getTransitos()) {
-            LocalDate fechaTActual = t.getFechaYHora().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            if (t.getPuesto().equals(p) && t.getVehiculo().equals(v) && fechaTActual.equals(fecha)) {
-                transitos.add(t);
-            }
-        }
-        return transitos;
-
-    }
-
 }

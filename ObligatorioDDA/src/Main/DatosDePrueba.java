@@ -12,7 +12,6 @@ import Dominio.Puesto;
 import Dominio.Recarga;
 import Dominio.Tarifa;
 import Dominio.Trabajadores;
-import Dominio.Transito;
 import Dominio.Vehiculo;
 import Exceptions.SistemaPeajeException;
 import Servicios.FachadaServicios;
