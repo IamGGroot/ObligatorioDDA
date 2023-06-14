@@ -3,7 +3,6 @@ package Dominio;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Propietario extends Usuario {
@@ -49,6 +48,7 @@ public class Propietario extends Usuario {
 
     public void agregarNotificacion(Notificacion n) {
         this.notificaciones.add(n);
+        notificar(Evento.NOTIFICACION_AGREGADA);
     }
 
     public List<Notificacion> getNotificaciones() {
@@ -70,7 +70,7 @@ public class Propietario extends Usuario {
 
     public void agregarBonificacion(Bonificacion b) {
         this.bonificaciones.add(b);
-
+        notificar(Evento.BONIFICACION_AGREGADA);
     }
 
     public void borrarNotificaciones() {
@@ -88,7 +88,6 @@ public class Propietario extends Usuario {
     }
 
     public boolean tieneRecargasPendientes() {
-        notificar(Evento.RECARGA_AGREGADA);
         return !this.cuenta.getRecargasPendientes().isEmpty();
 
     }
@@ -116,7 +115,7 @@ public class Propietario extends Usuario {
         Double saldoActual = this.getCuenta().getSaldo();
         if (saldoActual < this.saldoMinimo) {
             String notificacionSaldo = "Tu saldo actual es de $" + saldoActual + " Te recomendamos hacer una recarga";
-            notificaciones.add(new Notificacion(notificacionSaldo));
+            this.agregarNotificacion(new Notificacion(notificacionSaldo));
         }
     }
 
@@ -126,7 +125,6 @@ public class Propietario extends Usuario {
         for (Transito t : this.getTransitos()) {
             LocalDate fechaTActual = t.getFechaYHora().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             if (t.getPuesto().equals(p) && t.getVehiculo().equals(v) && fechaTActual.equals(fecha)) {
-                System.out.println(t);
                 transitos.add(t);
             }
         }

@@ -11,6 +11,8 @@ import Dominio.Vehiculo;
 import Observer.Observable;
 import Observer.Observador;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -206,6 +208,16 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
             }
         });
         jScrollPane4.setViewportView(tablaTransitos);
+        if (tablaTransitos.getColumnModel().getColumnCount() > 0) {
+            tablaTransitos.getColumnModel().getColumn(0).setHeaderValue("Puesto");
+            tablaTransitos.getColumnModel().getColumn(1).setHeaderValue("Matrícula");
+            tablaTransitos.getColumnModel().getColumn(2).setHeaderValue("Tarifa");
+            tablaTransitos.getColumnModel().getColumn(3).setHeaderValue("Tarifa (monto)");
+            tablaTransitos.getColumnModel().getColumn(4).setHeaderValue("Bonific.");
+            tablaTransitos.getColumnModel().getColumn(5).setHeaderValue("Bonific.(monto)");
+            tablaTransitos.getColumnModel().getColumn(6).setHeaderValue("Monto pagado");
+            tablaTransitos.getColumnModel().getColumn(7).setHeaderValue("Fecha");
+        }
 
         bBorrar.setText("Borrar");
         bBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -508,6 +520,8 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
 
     @Override
     public void mostrarTransitos(List<Transito> transitos) {
+        Collections.sort(transitos, Comparator.comparing(Transito::getFechaYHora).reversed());
+
         String[] columnNames = {"Puesto", "Matrícula", "Tarifa", "Tarifa (monto)", "Bonific.", "Bonific.(monto)", "Monto pagado", "Fecha"};
         DefaultTableModel modeloDefault = new DefaultTableModel(columnNames, transitos.size()) {
             @Override
@@ -542,6 +556,8 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
 
     @Override
     public void mostrarRecargas(List<Recarga> recargas) {
+        Collections.sort(recargas, Comparator.comparing(Recarga::getFechaYHora).reversed());
+
         String[] columnNames = {"Fecha recarga", "Monto", "Estado", "Administrador"};
         DefaultTableModel modeloDefault = new DefaultTableModel(columnNames, recargas.size()) {
             @Override
@@ -569,6 +585,8 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
 
     @Override
     public void mostrarNotificaciones(List<Notificacion> notificaciones) {
+        Collections.sort(notificaciones, Comparator.comparing(Notificacion::getFechaYHora).reversed());
+
         String[] columnNames = {"Fecha", "Mensaje"};
         DefaultTableModel modeloDefault = new DefaultTableModel(columnNames, notificaciones.size()) {
             @Override

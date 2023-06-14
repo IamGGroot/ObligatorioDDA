@@ -123,23 +123,23 @@ public class DatosDePrueba {
 
         Cuenta cuenta1 = new Cuenta();
         cuenta1.agregar(recarga1);
-        cuenta1.recargar(recarga1.getMonto());
+        cuenta1.recargar(recarga1, admin1);
 
         Cuenta cuenta2 = new Cuenta();
         cuenta2.agregar(recarga2);
-        cuenta2.recargar(recarga2.getMonto());
+        cuenta2.recargar(recarga2, admin1);
         cuenta2.agregar(recarga3);
         cuenta2.agregar(recarga4);
         cuenta2.agregar(recarga5);
-        cuenta2.recargar(recarga5.getMonto());
+        cuenta2.recargar(recarga5, admin2);
         cuenta2.agregar(recarga6);
-        cuenta2.recargar(recarga6.getMonto());
+        cuenta2.recargar(recarga6, admin2);
 
         Cuenta cuenta3 = new Cuenta();
         cuenta3.agregar(recarga7);
         cuenta3.agregar(recarga8);
         cuenta3.agregar(recarga9);
-        cuenta3.recargar(recarga9.getMonto());
+        cuenta3.recargar(recarga9, admin3);
 
         Cuenta cuenta4 = new Cuenta();
         cuenta4.agregar(recarga10);

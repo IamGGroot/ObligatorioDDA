@@ -22,7 +22,7 @@ public class ControladorTableroPropietario implements Observador {
 
     @Override
     public void notificar(Observable origen, Object evento) {
-        if (((Observable.Evento) evento).equals(Observable.Evento.NOTIFICACIONES_BORRADAS)) {
+        if (((Observable.Evento) evento).equals(Observable.Evento.NOTIFICACIONES_BORRADAS) || ((Observable.Evento) evento).equals(Observable.Evento.NOTIFICACION_AGREGADA)) {
             obtenerNotificaciones();
         }
         if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_AGREGADA)) {
@@ -30,14 +30,19 @@ public class ControladorTableroPropietario implements Observador {
         }
 
         if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_APROBADA)) {
+            obtenerRecargas();
             obtenerSaldo();
         }
 
         if (((Observable.Evento) evento).equals(Observable.Evento.TRANSITO_AGREGADO)) {
+            obtenerVehiculos();
             obtenerTransitos();
+            obtenerSaldo();
         }
-
-        //TODO falta observer para bonificaciones.
+        
+        if (((Observable.Evento) evento).equals(Observable.Evento.BONIFICACION_AGREGADA)) {
+            obtenerBonificaciones();
+        }
     }
 
     public void cerrar() {

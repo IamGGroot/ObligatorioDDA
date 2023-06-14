@@ -81,7 +81,6 @@ public class ServicioPeaje {
         Propietario propietarioVehiculo = v.getPropietario();
         Bonificacion b = propietarioVehiculo.getBonificacion(puesto);
         Transito t = new Transito(new Date(), b, puesto, v, 0);
-//me tiro error point null, la bonificacion es null, proba varios puestos y varias veces con la primer matricula de los datos de prueba para que te salte
 
         if (b == null) {
             montoAPagar = puesto.tarifaParaVehiculo(v).getMonto();

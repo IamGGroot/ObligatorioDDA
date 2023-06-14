@@ -34,8 +34,9 @@ public class Cuenta extends Observable {
         return true;
     }
 
-    public void recargar(Double monto) {//ACA es donde se actueliza el estado de la recarga
-        this.saldo += monto;
+    public void recargar(Recarga recarga, Administrador admin) {
+        recarga.aprobar(admin);
+        this.saldo += recarga.getMonto();
         notificar(Evento.RECARGA_APROBADA);
     }
 

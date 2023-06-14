@@ -31,7 +31,9 @@ public class ControladorAsignarBonificaciones implements Observador {
 
     @Override
     public void notificar(Observable origen, Object evento) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (((Observable.Evento) evento).equals(Observable.Evento.BONIFICACION_AGREGADA)) {
+            buscarPropietarioPorCedula(((Propietario) origen).getCedula());
+        }
     }
 
     public void listarBonificaciones() {
@@ -56,9 +58,8 @@ public class ControladorAsignarBonificaciones implements Observador {
 
     public void asignarBonificacion(Bonificacion bonificacion, Puesto puesto, int cedula) {
         try {
-
             Propietario p = FachadaServicios.getInstancia().getPropietarioPorCedula(cedula);
-
+            p.subscribir(this);
             List<Bonificacion> bonificacionesPropietario = p.getBonificaciones();
             for (Bonificacion b : bonificacionesPropietario) {
                 if (b.getPuesto().equals(puesto)) {
@@ -67,10 +68,9 @@ public class ControladorAsignarBonificaciones implements Observador {
             }
 
             Date fecha = new Date();
-            //hay que ver como asignar la bonificacion con fechas individuales de asignacion para cada propietario
             Bonificacion nuevaBonificacion = new Bonificacion(fecha, puesto, p, bonificacion.getTipoBonificacion());
             p.agregarBonificacion(nuevaBonificacion);
-
+            p.desubscribir(this);
         } catch (SistemaPeajeException e) {
             this.vista.mostrarError(e.getMessage());
         }

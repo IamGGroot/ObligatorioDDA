@@ -1,6 +1,7 @@
 package Controlador;
 
 import Dominio.Administrador;
+import Dominio.Notificacion;
 import Dominio.Propietario;
 import Dominio.Recarga;
 import Interfaz.VistaEmularAprobacionRecarga;
@@ -42,8 +43,8 @@ public class ControladorEmularAprobacionRecarga implements Observador {
 
     public void aprobarRecarga(Recarga recarga, Propietario propietario) {
         propietario.getCuenta().subscribir(this);
-        recarga.aprobar(usuarioAdmin);
-        propietario.getCuenta().recargar(recarga.getMonto());
+        propietario.getCuenta().recargar(recarga, usuarioAdmin);
+        propietario.agregarNotificacion(new Notificacion("Tu recarga de $" + recarga.getMonto() + " fue aprobada"));
     }
 
     private void inicilizarSubscripciones() {
