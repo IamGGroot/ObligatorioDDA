@@ -97,7 +97,7 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
             String password = new String(tPassword.getPassword());
             this.controlador.loginUsuario(cedulaUsuario, password);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El campo cedula solo admite caraceters numéricos", "Login incorrecto", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La cédula solo admite caracteres numéricos", "Login incorrecto", JOptionPane.ERROR_MESSAGE);
         }
     }
 

@@ -159,7 +159,7 @@ public class VentanaRecargarSaldo extends javax.swing.JFrame implements VistaRec
             double monto = Double.parseDouble(tMontoARecargar.getText());
             controlador.enviarRecarga(monto);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El campo monto solo admite caraceters numéricos", "Monto inválido", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El monto solo admite caracteres numéricos", "Monto inválido", JOptionPane.ERROR_MESSAGE);
         }
     }
 
