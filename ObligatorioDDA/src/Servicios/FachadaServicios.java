@@ -62,6 +62,7 @@ public class FachadaServicios extends Observable {
 
     public void agregar(Recarga recarga) {
         servicioPeaje.agregar(recarga);
+        //TODO Acá revisar si no es quien dispara el evento de agregar recarga?
     }
 
     public List<Propietario> getPropietariosConRecargasPendientes() {
@@ -80,12 +81,9 @@ public class FachadaServicios extends Observable {
         return servicioPeaje.getBonificaciones();
     }
 
-    public void agregarBonificacion(Bonificacion bonificacion) throws SistemaPeajeException {
-        servicioPeaje.agregar(bonificacion);
-    }
-
     public void agregar(Bonificacion bonificacion) throws SistemaPeajeException {
         servicioPeaje.agregar(bonificacion);
+        //TODO acá enviamos el evento de agregar bonificacion?
     }
 
     public List<Propietario> getPropietarios() {

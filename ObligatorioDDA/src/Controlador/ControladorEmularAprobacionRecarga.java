@@ -3,7 +3,6 @@ package Controlador;
 import Dominio.Administrador;
 import Dominio.Propietario;
 import Dominio.Recarga;
-import Exceptions.SistemaPeajeException;
 import Interfaz.VistaEmularAprobacionRecarga;
 import Observer.Observable;
 import Observer.Observador;
@@ -18,8 +17,7 @@ public class ControladorEmularAprobacionRecarga implements Observador {
     public ControladorEmularAprobacionRecarga(VistaEmularAprobacionRecarga vista, Administrador usuarioAdmin) {
         this.vista = vista;
         this.usuarioAdmin = usuarioAdmin;
-        this.usuarioAdmin.subscribir(this);
-        this.inicilizar();
+        this.inicilizarSubscripciones();
     }
 
     public void listarListarRecargasPendientes() {
@@ -37,7 +35,7 @@ public class ControladorEmularAprobacionRecarga implements Observador {
     public void cerrar() {
         if (vista.confirmar("Confirma que desea salir?", "Salir del sistema")) {
             usuarioAdmin.setLogueado(false);
-            this.usuarioAdmin.desubscribir(this);
+            this.finalizarSubscripciones();
             vista.salir();
         }
     }
@@ -48,11 +46,17 @@ public class ControladorEmularAprobacionRecarga implements Observador {
         propietario.getCuenta().recargar(recarga.getMonto());
     }
 
-    private void inicilizar() {
+    private void inicilizarSubscripciones() {
         List<Propietario> propietarios = FachadaServicios.getInstancia().getPropietarios();
-        
-        for (Propietario p: propietarios){
+        for (Propietario p : propietarios) {
             p.getCuenta().subscribir(this);
+        }
+    }
+
+    private void finalizarSubscripciones() {
+        List<Propietario> propietarios = FachadaServicios.getInstancia().getPropietarios();
+        for (Propietario p : propietarios) {
+            p.getCuenta().desubscribir(this);
         }
     }
 

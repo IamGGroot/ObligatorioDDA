@@ -60,7 +60,7 @@ public class Vehiculo extends Observable {
     public double montoTotalTransitos() {
         double montoTotal = 0;
         for (Transito t : transitos) {
-            montoTotal += t.getPuesto().calcularMontoConBonificacion(this, t.getBonificacion(), t);
+            montoTotal += t.getMontoPagado();
         }
         return montoTotal;
     }

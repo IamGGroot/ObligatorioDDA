@@ -3,7 +3,6 @@ package Interfaz;
 import Controlador.ControladorTableroPropietario;
 import Dominio.Administrador;
 import Dominio.Bonificacion;
-import Dominio.Cuenta;
 import Dominio.Notificacion;
 import Dominio.Propietario;
 import Dominio.Recarga;
@@ -11,7 +10,6 @@ import Dominio.Transito;
 import Dominio.Vehiculo;
 import Observer.Observable;
 import Observer.Observador;
-import Servicios.FachadaServicios;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -534,7 +532,7 @@ public class DialogoTableroPropietario extends javax.swing.JDialog implements Vi
             } else {
                 Bonificacion b = t.getBonificacion();
                 modeloDatos.setValueAt(b.getTipoBonificacion().getNombre(), i, 4);
-                modeloDatos.setValueAt(b.calcularBonificacion(t), i, 5);
+                modeloDatos.setValueAt(t.getDescuentoAplicado(), i, 5);
             }
             modeloDatos.setValueAt(t.getMontoPagado(), i, 6);
             modeloDatos.setValueAt(formatDate(t.getFechaYHora()), i, 7);

@@ -8,10 +8,6 @@ import Observer.Observable;
 import Observer.Observador;
 import java.util.Date;
 
-/**
- *
- * @author Santiago Lacretta
- */
 public class ControladorRecargarSaldo implements Observador {
 
     private VistaRecargarSaldo vista;

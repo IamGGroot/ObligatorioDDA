@@ -9,6 +9,7 @@ public class Transito {
     private Puesto puesto;
     private Vehiculo vehiculo;
     private double montoPagado;
+    private int descuentoAplicado; 
 
     public Transito(Date fechaYHora, Bonificacion bonificacion, Puesto puesto, Vehiculo vehiculo, double montoPagado) {
         this.fechaYHora = fechaYHora;
@@ -26,6 +27,15 @@ public class Transito {
         return fechaYHora;
     }
 
+    public void setDescuentoAplicado(int descuentoAplicado) {
+        this.descuentoAplicado = descuentoAplicado;
+    }
+
+    public int getDescuentoAplicado() {
+        return descuentoAplicado;
+    }
+
+    
     public void setMontoPagado(double montoPagado) {
         this.montoPagado = montoPagado;
     }
@@ -48,10 +58,6 @@ public class Transito {
 
     public Vehiculo getVehiculo() {
         return vehiculo;
-    }
-
-    public double calcularMonto(Vehiculo vehiculo) {
-        return puesto.calcularMontoConBonificacion(vehiculo, bonificacion, this);
-    }
+    }  
 
 }

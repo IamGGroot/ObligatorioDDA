@@ -1,6 +1,7 @@
 package Dominio;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -89,7 +90,7 @@ public class Propietario extends Usuario {
     public boolean tieneRecargasPendientes() {
         notificar(Evento.RECARGA_AGREGADA);
         return !this.cuenta.getRecargasPendientes().isEmpty();
-        
+
     }
 
     public Bonificacion existeBonificacionEnPuesto(Puesto puesto) {
@@ -121,8 +122,11 @@ public class Propietario extends Usuario {
 
     public List<Transito> obtenerTransitosVehiculoPuestoFecha(Vehiculo v, Puesto p, LocalDate fecha) {
         List<Transito> transitos = new ArrayList();
+
         for (Transito t : this.getTransitos()) {
-            if (t.getPuesto().equals(p) && t.getVehiculo().equals(v)) {
+            LocalDate fechaTActual = t.getFechaYHora().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            if (t.getPuesto().equals(p) && t.getVehiculo().equals(v) && fechaTActual.equals(fecha)) {
+                System.out.println(t);
                 transitos.add(t);
             }
         }

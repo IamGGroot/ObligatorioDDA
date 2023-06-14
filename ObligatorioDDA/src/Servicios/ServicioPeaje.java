@@ -39,6 +39,7 @@ public class ServicioPeaje {
 
     public void agregar(Recarga recarga) {
         recargas.add(recarga);
+//TODO        FachadaServicios.getInstancia().notificar(Observable.Evento.RECARGA_AGREGADA);
     }
 
     public void agregar(Bonificacion bonificacion) throws SistemaPeajeException {
@@ -75,15 +76,20 @@ public class ServicioPeaje {
     }
 
     public Transito emularTransito(String matricula, Puesto puesto) throws SistemaPeajeException {
-
+        Double montoAPagar;
         Vehiculo v = getVehiculoPorMatricula(matricula);
         Propietario propietarioVehiculo = v.getPropietario();
         Bonificacion b = propietarioVehiculo.getBonificacion(puesto);
-//me tiro error point null, la bonificacion es null, proba varios puestos y varias veces con la primer matricula de los datos de prueba para que te salte
         Transito t = new Transito(new Date(), b, puesto, v, 0);
+//me tiro error point null, la bonificacion es null, proba varios puestos y varias veces con la primer matricula de los datos de prueba para que te salte
 
-
-        Double montoAPagar = puesto.calcularMontoConBonificacion(v, b,t);
+        if (b == null) {
+            montoAPagar = puesto.tarifaParaVehiculo(v).getMonto();
+        } else {
+            int descuento = b.calcularBonificacion(t);
+            t.setDescuentoAplicado(descuento);
+            montoAPagar = puesto.tarifaParaVehiculo(v).getMonto() - descuento;
+        }
 
         if (montoAPagar > v.getPropietario().getCuenta().getSaldo()) {
             throw new SistemaPeajeException("Saldo insuficiente " + v.getPropietario().getCuenta().getSaldo());
@@ -91,7 +97,7 @@ public class ServicioPeaje {
 
         t.setMontoPagado(montoAPagar);
         v.agregarTransito(t);
-        
+
         return t;
     }
 

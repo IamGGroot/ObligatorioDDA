@@ -32,18 +32,17 @@ public class ControladorTableroPropietario implements Observador {
         if (((Observable.Evento) evento).equals(Observable.Evento.RECARGA_APROBADA)) {
             obtenerSaldo();
         }
-        
+
         if (((Observable.Evento) evento).equals(Observable.Evento.TRANSITO_AGREGADO)) {
             obtenerTransitos();
         }
 
-
-        //aca voy a poder actualizar las listas y mostrar básicamente. 
+        //TODO falta observer para bonificaciones.
     }
 
     public void cerrar() {
         if (vista.confirmar("Confirma que desea salir", "Salir del sistema")) {
-            this.propietario.desubscribir(this);
+            this.finalizarSubscripciones();
             vista.salir();
         }
 
@@ -89,8 +88,17 @@ public class ControladorTableroPropietario implements Observador {
         this.propietario.subscribir(this);
         this.propietario.getCuenta().subscribir(this);
         List<Vehiculo> vehiculos = this.propietario.getMisVehiculos();
-        for(Vehiculo v: vehiculos){
+        for (Vehiculo v : vehiculos) {
             v.subscribir(this);
+        }
+    }
+
+    private void finalizarSubscripciones() {
+        this.propietario.desubscribir(this);
+        this.propietario.getCuenta().desubscribir(this);
+        List<Vehiculo> vehiculos = this.propietario.getMisVehiculos();
+        for (Vehiculo v : vehiculos) {
+            v.desubscribir(this);
         }
     }
 }

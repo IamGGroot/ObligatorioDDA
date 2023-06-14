@@ -11,7 +11,8 @@ public abstract class Observable {
         RECARGA_APROBADA,
         RECARGA_AGREGADA,
         RECARGA_CREADA,
-        TRANSITO_AGREGADO;
+        TRANSITO_AGREGADO, 
+        PROPIETARIO_AGREGADO;
     }
 
     private List<Observador> observadores;
